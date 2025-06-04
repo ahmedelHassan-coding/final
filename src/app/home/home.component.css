@@ -1,0 +1,249 @@
+/* Reset عام */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  height: 100%;
+  background-color: #f9f9f9;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+    /* أسود غامق */
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.7);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  font-weight: 600;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.logo {
+  font-size: 28px;
+  color: #1E90FF; /* أزرق */
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #ccc; /* رمادي فاتح */
+  font-size: 17px;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #1E90FF; /* أزرق عند التمرير */
+}
+
+.auth-buttons button {
+  margin-left: 15px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 600;
+}
+
+.auth-buttons .login {
+  background-color: transparent;
+  color: #ccc;
+}
+
+.auth-buttons .login:hover {
+  color: #1E90FF;
+}
+
+.auth-buttons .signup {
+  background-color: #1E90FF;
+  color: white;
+}
+
+.auth-buttons .signup:hover {
+  background-color: #0d6efd; /* أزرق أغمق */
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-image: url('https://www.it-daily.net/wp-content/uploads/2022/06/Freelancer_shutterstock_723423124.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px; /* مساحة لتحت Navbar */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* تدرج لوني أسود شبه شفاف */
+  background: linear-gradient(
+    rgba(18, 18, 18, 0.85),
+    rgba(18, 18, 18, 0.7)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.content {
+  text-align: center;
+  max-width: 600px;
+  color: white;
+  z-index: 2;
+}
+
+.content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1E90FF; /* عنوان أزرق */
+}
+
+.content p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #ddd;
+}
+
+/* search button */
+.search-box {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 16px 100px 16px 40px; /* مساحة اليسار للأيقونة، اليمين للزر */
+  font-size: 18px;
+  border-radius: 10px;
+  border: 1px solid #1E90FF; /* حدود زرقاء */
+  outline: none;
+  box-sizing: border-box;
+  color: #121212;
+  background-color: #f0f8ff; /* خلفية فاتحة زرقاء */
+  transition: border-color 0.3s ease;
+}
+
+.search-wrapper input:focus {
+  border-color: #0d6efd;
+  background-color: white;
+}
+
+.search-wrapper button {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1E90FF;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: 600;
+}
+
+.search-wrapper button:hover {
+  background-color: #0d6efd;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #1E90FF;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 36px;
+  }
+  
+  .content p {
+    font-size: 16px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .auth-buttons button {
+    padding: 6px 14px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    display: none;
+  }
+
+  .content h1 {
+    font-size: 28px;
+  }
+
+  .content p {
+    font-size: 14px;
+  }
+
+  .search-wrapper input {
+    padding-right: 80px;
+  }
+}
