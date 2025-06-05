@@ -1,0 +1,23 @@
+<div @If(job) class="container py-5">
+    <h2 class="text-primary">{{ job.title }}</h2>
+    <h5>{{ job.company }} - {{ job.location }}</h5>
+    <p><strong>النوع:</strong> {{ job.employment_type }}</p>
+    <p><strong>الراتب:</strong> {{ job.salary_from }} - {{ job.salary_to }}</p>
+    <p><strong>الوصف:</strong> {{ job.description }}</p>
+  
+    <div *ngIf="job.qualifications?.length">
+      <p><strong>المهارات المطلوبة:</strong></p>
+      <span *ngFor="let skill of job.qualifications" class="badge bg-primary me-1">{{ skill }}</span>
+    </div>
+    <div class="mt-3">
+        <h6 class="text-secondary"> معلومات عن الشركة:</h6>
+        <p class="mb-1"><strong>اسم الشركة:</strong> {{ job.company }}</p>
+        <p class="mb-1"><strong>التخصص:</strong> {{ job.job_category }}</p>
+        <p class="mb-1"><strong>جهة الاتصال:</strong> {{ job.contact }}</p>
+        <p class="mb-0"><strong>عدد الوظائف المفتوحة:</strong> {{ job.number_of_opening }}</p>
+      </div>
+  
+    <a class="btn btn-secondary mt-3" routerLink="/studenthome">رجوع</a>
+    <a class="btn btn-outline-primary mt-3" routerLink="">قدم الان</a>
+  </div>
+  
