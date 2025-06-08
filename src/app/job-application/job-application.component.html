@@ -1,0 +1,63 @@
+<h4 class="mb-3"> التقديم على الوظيفة</h4>
+
+<form #formRef="ngForm" (ngSubmit)="submitApplication()" enctype="multipart/form-data" novalidate>
+  <div class="mb-3">
+    <label class="form-label">الاسم الكامل</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      [(ngModel)]="formData.name"
+      #nameRef="ngModel"
+      required
+      minlength="2"
+    />
+    <div *ngIf="nameRef.invalid && nameRef.touched" class="text-danger small">
+      <div *ngIf="nameRef.errors?.['required']">الاسم مطلوب</div>
+      <div *ngIf="nameRef.errors?.['minlength']">يجب أن يكون الاسم 2 أحرف على الأقل</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">البريد الإلكتروني</label>
+    <input
+      type="email"
+      class="form-control"
+      name="email"
+      [(ngModel)]="formData.email"
+      #emailRef="ngModel"
+      required
+      email
+    />
+    <div *ngIf="emailRef.invalid && emailRef.touched" class="text-danger small">
+      <div *ngIf="emailRef.errors?.['required']">البريد الإلكتروني مطلوب</div>
+      <div *ngIf="emailRef.errors?.['email']">صيغة البريد غير صحيحة</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">رسالة التقديم</label>
+    <textarea
+      class="form-control"
+      name="message"
+      [(ngModel)]="formData.message"
+      #msgRef="ngModel"
+      required
+      minlength="10"
+    ></textarea>
+    <div *ngIf="msgRef.invalid && msgRef.touched" class="text-danger small">
+      <div *ngIf="msgRef.errors?.['required']">الرسالة مطلوبة</div>
+      <div *ngIf="msgRef.errors?.['minlength']">الرسالة يجب أن تحتوي على 10 أحرف على الأقل</div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">السيرة الذاتية (PDF)</label>
+    <input type="file" class="form-control" (change)="handleFileInput($event)" accept=".pdf" required />
+    <div *ngIf="!selectedFile" class="text-danger small mt-1">يرجى رفع ملف PDF</div>
+  </div>
+
+  <button type="submit" class="btn btn-success" [disabled]="formRef.invalid || !selectedFile">
+     إرسال
+  </button>
+</form>
