@@ -1,0 +1,32 @@
+<div @If(job) class="container py-5" dir="rtl">
+    <div class="job-header">
+      <h2 class="text-primary mb-1">{{ job.title }}</h2>
+      <h5 class="text-muted mb-3">{{ job.company }} - {{ job.location }}</h5>
+    </div>
+  
+    <div class="job-details mb-4">
+      <p class="mb-1"><strong>النوع:</strong> {{ job.employment_type }}</p>
+      <p class="mb-1"><strong>الراتب:</strong> {{ job.salary_from }} - {{ job.salary_to }}</p>
+      <p class="mb-1"><strong>الوصف:</strong> {{ job.description }}</p>
+    </div>
+  
+    <div *ngIf="job.qualifications?.length" class="mb-4">
+      <h6 class="text-secondary mb-2">المهارات المطلوبة:</h6>
+      <div class="d-flex flex-wrap gap-2">
+        <span *ngFor="let skill of job.qualifications" class="badge skill-badge">{{ skill }}</span>
+      </div>
+    </div>
+  
+    <div class="company-info mb-4">
+      <h6 class="text-secondary mb-2">معلومات عن الشركة:</h6>
+      <p class="mb-1"><strong>اسم الشركة:</strong> {{ job.company }}</p>
+      <p class="mb-1"><strong>التخصص:</strong> {{ job.job_category }}</p>
+      <p class="mb-1"><strong>جهة الاتصال:</strong> {{ job.contact }}</p>
+      <p class="mb-0"><strong>عدد الوظائف المفتوحة:</strong> {{ job.number_of_opening }}</p>
+    </div>
+  
+    <div class="d-flex gap-2">
+      <a class="btn btn-secondary" routerLink="/studenthome">رجوع</a>
+      <a [routerLink]="['/apply', job.id]" class="btn btn-outline-primary">قدم الان</a>
+    </div>
+  </div>

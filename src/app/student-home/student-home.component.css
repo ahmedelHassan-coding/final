@@ -1,0 +1,83 @@
+/* Bootstrap styles are assumed to be included in the project */
+/* Custom styles to match the design in the image */
+
+.job-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    margin-bottom: 10px;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1a0dab; /* Blue color for the title */
+    margin-bottom: 2px;
+  }
+  
+  .company-location {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .remote-badge {
+    background-color: #e0f7fa;
+    color: #006064;
+    font-size: 0.85rem;
+    padding: 3px 8px;
+  }
+  
+  .job-details {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  .job-details strong {
+    color: #555;
+  }
+  
+  .qualifications-title {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .skill-badge {
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 0.85rem;
+    padding: 3px 8px;
+  }
+  
+  .btn-details {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-color: #1a0dab;
+    color: #1a0dab;
+  }
+  
+  .btn-details:hover {
+    background-color: #1a0dab;
+    color: #fff;
+  }
+  
+  .pagination .page-link {
+    font-size: 0.9rem;
+    color: #1a0dab;
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: #1a0dab;
+    border-color: #1a0dab;
+    color: #fff;
+  }
+  
+  .pagination .page-item.disabled .page-link {
+    color: #999;
+  }
