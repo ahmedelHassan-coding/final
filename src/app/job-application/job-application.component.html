@@ -1,8 +1,8 @@
-<h4 class="mb-3"> التقديم على الوظيفة</h4>
+<h1 class="mb-3 text-danger" style="font-size: x-large;">Job Application</h1>
 
 <form #formRef="ngForm" (ngSubmit)="submitApplication()" enctype="multipart/form-data" novalidate>
   <div class="mb-3">
-    <label class="form-label">الاسم الكامل</label>
+    <label class="form-label">Full Name</label>
     <input
       type="text"
       class="form-control"
@@ -13,13 +13,13 @@
       minlength="2"
     />
     <div *ngIf="nameRef.invalid && nameRef.touched" class="text-danger small">
-      <div *ngIf="nameRef.errors?.['required']">الاسم مطلوب</div>
-      <div *ngIf="nameRef.errors?.['minlength']">يجب أن يكون الاسم 2 أحرف على الأقل</div>
+      <div *ngIf="nameRef.errors?.['required']">Name is required</div>
+      <div *ngIf="nameRef.errors?.['minlength']">Name must be at least 2 characters</div>
     </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">البريد الإلكتروني</label>
+    <label class="form-label">Email Address</label>
     <input
       type="email"
       class="form-control"
@@ -30,13 +30,13 @@
       email
     />
     <div *ngIf="emailRef.invalid && emailRef.touched" class="text-danger small">
-      <div *ngIf="emailRef.errors?.['required']">البريد الإلكتروني مطلوب</div>
-      <div *ngIf="emailRef.errors?.['email']">صيغة البريد غير صحيحة</div>
+      <div *ngIf="emailRef.errors?.['required']">Email is required</div>
+      <div *ngIf="emailRef.errors?.['email']">Invalid email format</div>
     </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">رسالة التقديم</label>
+    <label class="form-label">Application Message</label>
     <textarea
       class="form-control"
       name="message"
@@ -46,18 +46,18 @@
       minlength="10"
     ></textarea>
     <div *ngIf="msgRef.invalid && msgRef.touched" class="text-danger small">
-      <div *ngIf="msgRef.errors?.['required']">الرسالة مطلوبة</div>
-      <div *ngIf="msgRef.errors?.['minlength']">الرسالة يجب أن تحتوي على 10 أحرف على الأقل</div>
+      <div *ngIf="msgRef.errors?.['required']">Message is required</div>
+      <div *ngIf="msgRef.errors?.['minlength']">Message must be at least 10 characters</div>
     </div>
   </div>
 
   <div class="mb-3">
-    <label class="form-label">السيرة الذاتية (PDF)</label>
+    <label class="form-label">Resume (PDF)</label>
     <input type="file" class="form-control" (change)="handleFileInput($event)" accept=".pdf" required />
-    <div *ngIf="!selectedFile" class="text-danger small mt-1">يرجى رفع ملف PDF</div>
+    <div *ngIf="!selectedFile" class="text-danger small mt-1">Please upload a PDF file</div>
   </div>
 
-  <button type="submit" class="btn btn-success" [disabled]="formRef.invalid || !selectedFile">
-     إرسال
+  <button type="submit" class="btn btn-danger text-white" [disabled]="formRef.invalid || !selectedFile">
+    Submit
   </button>
 </form>
