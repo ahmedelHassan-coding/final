@@ -13,4 +13,11 @@ export class JobService {
   getJobs(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
+  submitApplication(data: FormData) {
+    return this.http.post(
+      'https://6857131d21f5d3463e546871.mockapi.io/jobs/applications',
+      data
+    );
+  }
 }
