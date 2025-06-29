@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JobService } from '../services/job.service';
+import { JobService } from '../../services/job.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 

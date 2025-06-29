@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet,HeaderComponent,FooterComponent,RouterLink],

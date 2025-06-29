@@ -1,0 +1,513 @@
+<header class="header">
+      <div class="container">
+        <div class="logo">
+          <h1>company</h1>
+          <span>Employer Dashboard</span>
+        </div>
+        <nav class="nav">
+          <a href="#profile" class="nav-link active">Profile</a>
+          <a href="#jobs" class="nav-link">Jobs</a>
+          <a href="#analytics" class="nav-link">Analytics</a>
+          <a href="#settings" class="nav-link">Settings</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+      <div class="container">
+        <!-- Company Information Section -->
+        <section class="section" id="profile">
+          <div class="section-header">
+            <h2>Company Profile</h2>
+            <button class="btn-primary">Save Changes</button>
+          </div>
+
+          <div class="grid-2">
+            <!-- Company Information -->
+            <div class="card">
+              <h3>Company Information</h3>
+              <form class="form">
+                <div class="form-group">
+                  <label for="company-name">Company Name *</label>
+                  <input type="text" id="company-name" placeholder="Enter your company name" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="industry">Industry *</label>
+                  <select id="industry" required>
+                    <option value="">Select Industry</option>
+                    <option value="software">Software & Technology</option>
+                    <option value="design">Design & Creative</option>
+                    <option value="marketing">Marketing & Advertising</option>
+                    <option value="finance">Finance & Banking</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="education">Education</option>
+                    <option value="retail">Retail & E-commerce</option>
+                  </select>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="company-type">Company Type</label>
+                    <select id="company-type">
+                      <option value="startup">Startup</option>
+                      <option value="sme">SME</option>
+                      <option value="enterprise">Enterprise</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="team-size">Team Size</label>
+                    <select id="team-size">
+                      <option value="1-10">1-10 employees</option>
+                      <option value="11-50">11-50 employees</option>
+                      <option value="51-200">51-200 employees</option>
+                      <option value="201-500">201-500 employees</option>
+                      <option value="500+">500+ employees</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="founded">Founded</label>
+                    <input type="number" id="founded" placeholder="2020" min="1900" max="2024">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country">
+                      <option value="egypt">Egypt</option>
+                      <option value="uae">UAE</option>
+                      <option value="saudi">Saudi Arabia</option>
+                      <option value="lebanon">Lebanon</option>
+                      <option value="jordan">Jordan</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" id="address" placeholder="City, Area, Street Name">
+                </div>
+              </form>
+            </div>
+
+            <!-- Visual Identity -->
+            <div class="card">
+              <h3>Visual Identity</h3>
+              
+              <div class="upload-section">
+                <label>Company Logo</label>
+                <div class="upload-area">
+                  <div class="upload-placeholder">
+                    <div class="upload-icon">📷</div>
+                    <p>Click to upload logo</p>
+                    <span>PNG, JPG up to 5MB</span>
+                  </div>
+                  <input type="file" accept="image/*" class="file-input">
+                </div>
+              </div>
+
+              <div class="upload-section">
+                <label>Cover Image (Optional)</label>
+                <div class="upload-area cover-upload">
+                  <div class="upload-placeholder">
+                    <div class="upload-icon">🖼️</div>
+                    <p>Click to upload cover image</p>
+                    <span>Recommended: 1200x400px</span>
+                  </div>
+                  <input type="file" accept="image/*" class="file-input">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- About Section -->
+          <div class="card">
+            <h3>About the Company</h3>
+            <div class="form-group">
+              <label for="company-description">Company Description</label>
+              <textarea 
+                id="company-description" 
+                rows="6" 
+                placeholder="Write a short paragraph describing who you are, what your company offers, your mission, vision, core values, target clients, and team culture."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="card">
+            <h3>Contact Details</h3>
+            <div class="form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="recruitment-email">Recruitment Email *</label>
+                  <input type="email" id="recruitment-email" placeholder="job@company.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" placeholder="0123456789">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="website">Website</label>
+                <input type="url" id="website" placeholder="https://yourcompany.com">
+              </div>
+
+              <div class="social-media">
+                <h4>Social Media</h4>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="facebook">Facebook</label>
+                    <input type="url" id="facebook" placeholder="https://facebook.com/yourcompany">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="linkedin">LinkedIn</label>
+                    <input type="url" id="linkedin" placeholder="https://linkedin.com/company/yourcompany">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="instagram">Instagram (Optional)</label>
+                  <input type="url" id="instagram" placeholder="https://instagram.com/yourcompany">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Job Management Section -->
+        <section class="section" id="jobs">
+          <div class="section-header">
+            <h2>Job Management</h2>
+            <button class="btn-primary">Post New Job</button>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">12</div>
+              <div class="stat-label">Active Jobs</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">156</div>
+              <div class="stat-label">Total Applications</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">8</div>
+              <div class="stat-label">Hired This Month</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">24</div>
+              <div class="stat-label">Pending Reviews</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Job Listings</h3>
+              <div class="filters">
+                <select class="filter-select">
+                  <option value="all">All Jobs</option>
+                  <option value="active">Active</option>
+                  <option value="paused">Paused</option>
+                  <option value="expired">Expired</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="job-list">
+              <div class="job-item">
+                <div class="job-info">
+                  <h4>Senior Frontend Developer</h4>
+                  <div class="job-meta">
+                    <span class="job-location">Cairo, Egypt</span>
+                    <span class="job-type">Full-time</span>
+                    <span class="job-status active">Active</span>
+                  </div>
+                </div>
+                <div class="job-stats">
+                  <div class="stat">
+                    <span class="stat-value">42</span>
+                    <span class="stat-label">Applications</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">8</span>
+                    <span class="stat-label">Under Review</span>
+                  </div>
+                </div>
+                <div class="job-actions">
+                  <button class="btn-secondary">View Applications</button>
+                  <button class="btn-outline">Edit Job</button>
+                </div>
+              </div>
+
+              <div class="job-item">
+                <div class="job-info">
+                  <h4>UX/UI Designer</h4>
+                  <div class="job-meta">
+                    <span class="job-location">Alexandria, Egypt</span>
+                    <span class="job-type">Part-time</span>
+                    <span class="job-status active">Active</span>
+                  </div>
+                </div>
+                <div class="job-stats">
+                  <div class="stat">
+                    <span class="stat-value">28</span>
+                    <span class="stat-label">Applications</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">Under Review</span>
+                  </div>
+                </div>
+                <div class="job-actions">
+                  <button class="btn-secondary">View Applications</button>
+                  <button class="btn-outline">Edit Job</button>
+                </div>
+              </div>
+
+              <div class="job-item">
+                <div class="job-info">
+                  <h4>Marketing Manager</h4>
+                  <div class="job-meta">
+                    <span class="job-location">Giza, Egypt</span>
+                    <span class="job-type">Full-time</span>
+                    <span class="job-status paused">Paused</span>
+                  </div>
+                </div>
+                <div class="job-stats">
+                  <div class="stat">
+                    <span class="stat-value">15</span>
+                    <span class="stat-label">Applications</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-value">3</span>
+                    <span class="stat-label">Under Review</span>
+                  </div>
+                </div>
+                <div class="job-actions">
+                  <button class="btn-secondary">View Applications</button>
+                  <button class="btn-outline">Edit Job</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section class="section" id="analytics">
+          <div class="section-header">
+            <h2>Analytics</h2>
+            <select class="period-select">
+              <option value="week">Last 7 days</option>
+              <option value="month">Last 30 days</option>
+              <option value="quarter">Last 3 months</option>
+            </select>
+          </div>
+
+          <div class="analytics-grid">
+            <div class="analytics-card">
+              <h3>Job Post Views</h3>
+              <div class="analytics-value">2,847</div>
+              <div class="analytics-change positive">+15% from last period</div>
+            </div>
+
+            <div class="analytics-card">
+              <h3>Total Applications</h3>
+              <div class="analytics-value">156</div>
+              <div class="analytics-change positive">+23% from last period</div>
+            </div>
+
+            <div class="analytics-card">
+              <h3>Application Rate</h3>
+              <div class="analytics-value">5.5%</div>
+              <div class="analytics-change negative">-2% from last period</div>
+            </div>
+
+            <div class="analytics-card">
+              <h3>Profile Views</h3>
+              <div class="analytics-value">1,234</div>
+              <div class="analytics-change positive">+8% from last period</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Top Performing Jobs</h3>
+            <div class="performance-list">
+              <div class="performance-item">
+                <div class="performance-job">
+                  <h4>Senior Frontend Developer</h4>
+                  <span>Posted 5 days ago</span>
+                </div>
+                <div class="performance-metrics">
+                  <div class="metric">
+                    <span class="metric-value">1,247</span>
+                    <span class="metric-label">Views</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-value">42</span>
+                    <span class="metric-label">Applications</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-value">3.4%</span>
+                    <span class="metric-label">Rate</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="performance-item">
+                <div class="performance-job">
+                  <h4>UX/UI Designer</h4>
+                  <span>Posted 12 days ago</span>
+                </div>
+                <div class="performance-metrics">
+                  <div class="metric">
+                    <span class="metric-value">892</span>
+                    <span class="metric-label">Views</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-value">28</span>
+                    <span class="metric-label">Applications</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-value">3.1%</span>
+                    <span class="metric-label">Rate</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Account Settings Section -->
+        <section class="section" id="settings">
+          <div class="section-header">
+            <h2>Account Settings</h2>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <h3>Account Information</h3>
+              <form class="form">
+                <div class="form-group">
+                  <label for="account-email">Email Address</label>
+                  <input type="email" id="account-email" value="admin@company.com">
+                </div>
+
+                <div class="form-group">
+                  <label for="current-password">Current Password</label>
+                  <input type="password" id="current-password">
+                </div>
+
+                <div class="form-group">
+                  <label for="new-password">New Password</label>
+                  <input type="password" id="new-password">
+                </div>
+
+                <div class="form-group">
+                  <label for="confirm-password">Confirm New Password</label>
+                  <input type="password" id="confirm-password">
+                </div>
+
+                <button type="submit" class="btn-primary">Update Password</button>
+              </form>
+            </div>
+
+            <div class="card">
+              <h3>Team Management</h3>
+              <div class="team-section">
+                <div class="team-header">
+                  <h4>Hiring Team Members</h4>
+                  <button class="btn-secondary">Add Member</button>
+                </div>
+
+                <div class="team-list">
+                  <div class="team-member">
+                    <div class="member-info">
+                      <div class="member-name">Ahmed Hassan</div>
+                      <div class="member-email">ahmedcompany.com</div>
+                    </div>
+                    <div class="member-role">Admin</div>
+                    <div class="member-actions">
+                      <button class="btn-text">Edit</button>
+                      <button class="btn-text danger">Remove</button>
+                    </div>
+                  </div>
+
+                  <div class="team-member">
+                    <div class="member-info">
+                      <div class="member-name">Sara Mohamed</div>
+                      <div class="member-email">saracompany.com</div>
+                    </div>
+                    <div class="member-role">HR Manager</div>
+                    <div class="member-actions">
+                      <button class="btn-text">Edit</button>
+                      <button class="btn-text danger">Remove</button>
+                    </div>
+                  </div>
+
+                  <div class="team-member">
+                    <div class="member-info">
+                      <div class="member-name">Omar Ali</div>
+                      <div class="member-email">omarcompany.com</div>
+                    </div>
+                    <div class="member-role">Recruiter</div>
+                    <div class="member-actions">
+                      <button class="btn-text">Edit</button>
+                      <button class="btn-text danger">Remove</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>CV Database Search</h3>
+            <div class="search-section">
+              <div class="search-header">
+                <input type="text" class="search-input" placeholder="Search candidates by skills, experience, location...">
+                <button class="btn-primary">Search CVs</button>
+              </div>
+              
+              <div class="search-filters">
+                <div class="filter-group">
+                  <label>Experience Level</label>
+                  <select>
+                    <option value="">Any</option>
+                    <option value="junior">Junior (0-2 years)</option>
+                    <option value="mid">Mid-level (2-5 years)</option>
+                    <option value="senior">Senior (5+ years)</option>
+                  </select>
+                </div>
+
+                <div class="filter-group">
+                  <label>Location</label>
+                  <select>
+                    <option value="">Any Location</option>
+                    <option value="cairo">Cairo</option>
+                    <option value="alexandria">Alexandria</option>
+                    <option value="giza">Giza</option>
+                  </select>
+                </div>
+
+                <div class="filter-group">
+                  <label>Education</label>
+                  <select>
+                    <option value="">Any Education</option>
+                    <option value="bachelor">Bachelor's Degree</option>
+                    <option value="master">Master's Degree</option>
+                    <option value="phd">PhD</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
