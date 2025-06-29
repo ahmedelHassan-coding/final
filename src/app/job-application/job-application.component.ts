@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { JobService } from '../services/job.service';
 
 @Component({
   selector: 'app-job-application',
@@ -17,40 +18,48 @@ export class JobApplicationComponent implements OnInit {
     name: '',
     email: '',
     message: '',
+    // file: null as File | null,
   };
 
   selectedFile: File | null = null;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private jobService: JobService) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log('Job ID:', id); 
+    console.log('Job ID:', id);
   }
 
-  handleFileInput(event: any): void {
-    const file = event.target.files[0];
-    if (file && file.type === 'application/pdf') {
-      this.selectedFile = file;
-    } else {
-      alert('من فضلك اختر ملف PDF فقط');
-      event.target.value = '';
+  handleFileInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
     }
   }
 
-  submitApplication(): void {
-    if (!this.selectedFile) {
-      alert('يرجى رفع السيرة الذاتية أولاً');
-      return;
-    }
+  submitApplication() {
+    // const userId = this.authService.getUserId();
+    const jobId = this.route.snapshot.paramMap.get('id');
 
-    const formPayload = new FormData();
-    formPayload.append('name', this.formData.name);
-    formPayload.append('email', this.formData.email);
-    formPayload.append('message', this.formData.message);
-    formPayload.append('cv', this.selectedFile);
-    formPayload.append('jobId', this.jobId);
+    const formData = new FormData();
+    formData.append('name', this.formData.name);
+    formData.append('email', this.formData.email);
+    formData.append('message', this.formData.message);
+    formData.append('jobId', jobId ?? '');
 
-    alert('تم إرسال طلب التقديم بنجاح!');
+    // if (this.selectedFile) {
+    //   formData.append('resume', this.selectedFile, this.selectedFile.name);
+    // }
+
+    this.jobService.submitApplication(formData).subscribe({
+      next: (res) => {
+        console.log(' Application submitted', res);
+        alert('Application submitted successfully!');
+      },
+      error: (err) => {
+        console.error(' Submission error:', err);
+        alert('Failed to submit application.');
+      },
+    });
   }
 }
