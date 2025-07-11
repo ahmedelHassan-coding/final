@@ -6,17 +6,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class JobService {
-  private apiUrl = 'https://jsonfakery.com/jobs';
 
   constructor(private http: HttpClient) {}
 
   getJobs(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get('http://localhost:8000/api/student-profile/jobs');
+  }
+  storejobs(data: any): Observable<any> {
+    return this.http.post('https\://localhost:8000/api/company/jobs', data);
+  }
+  editjobs(id: string, data: any): Observable<any> {
+    return this.http.put(`http://localhost:8000/api/company/jobs/${id}`, data);
+  }
+  deletejobs(id: string): Observable<any> {
+    return this.http.delete(`http://localhost:8000/api/company/jobs/${id}`);
+  }
+  getJobById(id: string | null): Observable<any> {
+    return this.http.get(`http://localhost:8000/api/student-profile/jobs/${id}`);
   }
 
-  submitApplication(data: FormData) {
+  submitApplication(id: number, data: FormData) {
     return this.http.post(
-      'https://6857131d21f5d3463e546871.mockapi.io/jobs/applications',
+      `http://localhost:8000/api/student-profile/jobs/${id}/apply`,
       data
     );
   }

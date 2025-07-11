@@ -23,11 +23,11 @@ export class StudentHomeComponent implements OnInit {
   ngOnInit(): void {
     this.jobService.getJobs().subscribe({
       next: (data) => {
-        this.jobs = data;
+        this.jobs = data.data;
         this.totalPages = Math.ceil(this.jobs.length / this.itemsPerPage);
         this.updatePaginatedJobs();
       },
-      error: (err) => console.error('فشل في جلب البيانات:', err),
+      error: (err) => console.error('error getting data', err),
     });
   }
 

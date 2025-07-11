@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../services/job.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-job-application',
@@ -12,22 +13,19 @@ import { JobService } from '../services/job.service';
   styleUrls: ['./job-application.component.css'],
 })
 export class JobApplicationComponent implements OnInit {
-  jobId!: string;
 
   formData = {
-    name: '',
-    email: '',
     message: '',
-    // file: null as File | null,
   };
-
   selectedFile: File | null = null;
+  fileInputError: boolean = false;
 
   constructor(private route: ActivatedRoute, private jobService: JobService) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log('Job ID:', id);
+    // Uncomment the next line for debugging only
+    // console.log('Job ID:', id);
   }
 
   handleFileInput(event: Event) {
@@ -37,29 +35,39 @@ export class JobApplicationComponent implements OnInit {
     }
   }
 
-  submitApplication() {
-    // const userId = this.authService.getUserId();
-    const jobId = this.route.snapshot.paramMap.get('id');
+  onSubmit() {
+    const jobIdParam = this.route.snapshot.paramMap.get('id');
+    const jobId = +jobIdParam!;
+
+    if (!jobId || isNaN(jobId)) {
+      alert('Invalid job ID.');
+      return;
+    }
 
     const formData = new FormData();
-    formData.append('name', this.formData.name);
-    formData.append('email', this.formData.email);
-    formData.append('message', this.formData.message);
-    formData.append('jobId', jobId ?? '');
+    formData.append('cover_letter', this.formData.message);
 
-    // if (this.selectedFile) {
-    //   formData.append('resume', this.selectedFile, this.selectedFile.name);
-    // }
+    if (this.selectedFile instanceof File) {
+      formData.append('cv', this.selectedFile, this.selectedFile.name);
+      this.fileInputError = false;
+    } else {
+      this.fileInputError = true;
+      alert('Please upload a valid CV file.');
+      return;
+    }
 
-    this.jobService.submitApplication(formData).subscribe({
-      next: (res) => {
-        console.log(' Application submitted', res);
-        alert('Application submitted successfully!');
-      },
-      error: (err) => {
-        console.error(' Submission error:', err);
-        alert('Failed to submit application.');
-      },
-    });
+    this.jobService.submitApplication(jobId, formData)
+      .pipe(take(1))
+      .subscribe({
+        next: (res) => {
+          console.log('Application submitted', res);
+          alert('Application submitted successfully!');
+        },
+        error: (err) => {
+          console.error('Submission error:', err);
+          alert('Failed to submit application.');
+        },
+      });
   }
 }
+

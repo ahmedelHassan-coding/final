@@ -1,63 +1,31 @@
-<h1 class="mb-3 text-danger" style="font-size: x-large;">Job Application</h1>
+<div class="container py-5" dir="ltr">
+  <h1 class="mb-3 text-danger" style="font-size: x-large;">Job Application</h1>
 
-<form #formRef="ngForm" (ngSubmit)="submitApplication()" enctype="multipart/form-data" novalidate>
-  <div class="mb-3">
-    <label class="form-label">Full Name</label>
-    <input
-      type="text"
-      class="form-control"
-      name="name"
-      [(ngModel)]="formData.name"
-      #nameRef="ngModel"
-      required
-      minlength="2"
-    />
-    <div *ngIf="nameRef.invalid && nameRef.touched" class="text-danger small">
-      <div *ngIf="nameRef.errors?.['required']">Name is required</div>
-      <div *ngIf="nameRef.errors?.['minlength']">Name must be at least 2 characters</div>
+  <form #formRef="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+    <div class="mb-3">
+      <label class="form-label">Application Message</label>
+      <textarea
+        class="form-control"
+        name="message"
+        [(ngModel)]="formData.message"
+        #msgRef="ngModel"
+        required
+        minlength="10"
+      ></textarea>
+      <div *ngIf="msgRef.invalid && msgRef.touched" class="text-danger small">
+        <div *ngIf="msgRef.errors?.['required']">Message is required</div>
+        <div *ngIf="msgRef.errors?.['minlength']">Message must be at least 10 characters</div>
+      </div>
     </div>
-  </div>
 
-  <div class="mb-3">
-    <label class="form-label">Email Address</label>
-    <input
-      type="email"
-      class="form-control"
-      name="email"
-      [(ngModel)]="formData.email"
-      #emailRef="ngModel"
-      required
-      email
-    />
-    <div *ngIf="emailRef.invalid && emailRef.touched" class="text-danger small">
-      <div *ngIf="emailRef.errors?.['required']">Email is required</div>
-      <div *ngIf="emailRef.errors?.['email']">Invalid email format</div>
+    <div class="mb-3">
+      <label class="form-label">Resume (PDF)</label>
+      <input name="cv" type="file" class="form-control" (change)="handleFileInput($event)" accept=".pdf" required />
+      <div *ngIf="!selectedFile" class="text-danger small mt-1">Please upload a PDF file</div>
     </div>
-  </div>
 
-  <div class="mb-3">
-    <label class="form-label">Application Message</label>
-    <textarea
-      class="form-control"
-      name="message"
-      [(ngModel)]="formData.message"
-      #msgRef="ngModel"
-      required
-      minlength="10"
-    ></textarea>
-    <div *ngIf="msgRef.invalid && msgRef.touched" class="text-danger small">
-      <div *ngIf="msgRef.errors?.['required']">Message is required</div>
-      <div *ngIf="msgRef.errors?.['minlength']">Message must be at least 10 characters</div>
-    </div>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Resume (PDF)</label>
-    <input type="file" class="form-control" (change)="handleFileInput($event)" accept=".pdf" required />
-    <div *ngIf="!selectedFile" class="text-danger small mt-1">Please upload a PDF file</div>
-  </div>
-
-  <button type="submit" class="btn btn-danger text-white" [disabled]="formRef.invalid || !selectedFile">
-    Submit
-  </button>
-</form>
+    <button type="submit" class="btn btn-danger text-white" [disabled]="formRef.invalid || !selectedFile">
+      Submit
+    </button>
+  </form>
+</div>

@@ -12,6 +12,7 @@ import { GraduateprofileComponent } from './pages/graduateprofile/graduateprofil
 import { CompanyprofileComponent } from './pages/companyprofile/companyprofile.component';
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
 import { AdmindashboardComponent } from './pages/admindashboard/admindashboard.component';
+import { CompanyLoginComponentComponent } from './pages/companyLogin/company-login-component/company-login-component.component';
 
 
 
@@ -29,6 +30,11 @@ export const routes: Routes = [
   {
         path:'login',
         component:LoginComponent
+
+  },
+  {
+        path:'company-login',
+        component:CompanyLoginComponentComponent
 
   },
   {
