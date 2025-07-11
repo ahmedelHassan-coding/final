@@ -1,7 +1,7 @@
 <div *ngIf="job" class="container py-5" dir="ltr">
   <div class="job-header">
     <h2 class="text-danger mb-1">{{ job.title }}</h2>
-    <h5 class="text-muted mb-3">{{ job.company }} - {{ job.location }}</h5>
+    <h5 class="text-muted mb-3">{{ job.company.name }} - {{ job.location }}</h5>
   </div>
 
   <div class="job-details mb-4">
