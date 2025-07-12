@@ -3,80 +3,68 @@
             <!-- Profile Header -->
             <section class="card profile-header">
                 <div class="profile-info">
-                    <div class="avatar">AH</div>
+                    <div class="avatar">
+                        <img src="http://localhost:8000/storage/{{student.image}}" alt="" class="profile-image rounded-circle  w-100 h-100">
+                    </div>
                     <div class="profile-details">
-                        <h1>Ahmed Hassan</h1>
+                        <h1>{{ student.name }}</h1>
                         <a href="#" class="add-link">+ Add your tagline</a>
+                        <div class="mail">
+                            <span class="mail-icon">✉️</span>
+                            <span>{{ student.email }}</span>
+                        </div>
+                        <div class="location">
+                            <span class="phone-icon">📞</span>
+                            <span>{{ student.phone }}</span>
+                        </div>
                         <div class="location">
                             <span class="location-icon">📍</span>
-                            <span>Doha, Qatar</span>
+                            <span>{{ student.address }}</span>
                         </div>
                         <div class="status-badge">Immediate Start</div>
                         <a href="#" class="add-link">+ Add your online presence</a>
                     </div>
                 </div>
-            </section>
-
-            <!-- Videos Section -->
-            <section class="card videos-section">
-                <h2>Your Videos</h2>
-                <div class="tabs">
-                    <input type="radio" id="tab1" name="video-tabs" checked>
-                    <input type="radio" id="tab2" name="video-tabs">
-                    <label for="tab1" class="tab-label">Introductory Videos</label>
-                    <label for="tab2" class="tab-label">Requested Videos</label>
-                </div>
-                
-                <div class="videos-content">
-                    <div class="videos-main">
-                        <div class="empty-state">
-                            <div class="video-icon">🎥</div>
-                            <h3>No videos yet</h3>
-                            <p>Start by recording your first introductory video</p>
-                            <button class="btn-primary" style="background-color: #bf272d; color: white;">▶️ Record Video</button>
-                        </div>
-                    </div>
-                    <div class="suggested-questions">
-                        <h4>Suggested Questions</h4>
-                        <div class="question-list">
-                            <div class="question">Introduce yourself...</div>
-                            <div class="question">What are your strengths?</div>
-                            <div class="question">Tell us about your experience</div>
-                            <div class="question">Why should we hire you?</div>
-                            <div class="question">What are your career goals?</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </section>           
 
             <!-- Skills Section -->
             <section class="card skills-section">
                 <div class="section-header">
                     <h2>Skills and Tools</h2>
+                    
                     <span class="edit-icon">✏️</span>
                 </div>
                 <a href="#" class="add-skill">+ Add new skill</a>
                 <div class="skills-list">
+                  @for (skill of skills; track $index) {
                     <div class="skill-item">
-                        <span class="skill-name">web developer</span>
-                        <span class="skill-level advanced">Advanced</span>
+                      <div class="skill-item">
+                          <span class="skill-name">{{ skill.name }}</span>
+                      </div>
                     </div>
-                    <div class="skill-item">
-                        <span class="skill-name">Speaking English well</span>
-                        <span class="skill-level intermediate">Intermediate</span>
-                    </div>
+                    }
                 </div>
             </section>
 
             <!-- Work Experience Section -->
             <section class="card work-experience">
                 <h2>Work Experience</h2>
-                <div class="empty-state">
-                    <div class="work-icon">🏢</div>
-                    <h3>No work experience added yet</h3>
-                    <p>Add your work experience to showcase your professional background to potential employers</p>
-                    <button class="btn-primary">+ Add Work Experience</button>
-                </div>
+                @if (student.experiences === 0) {
+                    <div class="empty-state">
+                        <div class="work-icon">🏢</div>
+                        <h3>No work experience added yet</h3>
+                        <p>Add your work experience to showcase your professional background to potential employers</p>
+                        <button class="btn-primary">+ Add Work Experience</button>
+                    </div>
+                }@else {
+                    @for (experience of student.experiences; track $index) {
+                        <div class="experience-item">
+                            <h3>{{ experience.job_title }}</h3>
+                            <p>{{ experience.company_name }}</p>
+                            <div class="duration"> {{ experience.start_date }} – {{ experience.end_date }}</div>
+                    </div>
+                }}
+               
             </section>
 
             <!-- Education Section -->
@@ -86,17 +74,8 @@
                     <div class="education-item">
                         <div class="education-icon">🎓</div>
                         <div class="education-details">
-                            <h3>Computer Science in Web Development</h3>
-                            <p class="institution">Nahda University (NUB)</p>
-                            <div class="duration">📅 Jan 2018 – Jan 2022 <span class="period">(4 years)</span></div>
-                        </div>
-                    </div>
-                    <div class="education-item">
-                        <div class="education-icon">🎓</div>
-                        <div class="education-details">
-                            <h3>Computer Science</h3>
-                            <p class="institution">High School</p>
-                            <div class="duration">📅 Jan 2022</div>
+                            <h3>{{ student.faculty }}</h3>
+                            <p class="institution">{{ student.university }}</p>
                         </div>
                     </div>
                 </div>
