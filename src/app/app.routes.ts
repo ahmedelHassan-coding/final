@@ -13,7 +13,9 @@ import { CompanyprofileComponent } from './pages/companyprofile/companyprofile.c
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
 import { AdmindashboardComponent } from './pages/admindashboard/admindashboard.component';
 import { CompanyLoginComponentComponent } from './pages/companyLogin/company-login-component/company-login-component.component';
-
+import { CompanypreviewComponent } from './pages/companypreview/companypreview.component';
+import { JobpreviewComponent } from './pages/jobpreview/jobpreview.component';
+import { JobcontrolComponent } from './pages/jobcontrol/jobcontrol.component';
 
 
 export const routes: Routes = [
@@ -46,9 +48,17 @@ export const routes: Routes = [
     path: 'companyprofile', 
     component: CompanyprofileComponent
   },
-  {
-    path: 'company/:id',
-    component: CompanyprofileComponent
+  { 
+    path: 'companypreview', 
+    component: CompanypreviewComponent
+  },
+  { 
+    path: 'jobpreview', 
+    component: JobpreviewComponent
+  },
+  { 
+    path: 'jobcontrol', 
+    component: JobcontrolComponent
   },
   {
     path:'graduate-info',
