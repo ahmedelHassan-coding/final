@@ -1,0 +1,66 @@
+<div class="dashboard-container">
+    <h2>🛠️ Job Dashboard</h2>
+
+    <!-- Edit Job Form -->
+    <form class="job-form">
+      <h3>Edit Job Details</h3>
+
+      <label>Title</label>
+      <input type="text" value="Frontend Developer" required>
+
+      <label>Location</label>
+      <input type="text" value="Cairo, Egypt" required>
+
+      <label>Type</label>
+      <select>
+        <option selected>Full Time</option>
+        <option>Part Time</option>
+        <option>Internship</option>
+        <option>Remote</option>
+      </select>
+
+      <label>Skills</label>
+      <textarea required>HTML, CSS, JavaScript</textarea>
+
+      <label>Description</label>
+      <textarea required>We're hiring a frontend developer...</textarea>
+
+      <label>Requirements</label>
+      <textarea required>2+ years experience, Git, React</textarea>
+
+      <label>Application Email</label>
+      <input type="email" value="new.com" required>
+
+      <button type="submit" class="save-btn">💾 Save Changes</button>
+    </form>
+
+    <!-- Applicants Section -->
+    <section class="applicants">
+      <h3>👥 Applicants</h3>
+
+      <div class="applicant-card">
+        <div class="info">
+          <h4>Ahmed Hassan</h4>
+          <p><strong>Email:</strong> new.com</p>
+          <a href="#" class="cv-link" target="_blank">📄 View CV</a>
+        </div>
+        <div class="actions">
+          <button class="accept" style="background-color: green; ">✅ Accept</button>
+          <button class="reject" style="background-color: red; ">❌ Reject</button>
+        </div>
+      </div>
+
+      <div class="applicant-card">
+        <div class="info">
+          <h4>Salma Adel</h4>
+          <p><strong>Email:</strong> new.com</p>
+          <a href="#" class="cv-link" target="_blank">📄 View CV</a>
+        </div>
+        <div class="actions">
+          <button class="accept" style="background-color: green; ">✅ Accept</button>
+          <button class="reject" style="background-color: red;">❌ Reject</button>
+        </div>
+      </div>
+
+    </section>
+  </div>

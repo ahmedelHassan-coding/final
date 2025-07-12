@@ -1,0 +1,60 @@
+<div class="container">
+    <h2>Post a Job</h2>
+
+    <form action="#" method="post" class="job-form">
+      <label for="title">Job Title *</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="location">Location *</label>
+      <input type="text" id="location" name="location" required>
+
+      <label for="type">Job Type *</label>
+      <select id="type" name="type" required>
+        <option value="">-- Select --</option>
+        <option value="Full Time">Full Time</option>
+        <option value="Part Time">Part Time</option>
+        <option value="Internship">Internship</option>
+        <option value="Remote">Remote</option>
+      </select>
+
+      <label for="skills">Skills *</label>
+      <textarea id="skills" name="skills" placeholder="e.g. HTML, CSS, JavaScript" required></textarea>
+
+      <label for="description">Job Description *</label>
+      <textarea id="description" name="description" required></textarea>
+
+      <label for="requirements">Requirements *</label>
+      <textarea id="requirements" name="requirements" required></textarea>
+
+      <label for="apply">Application Link or Email *</label>
+      <input type="text" id="apply" name="apply" required>
+
+      <button type="submit" style="background-color: #bf272d; color: white;">Submit Job</button>
+    </form>
+
+    <!-- Static Preview (Example Display Card) -->
+    <div class="job-preview">
+      <h3>Frontend Developer</h3>
+      <p><strong>Location:</strong> Cairo, Egypt</p>
+      <p><strong>Type:</strong> Full Time</p>
+
+      <h4>Skills</h4>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Responsive Design</li>
+      </ul>
+
+      <h4>Description</h4>
+      <p>We are looking for a passionate frontend developer to join our team and build modern web interfaces.</p>
+
+      <h4>Requirements</h4>
+      <ul>
+        <li>At least 2 years of experience</li>
+        <li>Strong knowledge of web fundamentals</li>
+      </ul>
+
+      <a href="mailto:jobs@company.com" class="apply-btn">Apply via Email</a>
+    </div>
+  </div>

@@ -1,0 +1,105 @@
+:root {
+  --primary: #2f80ed;
+  --secondary: #f2f4f8;
+  --text: #333;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 30px;
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 25px;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 15px;
+  display: block;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
+  background-color: var(--primary);
+  color: #bf272d;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #bf272d;
+}
+
+/* Preview Section */
+.job-preview {
+  margin-top: 40px;
+  border-top: 1px solid #ccc;
+  padding-top: 30px;
+}
+
+.job-preview h3 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.job-preview p {
+  margin: 6px 0;
+}
+
+.job-preview ul {
+  padding-left: 20px;
+}
+
+.apply-btn {
+  display: inline-block;
+  background: var(--primary);
+  color: #bf272d;
+  padding: 10px 20px;
+  border-radius: 30px;
+  margin-top: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+
+  input, select, textarea, button {
+    font-size: 14px;
+  }
+}
