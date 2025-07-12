@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../../services/job.service';
+import { CompanyProfileService } from '../../services/company-profile.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -17,8 +18,9 @@ export class StudentHomeComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 5;
   totalPages: number = 0;
+  company: any;
 
-  constructor(private jobService: JobService) {}
+  constructor(private jobService: JobService, private CompanyProfileService:CompanyProfileService) {}
 
   ngOnInit(): void {
     this.jobService.getJobs().subscribe({
@@ -74,6 +76,16 @@ export class StudentHomeComponent implements OnInit {
     pages.push(total);
 
     return pages;
+  }
+
+  getCompanyById(id: string | null): void {
+    this.CompanyProfileService.getCompanyById(id).subscribe({
+      next: (data) => {
+        console.log('Company data:', data);
+        this.company = data.data;
+      },
+      error: (err) => console.error('Error fetching company data', err),
+    });
   }
 }
 

@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class JobService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+ 
 
   getJobs(): Observable<any> {
     return this.http.get('http://localhost:8000/api/student-profile/jobs');
