@@ -47,6 +47,10 @@ export const routes: Routes = [
     component: CompanyprofileComponent
   },
   {
+    path: 'company/:id',
+    component: CompanyprofileComponent
+  },
+  {
     path:'graduate-info',
     component:GraduateInfoComponent
 

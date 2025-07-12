@@ -3,15 +3,17 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CompanyProfileService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getCompanyProfile():Observable<any> {
-    return this.http.get('http://localhost:8000/api/company'); 
-   }
-
+  getCompanyById(id: string | null): Observable<any> {
+    return this.http.get(`http://localhost:8000/api/company/${id}`);
+  }
+  getCompany(): Observable<any> {
+    return this.http.get('http://localhost:8000/api/company');
+  }
 }
 
 
