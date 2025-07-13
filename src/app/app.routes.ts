@@ -19,80 +19,79 @@ import { JobcontrolComponent } from './pages/jobcontrol/jobcontrol.component';
 
 
 export const routes: Routes = [
-  { 
-      path:'',
-      redirectTo:'home',
-      pathMatch:'full'
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
-        path:'home',
-        component:HomeComponent
-
+    path: 'home',
+    component: HomeComponent,
   },
   {
-        path:'login',
-        component:LoginComponent
-
+    path: 'login',
+    component: LoginComponent,
   },
   {
-        path:'company-login',
-        component:CompanyLoginComponentComponent
-
+    path: 'company-login',
+    component: CompanyLoginComponentComponent,
   },
   {
-        path:'company-info',
-        component:CompanyInfoComponent
-
-  },
-  { 
-    path: 'companyprofile', 
-    component: CompanyprofileComponent
-  },
-  { 
-    path: 'companypreview', 
-    component: CompanypreviewComponent
-  },
-  { 
-    path: 'jobpreview', 
-    component: JobpreviewComponent
-  },
-  { 
-    path: 'jobcontrol', 
-    component: JobcontrolComponent
+    path: 'company-info',
+    component: CompanyInfoComponent,
   },
   {
-    path:'graduate-info',
-    component:GraduateInfoComponent
-
-  },
-  { 
-    path: 'graduateprofile', 
-    component: GraduateprofileComponent
+    path: 'companyprofile',
+    component: CompanyprofileComponent,
   },
   {
-    path:'signup',
-    component:SignupComponent
+    path: 'companypreview',
+    component: CompanypreviewComponent,
+  },
+  {
+    path: 'companypreview/:id',
+    component: CompanypreviewComponent,
+  },
+  {
+    path: 'jobpreview',
+    component: JobpreviewComponent,
+  },
+  {
+    path: 'jobcontrol',
+    component: JobcontrolComponent,
+  },
+  {
+    path: 'graduate-info',
+    component: GraduateInfoComponent,
+  },
+  {
+    path: 'graduateprofile',
+    component: GraduateprofileComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+  },
+  {
+    path: 'student-home',
+    component: StudentHomeComponent,
+  },
+  {
+    path: 'admindashboard',
+    component: AdmindashboardComponent,
+  },
+  {
+    path: 'job/:id',
+    component: JobDetailsComponent,
+  },
+  {
+    path: 'apply/:id',
+    component: JobApplicationComponent,
+  },
 
-  },
-  { 
-    path: 'student-home', 
-    component: StudentHomeComponent
-  },
-  { 
-    path: 'admindashboard', 
-    component: AdmindashboardComponent
-  },
-  { 
-    path: 'job/:id', 
-    component: JobDetailsComponent
-  },
-  { 
-    path: 'apply/:id', 
-    component: JobApplicationComponent },
-
-  { 
-    path:'**',
-    component:ErrorComponent
+  {
+    path: '**',
+    component: ErrorComponent,
   },
 ];
 

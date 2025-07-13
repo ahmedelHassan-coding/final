@@ -1,15 +1,19 @@
 <div class="container">
     <h2>Post a Job</h2>
 
-    <form action="#" method="post" class="job-form">
-      <label for="title">Job Title *</label>
-      <input type="text" id="title" name="title" required>
+      <div *ngIf="successMessage" class="alert success-box">
+  <strong>Success:</strong> {{ successMessage }}
+</div>
+
+<form (ngSubmit)="onSubmit()" #jobForm="ngForm" class="job-form">
+       <label for="title">Job Title *</label>
+      <input type="text" id="title" [(ngModel)]="title" name="title" required>
 
       <label for="location">Location *</label>
-      <input type="text" id="location" name="location" required>
+      <input type="text" id="location" [(ngModel)]="location" name="location" required>
 
       <label for="type">Job Type *</label>
-      <select id="type" name="type" required>
+      <select id="type" [(ngModel)]="type" name="type" required>
         <option value="">-- Select --</option>
         <option value="Full Time">Full Time</option>
         <option value="Part Time">Part Time</option>
@@ -17,17 +21,36 @@
         <option value="Remote">Remote</option>
       </select>
 
-      <label for="skills">Skills *</label>
-      <textarea id="skills" name="skills" placeholder="e.g. HTML, CSS, JavaScript" required></textarea>
-
+      <div>
+        <label for="is_remote">Remote *</label>
+        <input type="checkbox" id="is_remote" [(ngModel)]="is_remote" name="is_remote">
+      </div>
+      
       <label for="description">Job Description *</label>
-      <textarea id="description" name="description" required></textarea>
+      <textarea id="description" [(ngModel)]="description" name="description" required></textarea>
 
       <label for="requirements">Requirements *</label>
-      <textarea id="requirements" name="requirements" required></textarea>
+      <textarea id="requirements" [(ngModel)]="requirements" name="requirements" required></textarea>
 
-      <label for="apply">Application Link or Email *</label>
-      <input type="text" id="apply" name="apply" required>
+      <label for="responsibilities">Responsibilities *</label>
+      <textarea id="responsibilities" [(ngModel)]="responsibilities" name="responsibilities" required></textarea>
+
+      <label for="experience">Experience *</label>
+      <textarea id="experience" [(ngModel)]="experience" name="experience" required></textarea>
+
+      <label for="min_salary">minimum salary *</label>
+      <input type="number" id="min_salary" [(ngModel)]="min_salary" name="min_salary" required>
+
+      <label for="max_salary">maximum salary *</label>
+      <input type="number" id="max_salary" [(ngModel)]="max_salary" name="max_salary" required>
+
+
+<div *ngIf="err.length > 0" class="alert error-box">
+  <strong>Error(s):</strong>
+  <ul>
+    <li *ngFor="let e of err">{{ e }}</li>
+  </ul>
+</div>
 
       <button type="submit" style="background-color: #bf272d; color: white;">Submit Job</button>
     </form>

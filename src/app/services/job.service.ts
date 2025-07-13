@@ -14,7 +14,7 @@ export class JobService {
     return this.http.get('http://localhost:8000/api/student-profile/jobs');
   }
   storejobs(data: any): Observable<any> {
-    return this.http.post('https\://localhost:8000/api/company/jobs', data);
+    return this.http.post('http\://localhost:8000/api/company/jobs', data);
   }
   editjobs(id: string, data: any): Observable<any> {
     return this.http.put(`http://localhost:8000/api/company/jobs/${id}`, data);
