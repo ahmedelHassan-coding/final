@@ -14,7 +14,7 @@
   <h6 class="text-muted company-location">
     <a 
       *ngIf="job.company" 
-      [routerLink]="['/company', job.company.id]" 
+      [routerLink]="['/companypreview', job.company.id]" 
       class="text-decoration-none text-muted">
       {{ job.company.name }}
     </a> 

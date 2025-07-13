@@ -1,7 +1,8 @@
 <div *ngIf="job" class="container py-5" dir="ltr">
   <div class="job-header">
     <h2 class="text-danger mb-1">{{ job.title }}</h2>
-    <h5 class="text-muted mb-3">{{ job.company.name }} - {{ job.location }}</h5>
+    <a [routerLink]="['/companypreview', job.company.id]" routerLinkActive="router-link-active" class="text-muted mb-3">{{ job.company.name }}</a>
+    <h5 class="text-muted mb-3">{{ job.location }}</h5>
   </div>
 
   <div class="job-details mb-4">
@@ -26,7 +27,7 @@
   </div>
 
   <div class="d-flex gap-2">
-    <a class="btn btn-light border border-danger text-danger" routerLink="/studenthome">Back</a>
+    <a class="btn btn-light border border-danger text-danger" routerLink="/student-home">Back</a>
     <a [routerLink]="['/apply', job.id]" class="btn btn-danger text-white">Apply Now</a>
   </div>
 </div>
