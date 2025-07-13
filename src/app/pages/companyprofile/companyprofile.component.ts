@@ -4,6 +4,7 @@ import { CompanyProfileService } from '../../services/company-profile.service';
 
 @Component({
   selector: 'app-company-profile',
+  imports: [RouterLink],
   templateUrl: './companyprofile.component.html',
   styleUrls: ['./companyprofile.component.css']
 })

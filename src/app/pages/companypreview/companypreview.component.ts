@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CompanyProfileService } from '../../services/company-profile.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-companypreview',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './companypreview.component.html',
   styleUrl: './companypreview.component.css'
 })
