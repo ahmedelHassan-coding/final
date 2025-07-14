@@ -1,0 +1,425 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .experience-container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 32px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .experience-container h2 {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            letter-spacing: -0.025em;
+        }
+
+        /* Form toggle using checkbox hack */
+        .form-toggle {
+            display: none;
+        }
+
+        .form-toggle-label {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 16px 24px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .form-toggle-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .form-toggle-label:hover::before {
+            left: 100%;
+        }
+
+        .form-toggle-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.3);
+        }
+
+        .form-toggle-label:active {
+            transform: translateY(0);
+        }
+
+        .exp-form {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            margin-top: 0;
+        }
+
+        .form-toggle:checked ~ .exp-form {
+            max-height: 400px;
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 24px;
+        }
+
+        .form-toggle:checked ~ .form-toggle-label::after {
+            content: ' ✕';
+        }
+
+        .exp-form-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 16px 0;
+        }
+
+        .exp-form input {
+            padding: 16px 20px;
+            border: 2px solid rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .exp-form input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .exp-form button {
+            padding: 16px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            border: none;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .exp-form button:hover {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(72, 187, 120, 0.3);
+        }
+
+        .experience-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 32px;
+        }
+
+        .experience-list li {
+            position: relative;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .experience-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .exp-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .exp-text {
+            flex: 1;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .exp-text strong {
+            color: #2d3748;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .exp-text span {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .exp-text small {
+            color: #718096;
+            font-size: 14px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .exp-edit-input {
+            display: none;
+            flex: 1;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .exp-edit-input input {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .exp-edit-input input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .edit-toggle {
+            display: none;
+        }
+
+        .edit-toggle:checked ~ .exp-content .exp-text {
+            display: none;
+        }
+
+        .edit-toggle:checked ~ .exp-content .exp-edit-input {
+            display: flex;
+        }
+
+        .edit-toggle:checked ~ .exp-content .action-buttons .edit-btn {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transform: scale(1.1);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .edit-btn, .delete-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .edit-btn {
+            color: #667eea;
+        }
+
+        .delete-btn {
+            color: #e53e3e;
+        }
+
+        .edit-btn:hover, .delete-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Custom tooltip for buttons */
+        .edit-btn::before {
+            content: 'Edit';
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .delete-btn::before {
+            content: 'Delete';
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .edit-btn:hover::before,
+        .delete-btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced visual feedback */
+        .experience-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 16px 0 0 16px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-list li:hover::before {
+            opacity: 1;
+        }
+
+        /* Enhanced form styling */
+        .form-section {
+            position: relative;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .form-toggle:checked ~ .exp-form .form-section::before {
+            transform: scaleX(1);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Pulse animation for new items */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+            }
+        }
+
+        .experience-list li:nth-child(1) {
+            animation: fadeInUp 0.6s ease forwards, pulse 2s infinite;
+        }
+
+        .experience-list li:nth-child(2) {
+            animation: fadeInUp 0.6s ease 0.2s forwards, pulse 2s infinite 0.5s;
+        }
+
+        @media (max-width: 640px) {
+            .experience-container {
+                padding: 24px;
+                margin: 16px;
+            }
+
+            .experience-container h2 {
+                font-size: 2rem;
+            }
+
+            .experience-list li {
+                padding: 16px;
+            }
+
+            .exp-content {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .action-buttons {
+                justify-content: flex-end;
+                width: 100%;
+            }
+        }

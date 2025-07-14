@@ -4,6 +4,10 @@ import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AboutgtsComponent } from './pages/aboutgts/aboutgts.component';
+import { TechnicaltracksComponent } from './pages/technicaltracks/technicaltracks.component';
+import { PartenersComponent } from './pages/parteners/parteners.component';
+import { ContactusComponent } from './pages/contactus/contactus.component';
 import { CompanyInfoComponent } from './pages/company-info/company-info.component';
 import { GraduateInfoComponent } from './pages/graduate-info/graduate-info.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
@@ -16,6 +20,9 @@ import { CompanyLoginComponentComponent } from './pages/companyLogin/company-log
 import { CompanypreviewComponent } from './pages/companypreview/companypreview.component';
 import { JobpreviewComponent } from './pages/jobpreview/jobpreview.component';
 import { JobcontrolComponent } from './pages/jobcontrol/jobcontrol.component';
+import { EditskillsComponent } from './pages/editskills/editskills.component';
+import { EditexperincesComponent } from './pages/editexperinces/editexperinces.component';
+import { GraduateAppliedJobsComponent } from './pages/graduate-applied-jobs/graduate-applied-jobs.component';
 
 
 export const routes: Routes = [
@@ -28,6 +35,22 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
+  {
+    path: 'aboutgts',
+    component: AboutgtsComponent,
+  },
+  {
+    path: 'technicaltracks',
+    component: TechnicaltracksComponent,
+  },
+  {
+    path: 'parteners',
+    component: PartenersComponent,
+  },
+  {
+    path: 'contactus',
+    component: ContactusComponent,
+  },/////////////////////////////////////////////////////////////////////////////////////////////////////////////
   {
     path: 'login',
     component: LoginComponent,
@@ -67,6 +90,18 @@ export const routes: Routes = [
   {
     path: 'graduateprofile',
     component: GraduateprofileComponent,
+  },
+  {
+    path: 'editskills',
+    component: EditskillsComponent,
+  },
+  {
+    path: 'editexperinces',
+    component: EditexperincesComponent,
+  },
+  {
+    path: 'graduate-applied-jobs',
+    component: GraduateAppliedJobsComponent,
   },
   {
     path: 'signup',

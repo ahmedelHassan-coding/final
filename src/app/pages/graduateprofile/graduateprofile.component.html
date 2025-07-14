@@ -35,6 +35,9 @@
                     <span class="edit-icon">✏️</span>
                 </div>
                 <a href="#" class="add-skill">+ Add new skill</a>
+                <div>
+                    <button class="btn btn-primary" type="submit" style="background-color: #bf272d; color: white; border-color: #bf272d;" routerLink = "/editskills">Edit Skills</button>
+                </div>
                 <div class="skills-list">
                   @for (skill of skills; track $index) {
                     <div class="skill-item">
@@ -49,6 +52,9 @@
             <!-- Work Experience Section -->
             <section class="card work-experience">
                 <h2>Work Experience</h2>
+                <div>
+                    <button class="btn btn-primary" type="submit" style="background-color: #bf272d; color: white; border-color: #bf272d;" routerLink = "/editexperinces">Edit Experinces</button>
+                </div>
                 @if (student.experiences === 0) {
                     <div class="empty-state">
                         <div class="work-icon">🏢</div>
@@ -165,6 +171,8 @@
                 <button class="btn-primary full-width" style="background-color: #bf272d; color: white;">📄 Generate CV from profile</button>
                 <br>
                 <button class="btn-primary full-width" style="background-color: #bf272d; color: white;" routerLink = "/student-home">Search for Available Jobs</button>
+                <br>
+                <button class="btn-primary full-width" style="background-color: #bf272d; color: white;" routerLink = "/graduate-applied-jobs">Applied Jobs</button>
             </div>
             <div class="card public-profile">
                 <button class="btn-primary full-width" style="background-color: #bf272d; color: white;" routerLink = "/">Logout</button>
