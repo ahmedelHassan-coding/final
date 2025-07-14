@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router,ActivatedRoute, RouterLink } from '@angular/router';
 import { CompanyProfileService } from '../../services/company-profile.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';

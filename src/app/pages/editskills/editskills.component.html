@@ -1,0 +1,112 @@
+  <div class="skills-container">
+    <h2>My Skills</h2>
+    
+    <!-- Add Skill Form -->
+    <input type="checkbox" id="toggle-add" class="toggle-add">
+    <label for="toggle-add" class="add-skill-label"></label>
+
+    <form class="skill-form" action="#" method="get">
+      <input type="text" name="new-skill" placeholder="Enter a skill" required>
+      <div class="form-actions">
+        <button type="submit" class="add-btn">Add Skill</button>
+        <button type="reset" class="clear-btn">Clear</button>
+      </div>
+    </form>
+
+    <!-- Skills List -->
+    <ul class="skills-list">
+      <li class="skill-item">
+        <input type="checkbox" id="edit-1" class="edit-toggle">
+        <div class="skill-display">
+          <span>HTML</span>
+          <div class="actions">
+            <label for="edit-1" class="edit-btn">✏️</label>
+            <button class="delete-btn" type="button">🗑️</button>
+          </div>
+        </div>
+        <form class="edit-form" action="#" method="get">
+          <input type="text" name="skill-name" value="HTML" required>
+          <div class="edit-actions">
+            <button type="submit" class="save-btn">Save</button>
+            <label for="edit-1" class="cancel-btn">Cancel</label>
+          </div>
+        </form>
+      </li>
+
+      <li class="skill-item">
+        <input type="checkbox" id="edit-2" class="edit-toggle">
+        <div class="skill-display">
+          <span>CSS</span>
+          <div class="actions">
+            <label for="edit-2" class="edit-btn">✏️</label>
+            <button class="delete-btn" type="button">🗑️</button>
+          </div>
+        </div>
+        <form class="edit-form" action="#" method="get">
+          <input type="text" name="skill-name" value="CSS" required>
+          <div class="edit-actions">
+            <button type="submit" class="save-btn">Save</button>
+            <label for="edit-2" class="cancel-btn">Cancel</label>
+          </div>
+        </form>
+      </li>
+
+      <li class="skill-item">
+        <input type="checkbox" id="edit-3" class="edit-toggle">
+        <div class="skill-display">
+          <span>JavaScript</span>
+          <div class="actions">
+            <label for="edit-3" class="edit-btn">✏️</label>
+            <button class="delete-btn" type="button">🗑️</button>
+          </div>
+        </div>
+        <form class="edit-form" action="#" method="get">
+          <input type="text" name="skill-name" value="JavaScript" required>
+          <div class="edit-actions">
+            <button type="submit" class="save-btn">Save</button>
+            <label for="edit-3" class="cancel-btn">Cancel</label>
+          </div>
+        </form>
+      </li>
+
+      <li class="skill-item">
+        <input type="checkbox" id="edit-4" class="edit-toggle">
+        <div class="skill-display">
+          <span>React</span>
+          <div class="actions">
+            <label for="edit-4" class="edit-btn">✏️</label>
+            <button class="delete-btn" type="button">🗑️</button>
+          </div>
+        </div>
+        <form class="edit-form" action="#" method="get">
+          <input type="text" name="skill-name" value="React" required>
+          <div class="edit-actions">
+            <button type="submit" class="save-btn">Save</button>
+            <label for="edit-4" class="cancel-btn">Cancel</label>
+          </div>
+        </form>
+      </li>
+
+      <li class="skill-item">
+        <input type="checkbox" id="edit-5" class="edit-toggle">
+        <div class="skill-display">
+          <span>Node.js</span>
+          <div class="actions">
+            <label for="edit-5" class="edit-btn">✏️</label>
+            <button class="delete-btn" type="button">🗑️</button>
+          </div>
+        </div>
+        <form class="edit-form" action="#" method="get">
+          <input type="text" name="skill-name" value="Node.js" required>
+          <div class="edit-actions">
+            <button type="submit" class="save-btn">Save</button>
+            <label for="edit-5" class="cancel-btn">Cancel</label>
+          </div>
+        </form>
+      </li>
+    </ul>
+
+    <div class="note">
+      <strong>Note:</strong> This is skills will be showen in your profile so try to be honest.
+    </div>
+  </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="color: red; font-size: x-large; font-weight: bolder;"><img src="images/logo.png" alt="" style="width: 7rem; margin: 0%;"></a>
+    <a class="navbar-brand" href="#" style="color: #bf272d; font-size: x-large; font-weight: bolder;">ITI-GTS</a>
     
     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,29 +12,33 @@
           <a class="nav-link " aria-current="page" href="#" style="font-weight: bold;">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="font-weight: bold;">About ITI-GTS</a>
+          <a class="nav-link" href="#" style="font-weight: bold;" routerLink = "technicaltracks">Market Technical Tracks</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="font-weight: bold;">Technical Tracks</a>
+          <a class="nav-link" href="#" style="font-weight: bold;" routerLink="parteners">Parteners</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="font-weight: bold;">Graduates statistics</a>
+          <a class="nav-link" href="#" style="font-weight: bold;" routerLink="aboutgts" >About ITI-GTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="font-weight: bold;" routerLink="contactus">Contact US</a>
         </li>
       </ul>
         <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/> -->
         <button  class="btn btn-outline-success" type="submit" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink = "login">Login</button>
+        
         <button  class="btn btn-outline-success" type="submit" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink = "graduate-info">Sign UP As a Graduate</button>
-        <button  class="btn btn-outline-success" type="submit" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink = "company-info">Sign UP As a Company</button>
+        <button  class="btn btn-outline-success" type="submit" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink = "company-info">Sign UP As a Company</button> -->
         <!-- <button  class="btn btn-outline-success" type="submit" style=" background-color: #bf272d; color: white;" routerLink = "signup">Sign Up</button> -->
         <!-- Example single danger button -->
+        
+        <button  class="btn btn-primary btn-lg" type="submit" style="margin-right: 10px; background-color: white; color: #bf272d; border-color: #bf272d" routerLink = "login">Login</button>
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Sign UP
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">As Graduate</a></li>
-            <li><a class="dropdown-item" href="#">As Company</a></li>
-          </ul>
+            <button class="dropbtn btn btn-outline-success">Sign UP</button>
+            <div class="dropdown-content">
+                <a routerLink = "graduate-info">As Graduate</a>
+                <a routerLink = "company-info">As Company</a>
+            </div>
         </div>
     </div>
   </div>
@@ -61,3 +65,12 @@
 <!-- <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
 </li> -->
+
+
+<!-- <div class="dropdown">
+            <button class="dropbtn btn btn-outline-success" style="margin-right: 10px; background-color: white; color: #bf272d; border-color: #bf272d">Login</button>
+            <div class="dropdown-content">
+                <a routerLink = "login">As Graduate</a>
+                <a routerLink = "company-login">As Company</a>
+            </div>
+</div> -->
