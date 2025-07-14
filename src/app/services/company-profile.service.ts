@@ -14,6 +14,9 @@ export class CompanyProfileService {
   getCompany(): Observable<any> {
     return this.http.get('http://localhost:8000/api/company');
   }
+  updateCompanyData(data: any): Observable<any> {
+    return this.http.put('http://localhost:8000/api/company', data);
+  }
 }
 
 

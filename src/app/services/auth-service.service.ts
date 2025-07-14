@@ -25,9 +25,9 @@ export class AuthService {
   }
 
   // Company Login
-  companyLogin(credentials: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/company/login`, credentials);
-  }
+  // companyLogin(credentials: any): Observable<any> {
+  //   return this.http.post(`${this.baseUrl}/company/login`, credentials);
+  // }
 
   // Logout
   logout(): void {

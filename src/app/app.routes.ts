@@ -12,7 +12,6 @@ import { GraduateprofileComponent } from './pages/graduateprofile/graduateprofil
 import { CompanyprofileComponent } from './pages/companyprofile/companyprofile.component';
 import { StudentHomeComponent } from './pages/student-home/student-home.component';
 import { AdmindashboardComponent } from './pages/admindashboard/admindashboard.component';
-import { CompanyLoginComponentComponent } from './pages/companyLogin/company-login-component/company-login-component.component';
 import { CompanypreviewComponent } from './pages/companypreview/companypreview.component';
 import { JobpreviewComponent } from './pages/jobpreview/jobpreview.component';
 import { JobcontrolComponent } from './pages/jobcontrol/jobcontrol.component';
@@ -32,10 +31,7 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  {
-    path: 'company-login',
-    component: CompanyLoginComponentComponent,
-  },
+
   {
     path: 'company-info',
     component: CompanyInfoComponent,
