@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { JobService } from '../services/job.service';
@@ -20,7 +20,7 @@ export class JobApplicationComponent implements OnInit {
   selectedFile: File | null = null;
   fileInputError: boolean = false;
 
-  constructor(private route: ActivatedRoute, private jobService: JobService) {}
+  constructor(private route: ActivatedRoute, private jobService: JobService, private router: Router) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -60,8 +60,7 @@ export class JobApplicationComponent implements OnInit {
       .pipe(take(1))
       .subscribe({
         next: (res) => {
-          console.log('Application submitted', res);
-          alert('Application submitted successfully!');
+          this.router.navigate(['/graduate-applied-jobs']);
         },
         error: (err) => {
           console.error('Submission error:', err);

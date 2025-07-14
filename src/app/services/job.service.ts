@@ -32,4 +32,13 @@ export class JobService {
       data
     );
   }
+
+   getJobApplications(): Observable<any> {
+    return this.http.get('http://localhost:8000/api/student-profile/jobs/applied');
+  }
+
+  cancelApplication(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8000/api/student-profile/jobs/applications/${id}`);
+  }
+
 }

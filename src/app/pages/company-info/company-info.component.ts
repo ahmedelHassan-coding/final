@@ -24,7 +24,7 @@ export class CompanyInfoComponent {
     private router: Router
   ) {
     this.companyForm = this.fb.group({
-      companyName: [''],
+      name: [''],
       email: [''],
       address: [''],
       services: [''],
@@ -55,8 +55,19 @@ export class CompanyInfoComponent {
     formData.append('password_confirmation', form.password_confirmation);
 
     this.auth.registerCompany(formData).subscribe({
-      next: () => {
-        this.router.navigate(['/companyprofile']);
+      next: (response) => {
+        // Add null check for response and token
+        if (response && response.token) {
+          // Use auth service method for consistent token storage
+          this.auth.storeUserSession({
+            token: response.token,
+            user: { user_type: 'company' }
+          });
+          
+          this.router.navigate(['/companyprofile']);
+        } else {
+          this.errorMessages.push('Invalid response from server. Please try again.');
+        }
       },
       error: (err) => {
         if (err.error.errors) {
