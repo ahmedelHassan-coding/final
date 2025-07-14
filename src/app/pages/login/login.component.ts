@@ -39,7 +39,11 @@ export class LoginComponent {
     this.authService.studentLogin({ email, password }).subscribe({
       next: (res) => {
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/graduateprofile']);
+        if (res.user_type === 'company') {
+          this.router.navigate(['/companyprofile']);
+        } else if (res.user_type === 'student') {
+          this.router.navigate(['/graduateprofile']);
+        }
       },
       error: (err) => {
         if (err.error?.message) {
