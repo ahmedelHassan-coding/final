@@ -89,11 +89,18 @@ export class GraduateInfoComponent {
 
     this.auth.registerStudent(formData).subscribe({
       next: (response) => {
-        const token = response.get('token');
-        if (token) {
-          localStorage.setItem('token', token);
+        // Add null check for response and token
+        if (response && response.token) {
+          // Use auth service method for consistent token storage
+          this.auth.storeUserSession({
+            token: response.token,
+            user: { user_type: 'student' }
+          });
+          
+          this.router.navigate(['/graduateprofile']);
+        } else {
+          this.errorMessages.push('Invalid response from server. Please try again.');
         }
-        this.router.navigate(['/graduateprofile']);
       },
       error: (err) => {
         if (err.error.errors) {

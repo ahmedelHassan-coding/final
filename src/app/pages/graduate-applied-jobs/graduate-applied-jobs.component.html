@@ -7,39 +7,15 @@
         </button>
         
         <ul class="jobs-list">
-        <li>
+        <li *ngFor="let job of appliedJobs">
             <div class="job-info">
-            <strong>Frontend Developer</strong>
-            <span>at ABC Company</span>
-            <small class="status-under-review">Status: Under Review</small>
+            <strong>{{job.job_post.title}}</strong>
+            <span>{{job.job_post.company.name}}</span>
+            <small class="status-under-review">Status: {{job.status}}</small>
             </div>
             <div class="job-actions">
             <button class="edit-btn" title="Edit">✏️</button>
-            <button class="delete-btn" title="Delete">🗑️</button>
-            </div>
-        </li>
-        
-        <li>
-            <div class="job-info">
-            <strong>UI/UX Designer</strong>
-            <span>at XYZ Studio</span>
-            <small class="status-accepted">Status: Accepted</small>
-            </div>
-            <div class="job-actions">
-            <button class="edit-btn" title="Edit">✏️</button>
-            <button class="delete-btn" title="Delete">🗑️</button>
-            </div>
-        </li>
-        
-        <li>
-            <div class="job-info">
-            <strong>Back-End Developer</strong>
-            <span>at DEF Tech</span>
-            <small class="status-rejected">Status: Rejected</small>
-            </div>
-            <div class="job-actions">
-            <button class="edit-btn" title="Edit">✏️</button>
-            <button class="delete-btn" title="Delete">🗑️</button>
+            <button class="delete-btn" title="Delete" (click)="cancelApplication(job.id)">🗑️</button>
             </div>
         </li>
         </ul>

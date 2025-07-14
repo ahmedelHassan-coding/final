@@ -1,87 +1,53 @@
 <div class="container">
-    <div class="experience-container" style="margin: auto; width: 100%;">
-            <h2>My Experience</h2>
-            
-            <input type="checkbox" id="form-toggle" class="form-toggle">
-            <label for="form-toggle" class="form-toggle-label">Add Experience</label>
-            
-            <div class="exp-form">
-                <div class="form-section">
-                    <div class="exp-form-content">
-                        <input type="text" placeholder="Job Title (e.g., Frontend Developer)" />
-                        <input type="text" placeholder="Company Name" />
-                        <input type="text" placeholder="Duration (e.g., 2022 - 2024)" />
-                        <button type="button">Save Experience</button>
-                    </div>
-                </div>
-            </div>
-            
-            <ul class="experience-list">
-                <!-- Experience 1 -->
-                <li>
-                    <input type="checkbox" id="edit-exp-1" class="edit-toggle" />
-                    <div class="exp-content">
-                        <div class="exp-text">
-                            <strong>Frontend Developer</strong> at <span>ABC Company</span><br />
-                            <small>Duration: 2022 - 2024</small>
-                        </div>
-                        
-                        <div class="exp-edit-input">
-                            <input type="text" value="Frontend Developer" />
-                            <input type="text" value="ABC Company" />
-                            <input type="text" value="2022 - 2024" />
-                        </div>
-                        
-                        <div class="action-buttons">
-                            <label for="edit-exp-1" class="edit-btn">✏️</label>
-                            <button class="delete-btn">🗑️</button>
-                        </div>
-                    </div>
-                </li>
-                
-                <!-- Experience 2 -->
-                <li>
-                    <input type="checkbox" id="edit-exp-2" class="edit-toggle" />
-                    <div class="exp-content">
-                        <div class="exp-text">
-                            <strong>UI Designer</strong> at <span>XYZ Studio</span><br />
-                            <small>Duration: 2021 - 2023</small>
-                        </div>
-                        
-                        <div class="exp-edit-input">
-                            <input type="text" value="UI Designer" />
-                            <input type="text" value="XYZ Studio" />
-                            <input type="text" value="2021 - 2023" />
-                        </div>
-                        
-                        <div class="action-buttons">
-                            <label for="edit-exp-2" class="edit-btn">✏️</label>
-                            <button class="delete-btn">🗑️</button>
-                        </div>
-                    </div>
-                </li>
-                
-                <!-- Experience 3 -->
-                <li>
-                    <input type="checkbox" id="edit-exp-3" class="edit-toggle" />
-                    <div class="exp-content">
-                        <div class="exp-text">
-                            <strong>Backend Developer</strong> at <span>Tech Solutions</span><br />
-                            <small>Duration: 2020 - 2022</small>
-                        </div>
-                        
-                        <div class="exp-edit-input">
-                            <input type="text" value="Backend Developer" />
-                            <input type="text" value="Tech Solutions" />
-                            <input type="text" value="2020 - 2022" />
-                        </div>
-                        
-                        <div class="action-buttons">
-                            <label for="edit-exp-3" class="edit-btn">✏️</label>
-                            <button class="delete-btn">🗑️</button>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+  <div class="experience-container" style="margin: auto; width: 100%;">
+    <h2>My Experience</h2>
+
+    <!-- Toggle Add Form -->
+    <input type="checkbox" id="form-toggle" class="form-toggle">
+    <label for="form-toggle" class="form-toggle-label">Add Experience</label>
+
+    <!-- Add Experience Form -->
+    <div class="exp-form">
+      <div class="form-section">
+        <div class="exp-form-content">
+          <input type="text" [(ngModel)]="experience.job_title" placeholder="Job Title (e.g., Frontend Developer)" />
+          <input type="text" [(ngModel)]="experience.company_name" placeholder="Company Name" />
+          <input type="date" [(ngModel)]="experience.start_date" placeholder="Start Date (e.g., 2022)" />
+          <input type="date" [(ngModel)]="experience.end_date" placeholder="End Date (e.g., 2024)" />
+          <button type="button" (click)="storeStudentExperience()">Save Experience</button>
         </div>
+      </div>
+    </div>
+
+    <!-- Experience List -->
+    <ul class="experience-list">
+      <li *ngFor="let exp of experiences">
+        <input type="checkbox" [id]="'edit-exp-' + exp.id" class="edit-toggle" [checked]="showEditFormId === exp.id" (change)="showEditFormId === exp.id ? cancelEdit() : openEditForm(exp)" />
+
+        <div class="exp-content">
+          <!-- Display Mode -->
+          <div class="exp-text" *ngIf="showEditFormId !== exp.id">
+            <strong>{{ exp.job_title }}</strong> at <span>{{ exp.company_name }}</span><br />
+            <small>Duration: {{ exp.start_date }} - {{ exp.end_date }}</small>
+          </div>
+
+          <!-- Edit Mode -->
+          <div class="exp-edit-input" *ngIf="showEditFormId === exp.id">
+            <input type="text" [(ngModel)]="editExperience!.job_title" />
+            <input type="text" [(ngModel)]="editExperience!.company_name" />
+            <input type="text" [(ngModel)]="editExperience!.start_date" />
+            <input type="text" [(ngModel)]="editExperience!.end_date" />
+            <button (click)="updateExperience(exp.id)">Update</button>
+            <button (click)="cancelEdit()">Cancel</button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <label [for]="'edit-exp-' + exp.id" class="edit-btn">✏️</label>
+            <button class="delete-btn" (click)="deleteExperience(exp.id!)">🗑️</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

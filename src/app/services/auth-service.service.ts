@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
   private baseUrl = 'http://localhost:8000/api'; // Update to your Laravel backend URL
 
   constructor(private http: HttpClient) {}
@@ -30,14 +31,14 @@ export class AuthService {
   // }
 
   // Logout
-  logout(): void {
+  logout(): Observable<any> {
     localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    return this.http.post(`http://localhost:8000/api/student/logout`, {});
   }
 
   // Store token & user info
   storeUserSession(data: any): void {
-    localStorage.setItem('token', data.access_token);
+    localStorage.setItem('token', data.token);
     localStorage.setItem('user', JSON.stringify(data.user));
   }
 
