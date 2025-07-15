@@ -46,5 +46,13 @@ export class JobService {
   getCompanyJobs(): Observable<any> {
     return this.http.get(`http://localhost:8000/api/company/jobs`);
   }
+  getCompanyJobApplications(id: number): Observable<any> {
+    return this.http.get(`http://localhost:8000/api/company/jobs/${id}/applications`);
+  }
+  updateApplicationStatus(id: number, data: any): Observable<any> {
+    return this.http.put(`http://localhost:8000/api/company/job-applications/${id}/status`, data);
+  }
+
+
 
 }
