@@ -22,6 +22,9 @@ import { JobcontrolComponent } from './pages/jobcontrol/jobcontrol.component';
 import { EditskillsComponent } from './pages/editskills/editskills.component';
 import { EditexperincesComponent } from './pages/editexperinces/editexperinces.component';
 import { GraduateAppliedJobsComponent } from './pages/graduate-applied-jobs/graduate-applied-jobs.component';
+import { JobmanagementComponent } from './pages/jobmanagement/jobmanagement.component';
+import { JobstatisticsComponent } from './pages/jobstatistics/jobstatistics.component';
+
 
 
 export const routes: Routes = [
@@ -79,6 +82,17 @@ export const routes: Routes = [
     path: 'jobcontrol',
     component: JobcontrolComponent,
   },
+  {
+    path: 'jobmanagement',
+    component: JobmanagementComponent,
+  },
+  {
+    path: 'jobstatistics',
+    component: JobstatisticsComponent,
+  },
+  
+  
+  ////////////////////////////////////////////////////////////
   {
     path: 'graduate-info',
     component: GraduateInfoComponent,

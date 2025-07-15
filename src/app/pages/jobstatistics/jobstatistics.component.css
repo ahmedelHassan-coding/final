@@ -1,0 +1,97 @@
+.applicants-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .applicants-header {
+            color: #343a40;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .table-responsive {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .table thead {
+            background-color: #495057;
+            color: white;
+        }
+        
+        .table th {
+            padding: 15px;
+            font-weight: 500;
+        }
+        
+        .table td {
+            vertical-align: middle;
+            padding: 12px 15px;
+        }
+        
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-reviewed {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+        
+        .status-accepted {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .action-btn {
+            padding: 5px 10px;
+            font-size: 0.85rem;
+            margin: 0 3px;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-view {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .btn-edit {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .cv-link {
+            color: #17a2b8;
+            text-decoration: none;
+        }
+        
+        .cv-link:hover {
+            text-decoration: underline;
+        }
