@@ -11,9 +11,7 @@ export class StudentProfileService {
   public getStudentProfile():Observable<any> {
     return this.http.get('http://localhost:8000/api/student-profile');
   }
-  public getStudentSkills(): Observable<any> {
-    return this.http.get('http://localhost:8000/api/student-profile/skills');
-  }
+  
   public getStudentExperience(): Observable<any> {
     return this.http.get('http://localhost:8000/api/student-profile/experience');
   }
@@ -26,5 +24,17 @@ export class StudentProfileService {
   public deleteStudentExperience(id: number): Observable<any> {
     return this.http.delete(`http://localhost:8000/api/student-profile/experience/${id}`);
   }
+  public getStudentSkills(): Observable<any> {
+    return this.http.get('http://localhost:8000/api/student-profile/skills');
+  }
+
+  public addSkill(name: string): Observable<any> {
+    return this.http.post('http://localhost:8000/api/student-profile/skills', { name });
+  }
+
+  public deleteSkill(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8000/api/student-profile/skills/${id}`);
+}
+
 }
 

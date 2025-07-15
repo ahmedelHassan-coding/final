@@ -28,26 +28,46 @@
             </section>           
 
             <!-- Skills Section -->
-            <section class="card skills-section">
-                <div class="section-header">
-                    <h2>Skills and Tools</h2>
-                    
-                    <span class="edit-icon">✏️</span>
+            <section class="card skills-section p-4 shadow-sm rounded">
+                <div class="section-header d-flex justify-content-between align-items-center mb-3">
+                  <h2 class="h5 m-0">🛠 Skills and Tools</h2>
+                  <button class="btn btn-outline-danger btn-sm" (click)="focusSkillInput()">
+                    {{ editMode ? 'Cancel ✖' : 'Edit ✏' }}
+                  </button>
                 </div>
-                <a href="#" class="add-skill">+ Add new skill</a>
-                <div>
-                    <button class="btn btn-primary" type="submit" style="background-color: #bf272d; color: white; border-color: #bf272d;" routerLink = "/editskills">Edit Skills</button>
+              
+                <!-- فورم إضافة مهارة جديدة -->
+                <div *ngIf="editMode" class="mb-3">
+                  <input
+                    #skillInput
+                    [(ngModel)]="newSkill"
+                    class="form-control mb-2"
+                    placeholder="Enter a new skill"
+                  />
+                  <button (click)="addSkill()" class="btn btn-danger btn-sm">+ Add Skill</button>
                 </div>
-                <div class="skills-list">
-                  @for (skill of skills; track $index) {
-                    <div class="skill-item">
-                      <div class="skill-item">
-                          <span class="skill-name">{{ skill.name }}</span>
-                      </div>
+              
+                <!-- قائمة المهارات -->
+                <div class="skills-list row">
+                  <div
+                    class="col-auto mb-2"
+                    *ngFor="let skill of skills"
+                  >
+                    <div class="badge bg-secondary text-white p-2 d-flex align-items-center">
+                      {{ skill.name }}
+                      <button
+                        *ngIf="editMode"
+                        (click)="deleteSkill(skill.id)"
+                        class="btn btn-sm btn-light text-danger border-0 ms-2 py-0 px-2"
+                        title="Delete"
+                      >
+                        ×
+                      </button>
                     </div>
-                    }
+                  </div>
                 </div>
-            </section>
+              </section>
+              
 
             <!-- Work Experience Section -->
             <section class="card work-experience">

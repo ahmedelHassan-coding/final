@@ -1,16 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { StudentProfileService } from '../../services/student-profile.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-graduateprofile',
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './graduateprofile.component.html',
   styleUrl: './graduateprofile.component.css',
 })
 export class GraduateprofileComponent {
+  @ViewChild('skillInput') skillInputRef!: ElementRef<HTMLInputElement>;
   student: any = null; 
   skills: any[] = [];
+  newSkill = '';
+  editMode = false;
 
   constructor(private studentProfileService: StudentProfileService) {}
 
@@ -40,4 +45,40 @@ export class GraduateprofileComponent {
       },
     });
   }
+  loadSkills(): void {
+    this.studentProfileService.getStudentSkills().subscribe({
+      next: (res: any[]) => (this.skills = res),
+      error: (err: any) => console.error(err),
+    });
+  }
+
+  addSkill(): void {
+    const name = this.newSkill.trim();
+    if (!name) return;
+
+    this.studentProfileService.addSkill(name).subscribe({
+      next: () => {
+        this.newSkill = '';
+        this.loadSkills();
+        setTimeout(() => this.skillInputRef?.nativeElement.focus(), 0);
+      },
+      error: err => console.error('Failed to add skill:', err),
+    });
+  }
+
+  deleteSkill(id: number): void {
+    this.studentProfileService.deleteSkill(id).subscribe({
+      next: () => this.loadSkills(),
+      error: (err: any) => console.error(err),
+    });
+  }
+
+  focusSkillInput(): void {
+    this.editMode = !this.editMode;
+    if (this.editMode) {
+      setTimeout(() => {
+        this.skillInputRef?.nativeElement.focus();
+      }, 0);
+    }
+  }
 }
