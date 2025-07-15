@@ -1,16 +1,40 @@
-import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-  constructor(private router: Router) {}
+export class HeaderComponent implements OnInit {
+  isLoggedIn: boolean = false;
+  userName: string | null = null;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.updateAuthState();
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.updateAuthState();
+  }
+
+  updateAuthState(): void {
+    this.isLoggedIn = !!localStorage.getItem('token');
+    this.userName = localStorage.getItem('user_name');
+  }
+
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('user_name');
+    this.isLoggedIn = false;
+    this.userName = null;
     this.router.navigate(['/login']);
-  }
+  }
 }

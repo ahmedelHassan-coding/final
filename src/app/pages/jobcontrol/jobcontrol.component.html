@@ -1,38 +1,101 @@
 <div class="dashboard-container">
-    <!-- Edit Job Form -->
-    <form class="job-form">
-      <h3>Edit Job Details</h3>
+  
+  <h2>🛠 Job Dashboard</h2>
 
-      <label>Title</label>
-      <input type="text" value="Frontend Developer" required>
+  <!-- Edit Job Form -->
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="job-form">
 
-      <label>Location</label>
-      <input type="text" value="Cairo, Egypt" required>
+<h3>Edit Job Details</h3>
 
-      <label>Type</label>
-      <select>
-        <option selected>Full Time</option>
-        <option>Part Time</option>
-        <option>Internship</option>
-        <option>Remote</option>
-      </select>
+<label for="title">Title</label>
+<input id="title" type="text" formControlName="title" required />
 
-      <label>Skills</label>
-      <textarea required>HTML, CSS, JavaScript</textarea>
+<label for="location">Location</label>
+<input id="location" type="text" formControlName="location" required />
 
-      <label>Description</label>
-      <textarea required>We're hiring a frontend developer...</textarea>
+<label for="type">Type</label>
+<select id="type" formControlName="type" required>
+  <option value="Full Time">Full Time</option>
+  <option value="Part Time">Part Time</option>
+  <option value="Internship">Internship</option>
+  <option value="Remote">Remote</option>
+</select>
 
-      <label>Requirements</label>
-      <textarea required>2+ years experience, Git, React</textarea>
+<!--
+لاحظ إن skills مش مضافة في الـ TS form group، لو محتاج تضيفها خلي بالك تضيفها في الـ TS برضه
+-->
 
-      <label>Application Email</label>
-      <input type="email" value="new.com" required>
-      <br>
-      <br>
+<label for="skills">Skills</label>
+<textarea id="skills" formControlName="skills" required></textarea>
 
-      <button  class="btn btn-outline-success" type="submit" style="margin-right: 10px; background-color: #bf272d; color: white;" >Save Changes</button>
+<label for="description">Description</label>
+<textarea id="description" formControlName="description" required></textarea>
 
-    </form>
+<label for="requirements">Requirements</label>
+<textarea id="requirements" formControlName="requirements" required></textarea>
 
-  </div>
+<label for="responsibilities">Responsibilities</label>
+<textarea id="responsibilities" formControlName="responsibilities" required></textarea>
+
+<label for="min_salary">Minimum Salary</label>
+<input id="min_salary" type="text" formControlName="min_salary" placeholder="e.g. 5000" />
+
+<label for="max_salary">Maximum Salary</label>
+<input id="max_salary" type="text" formControlName="max_salary" placeholder="e.g. 10000" />
+
+<label for="experience">Experience</label>
+<input id="experience" type="text" formControlName="experience" placeholder="e.g. 3 years" />
+
+<label for="expires_at">Expires At</label>
+<input id="expires_at" type="date" formControlName="expires_at" />
+
+<div>
+  <input id="is_remote" type="checkbox" formControlName="is_remote" />
+  <label for="is_remote">Is Remote</label>
+</div>
+
+<div>
+  <input id="published" type="checkbox" formControlName="published" />
+  <label for="published">Published</label>
+</div>
+
+<br><br>
+
+<button type="submit" class="btn btn-outline-success" style="margin-right: 10px; background-color: #bf272d; color: white;">
+  Save Changes
+</button>
+<button type="button" class="btn btn-outline-success" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobpreview">
+  Post New Job
+</button>
+</form>
+
+  <!-- Applicants Section -->
+  <section class="applicants">
+    <h3>👥 Applicants</h3>
+
+    <div class="applicant-card">
+      <div class="info">
+        <h4>Ahmed Hassan</h4>
+        <p><strong>Email:</strong> new.com</p>
+        <a href="#" class="cv-link" target="_blank">📄 View CV</a>
+      </div>
+      <div class="actions">
+        <button class="accept" style="background-color: green; ">✅ Accept</button>
+        <button class="reject" style="background-color: red; ">❌ Reject</button>
+      </div>
+    </div>
+
+    <div class="applicant-card">
+      <div class="info">
+        <h4>Salma Adel</h4>
+        <p><strong>Email:</strong> new.com</p>
+        <a href="#" class="cv-link" target="_blank">📄 View CV</a>
+      </div>
+      <div class="actions">
+        <button class="accept" style="background-color: green; ">✅ Accept</button>
+        <button class="reject" style="background-color: red;">❌ Reject</button>
+      </div>
+    </div>
+
+  </section>
+  </div>

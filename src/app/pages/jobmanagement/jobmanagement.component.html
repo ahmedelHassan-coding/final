@@ -40,78 +40,28 @@
                 </div>
 
                 <div class="job-list">
-                    <div class="job-item">
+                    <div class="job-item" *ngFor="let job of jobs">
                         <div class="job-info">
-                            <h4>Senior Frontend Developer</h4>
+                            <h4>{{job.title}}</h4>
                             <div class="job-meta">
-                                <span class="job-location">Cairo, Egypt</span>
-                                <span class="job-type">Full-time</span>
+                                <span class="job-location">{{job.location}}</span>
+                                <span class="job-type">{{job.type}}</span>
                                 <span class="job-status active"><i class="fas fa-circle me-1"></i>Active</span>
                             </div>
                         </div>
                         <div class="job-stats">
                             <div class="stat">
-                                <span class="stat-value">42</span>
+                                <span class="stat-value">{{job.applications}}</span>
                                 <span class="stat-label">Applications</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-value">8</span>
+                                <span class="stat-value">{{job.underReview}}</span>
                                 <span class="stat-label">Under Review</span>
                             </div>
                         </div>
                         <div class="job-actions">
-                            <button class="btn btn-secondary btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobstatistics"><i class="fas fa-eye me-1" ></i>View Applications</button>
-                            <button class="btn btn-outline btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobcontrol"><i class="fas fa-edit me-1"></i>Edit Job</button>
-                        </div>
-                    </div>
-
-                    <div class="job-item">
-                        <div class="job-info">
-                            <h4>UX/UI Designer</h4>
-                            <div class="job-meta">
-                                <span class="job-location">Alexandria, Egypt</span>
-                                <span class="job-type">Part-time</span>
-                                <span class="job-status active"><i class="fas fa-circle me-1"></i>Active</span>
-                            </div>
-                        </div>
-                        <div class="job-stats">
-                            <div class="stat">
-                                <span class="stat-value">28</span>
-                                <span class="stat-label">Applications</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">5</span>
-                                <span class="stat-label">Under Review</span>
-                            </div>
-                        </div>
-                        <div class="job-actions">
-                            <button class="btn btn-secondary btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobstatistics"><i class="fas fa-eye me-1" ></i>View Applications</button>
-                            <button class="btn btn-outline btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;"routerLink="/jobcontrol"><i class="fas fa-edit me-1"></i>Edit Job</button>
-                        </div>
-                    </div>
-
-                    <div class="job-item">
-                        <div class="job-info">
-                            <h4>Marketing Manager</h4>
-                            <div class="job-meta">
-                                <span class="job-location">Giza, Egypt</span>
-                                <span class="job-type">Full-time</span>
-                                <span class="job-status paused"><i class="fas fa-pause-circle me-1"></i>Paused</span>
-                            </div>
-                        </div>
-                        <div class="job-stats">
-                            <div class="stat">
-                                <span class="stat-value">15</span>
-                                <span class="stat-label">Applications</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-value">3</span>
-                                <span class="stat-label">Under Review</span>
-                            </div>
-                        </div>
-                        <div class="job-actions">
-                            <button class="btn btn-secondary btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobstatistics"><i class="fas fa-eye me-1" ></i>View Applications</button>
-                            <button class="btn btn-outline btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobcontrol"><i class="fas fa-edit me-1"></i>Edit Job</button>
+                            <button class="btn btn-secondary btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobstatistics/{{job.id}}"><i class="fas fa-eye me-1" ></i>View Applications</button>
+                            <button class="btn btn-outline btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobcontrol/{{job.id}}"><i class="fas fa-edit me-1"></i>Edit Job</button>
                         </div>
                     </div>
                 </div>
