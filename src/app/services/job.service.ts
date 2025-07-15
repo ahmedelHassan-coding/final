@@ -36,9 +36,15 @@ export class JobService {
    getJobApplications(): Observable<any> {
     return this.http.get('http://localhost:8000/api/student-profile/jobs/applied');
   }
+  getStatistics(): Observable<any> {
+    return this.http.get('http://localhost:8000/api/company/statistics');
+  }
 
   cancelApplication(id: number): Observable<any> {
     return this.http.delete(`http://localhost:8000/api/student-profile/jobs/applications/${id}`);
+  }
+  getCompanyJobs(): Observable<any> {
+    return this.http.get(`http://localhost:8000/api/company/jobs`);
   }
 
 }

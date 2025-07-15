@@ -79,7 +79,7 @@ export const routes: Routes = [
     component: JobpreviewComponent,
   },
   {
-    path: 'jobcontrol',
+    path: 'jobcontrol/:id',
     component: JobcontrolComponent,
   },
   {
@@ -87,7 +87,7 @@ export const routes: Routes = [
     component: JobmanagementComponent,
   },
   {
-    path: 'jobstatistics',
+    path: 'jobstatistics/:id',
     component: JobstatisticsComponent,
   },
   
