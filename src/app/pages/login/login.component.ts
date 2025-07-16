@@ -46,6 +46,8 @@ export class LoginComponent {
           
           if (res.user_type === 'company') {
             this.router.navigate(['/companypreview']);
+            localStorage.setItem('user_type', 'company');
+
           } else if (res.user_type === 'student') {
             this.router.navigate(['/graduateprofile']);
           }
