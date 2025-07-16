@@ -64,7 +64,7 @@ export class CompanyInfoComponent {
             user: { user_type: 'company' }
           });
           
-          this.router.navigate(['/companyprofile']);
+          this.router.navigate(['/companypreview']);
         } else {
           this.errorMessages.push('Invalid response from server. Please try again.');
         }

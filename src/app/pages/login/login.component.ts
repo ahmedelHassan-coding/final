@@ -38,16 +38,14 @@ export class LoginComponent {
 
     this.authService.studentLogin({ email, password }).subscribe({
       next: (res) => {
-        // Add null check for response and token
         if (res && res.token) {
-          // Use auth service method for consistent token storage
           this.authService.storeUserSession({
             token: res.token,
             user: { user_type: res.user_type }
           });
           
           if (res.user_type === 'company') {
-            this.router.navigate(['/companyprofile']);
+            this.router.navigate(['/companypreview']);
           } else if (res.user_type === 'student') {
             this.router.navigate(['/graduateprofile']);
           }
