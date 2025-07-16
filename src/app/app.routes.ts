@@ -65,14 +65,14 @@ export const routes: Routes = [
   {
     path: 'companyprofile',
     component: CompanyprofileComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'companypreview',
     component: CompanypreviewComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'companypreview/:id',
@@ -81,26 +81,26 @@ export const routes: Routes = [
   {
     path: 'jobpreview',
     component: JobpreviewComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'jobcontrol/:id',
     component: JobcontrolComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'jobmanagement',
     component: JobmanagementComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'jobstatistics/:id',
     component: JobstatisticsComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   
   
