@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 //import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutgtsComponent } from './pages/aboutgts/aboutgts.component';
 import { TechnicaltracksComponent } from './pages/technicaltracks/technicaltracks.component';
@@ -24,6 +23,7 @@ import { EditexperincesComponent } from './pages/editexperinces/editexperinces.c
 import { GraduateAppliedJobsComponent } from './pages/graduate-applied-jobs/graduate-applied-jobs.component';
 import { JobmanagementComponent } from './pages/jobmanagement/jobmanagement.component';
 import { JobstatisticsComponent } from './pages/jobstatistics/jobstatistics.component';
+import { RoleGuard } from './guards/role.guard';
 
 
 
@@ -65,10 +65,14 @@ export const routes: Routes = [
   {
     path: 'companyprofile',
     component: CompanyprofileComponent,
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'companypreview',
     component: CompanypreviewComponent,
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'companypreview/:id',
@@ -77,18 +81,26 @@ export const routes: Routes = [
   {
     path: 'jobpreview',
     component: JobpreviewComponent,
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'jobcontrol/:id',
     component: JobcontrolComponent,
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'jobmanagement',
     component: JobmanagementComponent,
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   {
     path: 'jobstatistics/:id',
     component: JobstatisticsComponent,
+    // canActivate: [RoleGuard],
+    // data: { roles: ['company'] }
   },
   
   
@@ -104,22 +116,27 @@ export const routes: Routes = [
   {
     path: 'editskills',
     component: EditskillsComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['student'] }
   },
   {
     path: 'editexperinces',
     component: EditexperincesComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['student'] }
   },
   {
     path: 'graduate-applied-jobs',
     component: GraduateAppliedJobsComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['student'] }
   },
-  {
-    path: 'signup',
-    component: SignupComponent,
-  },
+  
   {
     path: 'student-home',
     component: StudentHomeComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['student'] }
   },
   {
     path: 'admindashboard',
@@ -128,10 +145,14 @@ export const routes: Routes = [
   {
     path: 'job/:id',
     component: JobDetailsComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['student'] }
   },
   {
     path: 'apply/:id',
     component: JobApplicationComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['student'] }
   },
 
   {
