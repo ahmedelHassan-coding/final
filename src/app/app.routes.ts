@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 //import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutgtsComponent } from './pages/aboutgts/aboutgts.component';
 import { TechnicaltracksComponent } from './pages/technicaltracks/technicaltracks.component';
@@ -26,7 +25,6 @@ import { JobmanagementComponent } from './pages/jobmanagement/jobmanagement.comp
 import { JobstatisticsComponent } from './pages/jobstatistics/jobstatistics.component';
 import { RoleGuard } from './guards/role.guard';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-
 
 
 export const routes: Routes = [
@@ -132,10 +130,7 @@ export const routes: Routes = [
     canActivate: [RoleGuard],
     data: { roles: ['student'] }
   },
-  {
-    path: 'signup',
-    component: SignupComponent,
-  },
+  
   {
     path: 'student-home',
     component: StudentHomeComponent,
