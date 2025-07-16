@@ -71,6 +71,8 @@ export const routes: Routes = [
   {
     path: 'companypreview',
     component: CompanypreviewComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['company'] }
 
     },
   {
