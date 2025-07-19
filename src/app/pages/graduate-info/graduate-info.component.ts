@@ -94,7 +94,7 @@ export class GraduateInfoComponent {
           // Use auth service method for consistent token storage
           this.auth.storeUserSession({
             token: response.token,
-            user: { user_type: 'student' }
+            user: 'student'
           });
           
           this.router.navigate(['/graduateprofile']);

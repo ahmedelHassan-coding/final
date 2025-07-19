@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -34,6 +33,7 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('user_name');
+    localStorage.removeItem('user');
     this.isLoggedIn = false;
     this.userName = null;
     this.router.navigate(['/login']);

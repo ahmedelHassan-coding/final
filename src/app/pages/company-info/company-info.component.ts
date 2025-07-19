@@ -61,7 +61,7 @@ export class CompanyInfoComponent {
           // Use auth service method for consistent token storage
           this.auth.storeUserSession({
             token: response.token,
-            user: { user_type: 'company' }
+            user: 'company'
           });
           
           this.router.navigate(['/companypreview']);
