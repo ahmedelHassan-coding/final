@@ -9,12 +9,20 @@ export class RoleGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const allowedRoles = route.data['roles'] as string[];
-    const userRole = localStorage.getItem('user_type');
-
+    const userRole = this.authService.getUser();
+    
+    // Check if user is logged in and has the required role
     if (userRole && allowedRoles.includes(userRole)) {
       return true;
     }
 
+    // If not logged in, redirect to login
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    // If logged in but wrong role, redirect to unauthorized
     this.router.navigate(['/unauthorized']);
     return false;
   }

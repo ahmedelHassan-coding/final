@@ -25,6 +25,7 @@ import { JobmanagementComponent } from './pages/jobmanagement/jobmanagement.comp
 import { JobstatisticsComponent } from './pages/jobstatistics/jobstatistics.component';
 import { RoleGuard } from './guards/role.guard';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { LoginPageGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
@@ -56,11 +57,13 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+      canActivate: [LoginPageGuard],
   },
 
   {
     path: 'company-info',
     component: CompanyInfoComponent,
+     canActivate: [LoginPageGuard],
   },
   {
     path: 'companyprofile',
@@ -109,6 +112,7 @@ export const routes: Routes = [
   {
     path: 'graduate-info',
     component: GraduateInfoComponent,
+     canActivate: [LoginPageGuard],
   },
   {
     path: 'graduateprofile',
@@ -118,7 +122,7 @@ export const routes: Routes = [
     path: 'editskills',
     component: EditskillsComponent,
     canActivate: [RoleGuard],
-    data: { roles: ['student'] }
+     data: { roles: ['student'] }
   },
   {
     path: 'editexperinces',

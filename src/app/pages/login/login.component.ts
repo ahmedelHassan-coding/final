@@ -41,7 +41,7 @@ export class LoginComponent {
         if (res && res.token) {
           this.authService.storeUserSession({
             token: res.token,
-            user: { user_type: res.user_type }
+            user: res.user_type
           });
           
           if (res.user_type === 'company') {

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private baseUrl = 'http://localhost:8000/api'; // Update to your Laravel backend URL
+  private baseUrl = 'http://localhost:8000/api'; 
 
   constructor(private http: HttpClient) {}
 
@@ -21,31 +21,27 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/company/register`, data);
   }
 
+  // Login
   studentLogin(credentials: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/student/login`, credentials);
   }
 
-  // Company Login
-  // companyLogin(credentials: any): Observable<any> {
-  //   return this.http.post(`${this.baseUrl}/company/login`, credentials);
-  // }
-
+ 
   // Logout
   logout(): Observable<any> {
     localStorage.removeItem('token');
-    return this.http.post(`http://localhost:8000/api/student/logout`, {});
+    localStorage.removeItem('user');
+    return this.http.post(`${this.baseUrl}/student/logout`, {});
   }
 
-  // Store token & user info
   storeUserSession(data: any): void {
     localStorage.setItem('token', data.token);
-    localStorage.setItem('user', JSON.stringify(data.user));
+    localStorage.setItem('user', data.user); 
   }
 
   // Get current user
-  getUser(): any {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+  getUser(): string | null {
+    return localStorage.getItem('user');
   }
 
   // Get token
