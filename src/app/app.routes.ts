@@ -23,6 +23,8 @@ import { EditexperincesComponent } from './pages/editexperinces/editexperinces.c
 import { GraduateAppliedJobsComponent } from './pages/graduate-applied-jobs/graduate-applied-jobs.component';
 import { JobmanagementComponent } from './pages/jobmanagement/jobmanagement.component';
 import { JobstatisticsComponent } from './pages/jobstatistics/jobstatistics.component';
+import { PricingpackagesComponent } from './pages/pricingpackages/pricingpackages.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 import { RoleGuard } from './guards/role.guard';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
@@ -65,14 +67,14 @@ export const routes: Routes = [
   {
     path: 'companyprofile',
     component: CompanyprofileComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    //canActivate: [RoleGuard],
+    //data: { roles: ['company'] }
   },
   {
     path: 'companypreview',
     component: CompanypreviewComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    //canActivate: [RoleGuard],
+    //data: { roles: ['company'] }
 
     },
   {
@@ -82,29 +84,40 @@ export const routes: Routes = [
   {
     path: 'jobpreview',
     component: JobpreviewComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    //canActivate: [RoleGuard],
+    //data: { roles: ['company'] }
   },
   {
     path: 'jobcontrol/:id',
     component: JobcontrolComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    //canActivate: [RoleGuard],
+    //data: { roles: ['company'] }
   },
   {
     path: 'jobmanagement',
     component: JobmanagementComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    //canActivate: [RoleGuard],
+    //data: { roles: ['company'] }
   },
   {
     path: 'jobstatistics/:id',
     component: JobstatisticsComponent,
-    canActivate: [RoleGuard],
-    data: { roles: ['company'] }
+    //canActivate: [RoleGuard],
+    //data: { roles: ['company'] }
   },
-  
-  
+  {
+    path: 'pricingpackages',
+    component: PricingpackagesComponent,
+    //canActivate: [RoleGuard],
+    //data: { roles: ['company'] }
+  },
+  {
+    path: 'payment',
+    component: PaymentComponent,
+    //canActivate: [RoleGuard],
+    //data: { roles: ['company'] }
+  },
+
   ////////////////////////////////////////////////////////////
   {
     path: 'graduate-info',
