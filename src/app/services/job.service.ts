@@ -52,7 +52,10 @@ export class JobService {
   updateApplicationStatus(id: number, data: any): Observable<any> {
     return this.http.put(`http://localhost:8000/api/company/job-applications/${id}/status`, data);
   }
-
-
-
+  completeApplication(id: number): Observable<any> {
+    return this.http.put(`http://localhost:8000/api/student-profile/jobs/applications/${id}/complete`, {});
+  }
+  deletejob(id: number): Observable<any> {
+    return this.http.delete(`http://localhost:8000/api/company/jobs/${id}`);
+  }
 }

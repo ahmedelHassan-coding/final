@@ -1,6 +1,6 @@
 <div class="container py-5">
         <!-- Job Management Section -->
-        <div style="align : right;">
+        <div style="align: right;">
             <button  class="btn" type="submit" style="margin-bottom: 20px; background-color: #bf272d; color: white; text-align: right;  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); font-size: 20px; height: 80px;" routerLink="/pricingpackages">Posts Pricing Packages</button>
         </div>   
         <section class="section" id="jobs">
@@ -12,23 +12,30 @@
 
             </div>
 
+            <!-- Success Messages -->
+            <div class="alert alert-success" *ngIf="message.length > 0" style="margin-bottom: 20px;">
+                <div *ngFor="let msg of message">
+                    <i class="fas fa-check-circle me-2"></i>{{ msg }}
+                </div>
+            </div>
+
+            <!-- Error Messages -->
+            <div class="alert alert-danger" *ngIf="errorMessages.length > 0" style="margin-bottom: 20px;">
+                <div *ngFor="let error of errorMessages">
+                    <i class="fas fa-exclamation-circle me-2"></i>{{ error }}
+                </div>
+            </div>
+
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">12</div>
+                    <div class="stat-number">{{jobs.length}}</div>
                     <div class="stat-label">Active Jobs</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">156</div>
+                    <div class="stat-number">{{statistics}}</div>
                     <div class="stat-label">Total Applications</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">8</div>
-                    <div class="stat-label">Hired This Month</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">24</div>
-                    <div class="stat-label">Pending Reviews</div>
-                </div>
+             
             </div>
 
             <div class="card">
@@ -51,7 +58,7 @@
                             <div class="job-meta">
                                 <span class="job-location">{{job.location}}</span>
                                 <span class="job-type">{{job.type}}</span>
-                                <span class="job-status active"><i class="fas fa-circle me-1"></i>Active</span>
+                                <span class="job-status active"><i class="fas fa-circle me-1"></i>{{job.status}}</span>
                             </div>
                         </div>
                         <div class="job-stats">
@@ -59,14 +66,16 @@
                                 <span class="stat-value">{{job.applications}}</span>
                                 <span class="stat-label">Applications</span>
                             </div>
-                            <div class="stat">
-                                <span class="stat-value">{{job.underReview}}</span>
-                                <span class="stat-label">Under Review</span>
-                            </div>
                         </div>
                         <div class="job-actions">
                             <button class="btn btn-secondary btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobstatistics/{{job.id}}"><i class="fas fa-eye me-1" ></i>View Applications</button>
                             <button class="btn btn-outline btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobcontrol/{{job.id}}"><i class="fas fa-edit me-1"></i>Edit Job</button>
+                            <button class="btn btn-secondary btn-sm" style="margin-right: 10px; background-color: #bf272d; color: white;" (click)="deleteJob(job.id)" [disabled]="isDeleting(job.id)">
+                                <i class="fas fa-spinner fa-spin me-1" *ngIf="isDeleting(job.id)"></i>
+                                <i class="fas fa-trash me-1" *ngIf="!isDeleting(job.id)"></i>
+                                {{ isDeleting(job.id) ? 'Deleting...' : 'Delete Job' }}
+                            </button>
+
                         </div>
                     </div>
                 </div>

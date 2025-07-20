@@ -15,7 +15,16 @@ export class CompanyProfileService {
     return this.http.get('http://localhost:8000/api/company');
   }
   updateCompanyData(data: any): Observable<any> {
-    return this.http.put('http://localhost:8000/api/company', data);
+    // If data is FormData, don't set Content-Type header
+    // Browser will automatically set it with boundary for multipart/form-data
+    if (data instanceof FormData) {
+      return this.http.put('http://localhost:8000/api/company', data);
+    } else {
+      // For JSON data, set Content-Type header
+      return this.http.put('http://localhost:8000/api/company', data, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
   }
 }
 

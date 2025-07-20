@@ -5,6 +5,11 @@
         <button id="show-applied-btn" onclick="document.querySelector('.jobs-list').classList.toggle('show')">
         Show Applied Jobs
         </button>
+        <div *ngIf="message.length > 0" class="alert alert-success">
+            <ul>
+                <li *ngFor="let msg of message">{{msg}}</li>
+            </ul>
+        </div>
         
         <ul class="jobs-list">
         <li *ngFor="let job of appliedJobs">
@@ -13,11 +18,19 @@
             <span>{{job.job_post.company.name}}</span>
             <small class="status-under-review">Status: {{job.status}}</small>
             </div>
+
+            @if(job.job_post.status == 'completed'){
+                <div class="job-info">
+                    <small class="status-completed">Status: Completed</small>
+                </div>
+            }@else if(job.job_post.status == 'active'){
             <div class="job-actions">
-            <button class="edit-btn" title="Edit">✏️</button>
             <button class="delete-btn" title="Delete" (click)="cancelApplication(job.id)">🗑️</button>
+            @if(job.status == 'accepted'){
+            <button class="complete-btn" title="Complete" (click)="completeApplication(job.id)">👀</button>
+            }
             </div>
-        </li>
+            }
         </ul>
     </div>
 </div>
