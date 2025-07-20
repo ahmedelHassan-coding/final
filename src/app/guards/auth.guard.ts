@@ -10,7 +10,7 @@ export class LoginPageGuard implements CanActivate {
     const user = localStorage.getItem('user');
     if (user) {
       if (user === 'student') {
-        this.router.navigate(['/graduate-profile']);
+        this.router.navigate(['/graduateprofile']);
       } else if (user === 'company') {
         this.router.navigate(['/companypreview']);
       } 

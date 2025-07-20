@@ -2,8 +2,9 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#" style="color: #bf272d; font-size: x-large; font-weight: bolder;">ITI-GTS</a>
 
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul *ngIf="!userRole" class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#" style="font-weight: bold;">Home</a>
         </li>
@@ -21,7 +22,36 @@
         </li>
       </ul>
 
-      <!-- ✅ لو المستخدم Logged In -->
+      <!-- student nav -->
+      <ul *ngIf="userRole === 'student'" class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/student-home" style="font-weight: bold;">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold;" routerLink="/graduate-applied-jobs">Applied Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold;" routerLink="graduateprofile">profile</a>
+        </li>
+      </ul>
+
+      <!-- company nav -->
+      <ul *ngIf="userRole === 'company'" class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="companypreview" style="font-weight: bold;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold;" routerLink="/jobmanagement">Jobs</a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold;" routerLink="/jobpreview">Add Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold;" routerLink="/companyprofile">profile</a>
+        </li>
+      </ul>
+
       <ng-container *ngIf="isLoggedIn">
         <button (click)="logout()"
                 class="btn btn-primary btn-lg"

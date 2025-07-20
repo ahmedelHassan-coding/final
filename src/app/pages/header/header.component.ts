@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
   userName: string | null = null;
+  userRole: string | null = null;
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateAuthState();
+    this.userRole = localStorage.getItem('user');
   }
 
   updateAuthState(): void {
