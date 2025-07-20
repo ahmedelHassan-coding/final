@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 export class CompanyprofileComponent {
   companyForm: FormGroup;
   errorMessages: string[] = [];
+  selectedImageName: string = '';
+  selectedCoverImageName: string = '';
+  isSubmitting: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -56,45 +59,97 @@ export class CompanyprofileComponent {
     );
   }
 
+  validateFile(file: File): { isValid: boolean; error?: string } {
+    // Check file size (5MB = 5 * 1024 * 1024 bytes)
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+      return { isValid: false, error: 'File size must be less than 5MB' };
+    }
+
+    // Check file type
+    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+    if (!allowedTypes.includes(file.type)) {
+      return { isValid: false, error: 'Only JPEG, PNG, and GIF files are allowed' };
+    }
+
+    return { isValid: true };
+  }
+
   onFileChange(event: any, field: string) {
     const file = event.target.files[0];
     if (file) {
+      const validation = this.validateFile(file);
+      
+      if (!validation.isValid) {
+        this.errorMessages = [validation.error!];
+        // Clear the file input
+        event.target.value = '';
+        return;
+      }
+
       this.companyForm.patchValue({ [field]: file });
+      
+      // Update the selected file name for display
+      if (field === 'image') {
+        this.selectedImageName = file.name;
+      } else if (field === 'cover_image') {
+        this.selectedCoverImageName = file.name;
+      }
+
+      // Clear any previous file-related errors
+      this.errorMessages = this.errorMessages.filter(error => 
+        !error.includes('File size') && !error.includes('Only JPEG')
+      );
     }
   }
 
   onSubmit() {
     this.errorMessages = [];
+    this.isSubmitting = true;
 
-    const form = this.companyForm.value;
+    // Create FormData for file upload
+    const formData = new FormData();
 
-    // Send as JSON - only send non-empty values
-    const jsonData: any = {};
+    // Get form values excluding files
+    const formValues = this.companyForm.value;
 
-    if (form.name) jsonData.name = form.name;
-    if (form.specialization) jsonData.specialization = form.specialization;
-    if (form.type) jsonData.type = form.type;
-    if (form.team_size) jsonData.team_size = form.team_size;
-    if (form.founded)
-      jsonData.founded = form.founded ? String(form.founded) : '';
-    if (form.country) jsonData.country = form.country;
-    if (form.address) jsonData.address = form.address;
-    if (form.about) jsonData.about = form.about;
-    if (form.email) jsonData.email = form.email;
-    if (form.phone) jsonData.phone = form.phone;
-    if (form.website) jsonData.website = form.website;
-    if (form.facebook) jsonData.facebook = form.facebook;
-    if (form.linkedin) jsonData.linkedin = form.linkedin;
-    if (form.instagram) jsonData.instagram = form.instagram;
+    // Add non-file fields to FormData
+    if (formValues.name) formData.append('name', formValues.name);
+    if (formValues.specialization) formData.append('specialization', formValues.specialization);
+    if (formValues.type) formData.append('type', formValues.type);
+    if (formValues.team_size) formData.append('team_size', formValues.team_size);
+    if (formValues.founded) formData.append('founded', String(formValues.founded));
+    if (formValues.country) formData.append('country', formValues.country);
+    if (formValues.address) formData.append('address', formValues.address);
+    if (formValues.about) formData.append('about', formValues.about);
+    if (formValues.email) formData.append('email', formValues.email);
+    if (formValues.phone) formData.append('phone', formValues.phone);
+    if (formValues.website) formData.append('website', formValues.website);
+    if (formValues.facebook) formData.append('facebook', formValues.facebook);
+    if (formValues.linkedin) formData.append('linkedin', formValues.linkedin);
+    if (formValues.instagram) formData.append('instagram', formValues.instagram);
 
-    this.companyProfileService.updateCompanyData(jsonData).subscribe({
+    // Get file objects directly from form controls
+    const imageFile = this.companyForm.get('image')?.value;
+    const coverImageFile = this.companyForm.get('cover_image')?.value;
+
+    // Add files to FormData
+    if (imageFile) {
+      formData.append('image', imageFile);
+    }
+    if (coverImageFile) {
+      formData.append('cover_image', coverImageFile);
+    }
+
+
+    this.companyProfileService.updateCompanyData(formData).subscribe({
       next: (response) => {
-        console.log('Form data sent:', form);
-        console.log('Backend response:', response);
-        console.log('Company updated successfully', response);
+      
+        this.isSubmitting = false;
         this.router.navigate(['/companypreview']);
       },
       error: (err) => {
+        this.isSubmitting = false;
         if (err.error.errors) {
           const messages = Object.values(err.error.errors).flat();
           this.errorMessages = messages as string[];

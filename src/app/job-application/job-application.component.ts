@@ -13,6 +13,7 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./job-application.component.css'],
 })
 export class JobApplicationComponent implements OnInit {
+  error:string[] = [];
 
   formData = {
     message: '',
@@ -40,7 +41,7 @@ export class JobApplicationComponent implements OnInit {
     const jobId = +jobIdParam!;
 
     if (!jobId || isNaN(jobId)) {
-      alert('Invalid job ID.');
+      this.error.push('Invalid job ID.');
       return;
     }
 
@@ -52,7 +53,7 @@ export class JobApplicationComponent implements OnInit {
       this.fileInputError = false;
     } else {
       this.fileInputError = true;
-      alert('Please upload a valid CV file.');
+      this.error.push('Please upload a valid CV file.');
       return;
     }
 
@@ -64,7 +65,7 @@ export class JobApplicationComponent implements OnInit {
         },
         error: (err) => {
           console.error('Submission error:', err);
-          alert('Failed to submit application.');
+          this.error.push(err.error.message);
         },
       });
   }

@@ -2,6 +2,11 @@
   <h1 class="mb-3 text-danger" style="font-size: x-large;">Job Application</h1>
 
   <form #formRef="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" novalidate>
+    <div *ngIf="error.length > 0" class="alert alert-danger">
+      <ul>
+        <li *ngFor="let err of error">{{ err }}</li>
+      </ul>
+    </div>
     <div class="mb-3">
       <label class="form-label">Application Message</label>
       <textarea

@@ -22,7 +22,8 @@ export class EditexperincesComponent {
   experience: StudentExperience = { job_title: '', company_name: '', start_date: '', end_date: '' };
   experiences: StudentExperience[] = [];
   editExperience: StudentExperience | null = null; // <-- فورم التعديل
-  showEditFormId: number | null = null;            // <-- تتحكم في إظهار فورم التعديل
+  showEditFormId: number | null = null;  
+  error:string[] = [];
 
   constructor(private studentProfileService: StudentProfileService) {
     this.getStudentExperience();
@@ -63,7 +64,7 @@ export class EditexperincesComponent {
       !updatedData.start_date ||
       !updatedData.end_date
     ) {
-      alert('All fields are required.');
+      this.error.push('All fields are required.');
       return;
     }
   
@@ -75,7 +76,7 @@ export class EditexperincesComponent {
       },
       error: (err) => {
         console.error('Update failed:', err);
-        alert('Failed to update experience. Please try again.');
+        this.error.push(err.error.message);
       }
     });
   }

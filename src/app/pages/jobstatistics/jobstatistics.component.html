@@ -40,12 +40,17 @@
                                 </a>
                             </td>
                             <td>
+                                
                                 <button *ngIf="application.status === 'pending'" class="action-btn btn-edit" (click)="acceptApplication(application.id)">
                                     <i class="fas fa-edit me-1"></i> Accept
                                 </button>
                                 <button *ngIf="application.status === 'pending'" class="action-btn btn-delete" (click)="rejectApplication(application.id)">
                                     <i class="fas fa-trash me-1"></i> Reject
                                 </button>
+                                <button *ngIf="application.job_post.status === 'completed'" class="action-btn btn-edit"routerLink="/payment">
+                                    <i class="fas fa-edit me-1"></i> Pay
+                                </button>
+                            
                             </td>
                         </tr>
                     </tbody>

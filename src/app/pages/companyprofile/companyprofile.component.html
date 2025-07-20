@@ -107,6 +107,9 @@
             </div>
             <input type="file" accept="image/*" class="file-input" (change)="onFileChange($event, 'image')">
           </div>
+          <div *ngIf="selectedImageName" class="selected-file">
+            <span>Selected: {{ selectedImageName }}</span>
+          </div>
         </div>
 
         <div class="upload-section">
@@ -118,6 +121,9 @@
               <span>Recommended: 1200x400px</span>
             </div>
             <input type="file" accept="image/*" class="file-input" (change)="onFileChange($event, 'cover_image')">
+          </div>
+          <div *ngIf="selectedCoverImageName" class="selected-file">
+            <span>Selected: {{ selectedCoverImageName }}</span>
           </div>
         </div>
       </div>
@@ -180,222 +186,17 @@
       </div>
     </div>
     <br>
-    <button  class="btn btn-primary btn-lg" type="submit" style="margin-right: 10px; background-color: #bf272d; color: white;; border-radius:1rem;" routerLink = "/companypreview">Save Changes</button>
+    <button 
+      class="btn btn-primary btn-lg" 
+      type="submit" 
+      style="margin-right: 10px; background-color: #bf272d; color: white; border-radius:1rem;" 
+      [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Saving...' : 'Save Changes' }}
+    </button>
 
   </form>
 </section>
 
        
-
-        <!-- Analytics Section -->
-        <section class="section" id="analytics">
-          <div class="section-header">
-            <h2>Analytics</h2>
-            <select class="period-select">
-              <option value="week">Last 7 days</option>
-              <option value="month">Last 30 days</option>
-              <option value="quarter">Last 3 months</option>
-            </select>
-          </div>
-
-          <div class="analytics-grid">
-            <div class="analytics-card">
-              <h3>Job Post Views</h3>
-              <div class="analytics-value">2,847</div>
-              <div class="analytics-change positive">+15% from last period</div>
-            </div>
-
-            <div class="analytics-card">
-              <h3>Total Applications</h3>
-              <div class="analytics-value">156</div>
-              <div class="analytics-change positive">+23% from last period</div>
-            </div>
-
-            <div class="analytics-card">
-              <h3>Application Rate</h3>
-              <div class="analytics-value">5.5%</div>
-              <div class="analytics-change negative">-2% from last period</div>
-            </div>
-
-            <div class="analytics-card">
-              <h3>Profile Views</h3>
-              <div class="analytics-value">1,234</div>
-              <div class="analytics-change positive">+8% from last period</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Top Performing Jobs</h3>
-            <div class="performance-list">
-              <div class="performance-item">
-                <div class="performance-job">
-                  <h4>Senior Frontend Developer</h4>
-                  <span>Posted 5 days ago</span>
-                </div>
-                <div class="performance-metrics">
-                  <div class="metric">
-                    <span class="metric-value">1,247</span>
-                    <span class="metric-label">Views</span>
-                  </div>
-                  <div class="metric">
-                    <span class="metric-value">42</span>
-                    <span class="metric-label">Applications</span>
-                  </div>
-                  <div class="metric">
-                    <span class="metric-value">3.4%</span>
-                    <span class="metric-label">Rate</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="performance-item">
-                <div class="performance-job">
-                  <h4>UX/UI Designer</h4>
-                  <span>Posted 12 days ago</span>
-                </div>
-                <div class="performance-metrics">
-                  <div class="metric">
-                    <span class="metric-value">892</span>
-                    <span class="metric-label">Views</span>
-                  </div>
-                  <div class="metric">
-                    <span class="metric-value">28</span>
-                    <span class="metric-label">Applications</span>
-                  </div>
-                  <div class="metric">
-                    <span class="metric-value">3.1%</span>
-                    <span class="metric-label">Rate</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Account Settings Section -->
-        <section class="section" id="settings">
-          <div class="section-header">
-            <h2>Account Settings</h2>
-          </div>
-
-          <div class="grid-2">
-            <div class="card">
-              <h3>Account Information</h3>
-              <form class="form">
-                <div class="form-group">
-                  <label for="account-email">Email Address</label>
-                  <input type="email" id="account-email" value="admin@company.com">
-                </div>
-
-                <div class="form-group">
-                  <label for="current-password">Current Password</label>
-                  <input type="password" id="current-password">
-                </div>
-
-                <div class="form-group">
-                  <label for="new-password">New Password</label>
-                  <input type="password" id="new-password">
-                </div>
-
-                <div class="form-group">
-                  <label for="confirm-password">Confirm New Password</label>
-                  <input type="password" id="confirm-password">
-                </div>
-
-                <button type="submit" class="btn-primary">Update Password</button>
-              </form>
-            </div>
-
-            <div class="card">
-              <h3>Team Management</h3>
-              <div class="team-section">
-                <div class="team-header">
-                  <h4>Hiring Team Members</h4>
-                  <button class="btn-secondary">Add Member</button>
-                </div>
-
-                <div class="team-list">
-                  <div class="team-member">
-                    <div class="member-info">
-                      <div class="member-name">Ahmed Hassan</div>
-                      <div class="member-email">ahmedcompany.com</div>
-                    </div>
-                    <div class="member-role">Admin</div>
-                    <div class="member-actions">
-                      <button class="btn-text">Edit</button>
-                      <button class="btn-text danger">Remove</button>
-                    </div>
-                  </div>
-
-                  <div class="team-member">
-                    <div class="member-info">
-                      <div class="member-name">Sara Mohamed</div>
-                      <div class="member-email">saracompany.com</div>
-                    </div>
-                    <div class="member-role">HR Manager</div>
-                    <div class="member-actions">
-                      <button class="btn-text">Edit</button>
-                      <button class="btn-text danger">Remove</button>
-                    </div>
-                  </div>
-
-                  <div class="team-member">
-                    <div class="member-info">
-                      <div class="member-name">Omar Ali</div>
-                      <div class="member-email">omarcompany.com</div>
-                    </div>
-                    <div class="member-role">Recruiter</div>
-                    <div class="member-actions">
-                      <button class="btn-text">Edit</button>
-                      <button class="btn-text danger">Remove</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>CV Database Search</h3>
-            <div class="search-section">
-              <div class="search-header">
-                <input type="text" class="search-input" placeholder="Search candidates by skills, experience, location...">
-                <button class="btn-primary">Search CVs</button>
-              </div>
-              
-              <div class="search-filters">
-                <div class="filter-group">
-                  <label>Experience Level</label>
-                  <select>
-                    <option value="">Any</option>
-                    <option value="junior">Junior (0-2 years)</option>
-                    <option value="mid">Mid-level (2-5 years)</option>
-                    <option value="senior">Senior (5+ years)</option>
-                  </select>
-                </div>
-
-                <div class="filter-group">
-                  <label>Location</label>
-                  <select>
-                    <option value="">Any Location</option>
-                    <option value="cairo">Cairo</option>
-                    <option value="alexandria">Alexandria</option>
-                    <option value="giza">Giza</option>
-                  </select>
-                </div>
-
-                <div class="filter-group">
-                  <label>Education</label>
-                  <select>
-                    <option value="">Any Education</option>
-                    <option value="bachelor">Bachelor's Degree</option>
-                    <option value="master">Master's Degree</option>
-                    <option value="phd">PhD</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </main>

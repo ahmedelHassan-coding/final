@@ -19,6 +19,12 @@
       </div>
     </div>
 
+    <div *ngIf="error.length > 0" class="alert alert-danger">
+      <ul>
+        <li *ngFor="let err of error">{{ err }}</li>
+      </ul>
+    </div>
+
     <!-- Experience List -->
     <ul class="experience-list">
       <li *ngFor="let exp of experiences">
