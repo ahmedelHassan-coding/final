@@ -115,7 +115,7 @@ export const routes: Routes = [
     data: { roles: ['company'] }
   },
   {
-    path: 'payment',
+    path: 'payment/:id',
     component: PaymentComponent,
     canActivate: [RoleGuard],
     data: { roles: ['company'] }
