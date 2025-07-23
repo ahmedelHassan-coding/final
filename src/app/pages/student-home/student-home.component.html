@@ -28,17 +28,14 @@
 
         <div class="mb-3">
           <p class="mb-1"><strong>Employment Type:</strong> {{ job.type || 'N/A' }}</p>
-          <p class="mb-1"><strong>Salary:</strong> {{ job.min_salary || 'N/A' }} - {{ job.max_salary || 'N/A' }}</p>
-          <p class="mb-1"><strong>Experience:</strong> {{ job.experience || 'Not specified' }}</p>
+          <p class="mb-1"><strong>Salary:</strong> {{ job.min_salary || 'N/A' }}</p>
           <p class="mb-1"><strong>Posted:</strong> {{ job.created_at | date: 'medium' }}</p>
         </div>
 
         <div *ngIf="job.requirements" class="mb-3">
           <h6 class="text-danger">Requirements:</h6>
           <div class="d-flex flex-wrap gap-2">
-            <span *ngFor="let req of parseQualifications(job.requirements)" class="badge bg-light text-danger border border-danger">
-              {{ req }}
-            </span>
+            <span class="text-muted">{{ job.requirements }}</span>
           </div>
         </div>
 

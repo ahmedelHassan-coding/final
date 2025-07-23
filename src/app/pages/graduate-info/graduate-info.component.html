@@ -27,7 +27,7 @@
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <label class="form-label">Phone Number</label>
-                      <input type="text" class="form-control form-control-lg" formControlName="phone" />
+                      <input type="number" class="form-control form-control-lg" formControlName="phone" />
                     </div>
                     <div class="col-md-6 mb-4">
                       <label class="form-label">Address</label>
@@ -65,20 +65,16 @@
 
                   <div class="row">
                     <div class="col-md-6 mb-4">
-                      <label class="form-label">Track</label>
-                      <select class="form-control form-control-lg" formControlName="durationTrack">
-                        <option disabled selected>Duration Track</option>
-                        <option value="4 month">4 month</option>
-                        <option value="9 month">9 month</option>
+                      <label class="form-label">Program</label>
+                      <select class="form-control form-control-lg" formControlName="duration_track">
+                        <option disabled selected>Program</option>
+                        <option value="Intensive Training Program">Intensive Training Program</option>
+                        <option value="Professional training program">Professional training program</option>
                       </select>
                     </div>
                     <div class="col-md-6 mb-4">
-                      <label class="form-label">Course Title</label>
-                      <select class="form-control form-control-lg" formControlName="track">
-                        <option disabled selected>Name of Track</option>
-                        <option value="Full Stack Web Development using PHP">PHP</option>
-                        <option value="Full Stack Web Development using .NET">.NET</option>
-                      </select>
+                      <label class="form-label">Track</label>
+                      <input type="text" class="form-control form-control-lg" formControlName="track" />
                     </div>
                   </div>
 

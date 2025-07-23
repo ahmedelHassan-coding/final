@@ -38,11 +38,9 @@
       <label for="experience">Experience *</label>
       <textarea id="experience" [(ngModel)]="experience" name="experience" required></textarea>
 
-      <label for="min_salary">minimum salary *</label>
+      <label for="min_salary"> salary *</label>
       <input type="number" id="min_salary" [(ngModel)]="min_salary" name="min_salary" required>
 
-      <label for="max_salary">maximum salary *</label>
-      <input type="number" id="max_salary" [(ngModel)]="max_salary" name="max_salary" required>
 
 
 <div *ngIf="err.length > 0" class="alert error-box">

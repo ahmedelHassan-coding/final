@@ -17,14 +17,19 @@ export class PaymentComponent implements OnInit {
   stripe: Stripe | null = null;
   cardElement!: StripeCardElement;
   loading = false;
-  amount = 0; // قيمة الدفع
-  applicationId!: string; // ID من التطبيق
+  amount = 0; 
+  applicationId!: string; 
   successMessage = '';
   errorMessage = '';
+  application: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.applicationId = this.route.snapshot.params['id'];
-  } 
+    this.http.get(`http://localhost:8000/api/company/jobs/applications/${this.applicationId}`).subscribe((res: any) => {
+      this.application = res.data;
+      this.amount = this.application.min_price;
+    });
+  }
 
   async ngOnInit() {
     this.stripe = await loadStripe(environment.stripePublicKey);

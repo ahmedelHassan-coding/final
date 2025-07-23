@@ -37,9 +37,8 @@ export class GraduateInfoComponent {
       faculty: [''],
       university: [''],
       gender: [''],
-      durationTrack: [''],
+      duration_track: [''],
       track: [''],
-      interests: [''],
       image: [null],
       password: ['', Validators.required],
       password_confirmation: ['', Validators.required],
@@ -76,13 +75,13 @@ export class GraduateInfoComponent {
     formData.append('password', form.password);
     formData.append('password_confirmation', form.password_confirmation);
     formData.append('phone', form.phone);
-    formData.append('address', form.address);
     formData.append('age', form.age);
     formData.append('faculty', form.faculty);
     formData.append('university', form.university);
     formData.append('gender', form.gender);
+    formData.append('duration_track', form.duration_track);
     formData.append('track', form.track);
-    formData.append('duration_track', form.durationTrack);
+    formData.append('address', form.address);
     if (form.image) {
       formData.append('image', form.image);
     }

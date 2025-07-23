@@ -18,6 +18,10 @@ body {
       border: 2px solid #dc143c;
       position: relative;
       overflow: hidden;
+      margin: auto;
+      height: 100%;
+      margin-top: 15px;
+      margin-bottom: 15px;
     }
 
     .applied-jobs-container::before {
@@ -28,7 +32,7 @@ body {
       right: 0;
       height: 4px;
       background: linear-gradient(90deg, #dc143c, #ff4757, #dc143c);
-      animation: shimmer 2s infinite;
+      /* animation: shimmer 2s infinite; */
     }
 
     @keyframes shimmer {

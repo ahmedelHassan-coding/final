@@ -8,7 +8,6 @@
                     </div>
                     <div class="profile-details">
                         <h1>{{ student.name }}</h1>
-                        <a href="#" class="add-link">+ Add your tagline</a>
                         <div class="mail">
                             <span class="mail-icon">✉️</span>
                             <span>{{ student.email }}</span>
@@ -21,8 +20,10 @@
                             <span class="location-icon">📍</span>
                             <span>{{ student.address }}</span>
                         </div>
-                        <div class="status-badge">Immediate Start</div>
-                        <a href="#" class="add-link">+ Add your online presence</a>
+                        <div >
+                            <div>Program: {{ student.duration_track }} </div>
+                            <div>Track: {{ student.track }} </div>
+                        </div>
                     </div>
                 </div>
             </section>           
@@ -107,7 +108,7 @@
                 </div>
             </section>
 
-            <!-- Certifications Section -->
+            <!-- Certifications Section
             <section class="card certifications-section">
                 <h2>Training & Certifications</h2>
                 <div class="certification-item">
@@ -118,42 +119,10 @@
                         <div class="cert-year">📅 2024</div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
-            <!-- Languages Section -->
-            <section class="card languages-section">
-                <h2>Languages</h2>
-                <div class="language-item">
-                    <div class="language-info">
-                        <h3>English</h3>
-                        <p>Advanced level</p>
-                    </div>
-                    <div class="stars">
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star filled">★</span>
-                        <span class="star">★</span>
-                    </div>
-                </div>
-            </section>
 
-            <!-- Activities Section -->
-            <section class="card activities-section">
-                <h2>Activities & Achievements</h2>
-                <div class="empty-state">
-                    <div class="activity-icons">
-                        <div class="activity-icon trophy">🏆</div>
-                        <div class="activity-icon target">🎯</div>
-                    </div>
-                    <h3>No activities or achievements added yet</h3>
-                    <p>Showcase your extracurricular activities, volunteer work, and achievements to stand out</p>
-                    <div class="activity-buttons">
-                        <button class="btn-purple">+ Add Activities</button>
-                        <button class="btn-green">+ Add Achievements</button>
-                    </div>
-                </div>
-            </section>
+
         </div>
 
         <!-- Sidebar -->
@@ -188,14 +157,11 @@
                     </div>
                 </div>
 
-                <button class="btn-primary full-width" style="background-color: #bf272d; color: white;">📄 Generate CV from profile</button>
                 <br>
                 <button class="btn-primary full-width" style="background-color: #bf272d; color: white;" routerLink = "/student-home">Search for Available Jobs</button>
                 <br>
                 <button class="btn-primary full-width" style="background-color: #bf272d; color: white;" routerLink = "/graduate-applied-jobs">Applied Jobs</button>
             </div>
-            <div class="card public-profile">
-                <button class="btn-primary full-width" style="background-color: #bf272d; color: white;" routerLink = "/">Logout</button>
-            </div>
+            
         </aside>
     </div>

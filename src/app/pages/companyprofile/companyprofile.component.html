@@ -8,8 +8,7 @@
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main">
+<main class="main">
       <div class="container">
         <!-- Company Information Section -->
   <section class="section" id="profile">
@@ -25,7 +24,7 @@
   </div>
 
   <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
-    <div class="grid-2">
+    <div>
       <!-- Company Information -->
       <div class="card">
         <h3>Company Information</h3>
@@ -94,40 +93,7 @@
         </div>
       </div>
 
-      <!-- Visual Identity -->
-      <div class="card">
-        <h3>Visual Identity</h3>
-        <div class="upload-section">
-          <label>Company Logo</label>
-          <div class="upload-area">
-            <div class="upload-placeholder">
-              <div class="upload-icon">📷</div>
-              <p>Click to upload logo</p>
-              <span>PNG, JPG up to 5MB</span>
-            </div>
-            <input type="file" accept="image/*" class="file-input" (change)="onFileChange($event, 'image')">
           </div>
-          <div *ngIf="selectedImageName" class="selected-file">
-            <span>Selected: {{ selectedImageName }}</span>
-          </div>
-        </div>
-
-        <div class="upload-section">
-          <label>Cover Image (Optional)</label>
-          <div class="upload-area cover-upload">
-            <div class="upload-placeholder">
-              <div class="upload-icon">🖼️</div>
-              <p>Click to upload cover image</p>
-              <span>Recommended: 1200x400px</span>
-            </div>
-            <input type="file" accept="image/*" class="file-input" (change)="onFileChange($event, 'cover_image')">
-          </div>
-          <div *ngIf="selectedCoverImageName" class="selected-file">
-            <span>Selected: {{ selectedCoverImageName }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- About Section -->
     <div class="card">
@@ -185,18 +151,7 @@
         </div>
       </div>
     </div>
-    <br>
-    <button 
-      class="btn btn-primary btn-lg" 
-      type="submit" 
-      style="margin-right: 10px; background-color: #bf272d; color: white; border-radius:1rem;" 
-      [disabled]="isSubmitting">
-      {{ isSubmitting ? 'Saving...' : 'Save Changes' }}
-    </button>
-
+    
+    <button type="submit" class="btn btn-outline-success" style="margin-right: 10px; background-color: #bf272d; color: white;">Save Changes</button>
   </form>
 </section>
-
-       
-      </div>
-    </main>

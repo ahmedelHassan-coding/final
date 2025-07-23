@@ -5,7 +5,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #860202 0%, #860202 100%);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
             display: flex;
@@ -16,6 +16,7 @@
 
         .experience-container {
             width: 100%;
+            height: 100vh;
             max-width: 600px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
@@ -28,7 +29,7 @@
 
         .experience-container h2 {
             text-align: center;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #860202, #6e0404);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -44,7 +45,7 @@
         }
 
         .form-toggle-label {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #860202, #6e0404);
             color: white;
             border: none;
             padding: 16px 24px;
@@ -131,7 +132,7 @@
 
         .exp-form button {
             padding: 16px;
-            background: linear-gradient(135deg, #48bb78, #38a169);
+            background: linear-gradient(135deg, #860202, #6e0404);
             border: none;
             color: white;
             border-radius: 12px;
@@ -142,7 +143,7 @@
         }
 
         .exp-form button:hover {
-            background: linear-gradient(135deg, #38a169, #2f855a);
+            background: linear-gradient(135deg, #860202, #6e0404);
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(72, 187, 120, 0.3);
         }

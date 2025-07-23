@@ -36,14 +36,19 @@ export class EditexperincesComponent {
   }
 
   storeStudentExperience() {
-    this.studentProfileService.storeStudentExperience(this.experience).subscribe(() => {
-      this.experience = { job_title: '', company_name: '', start_date: '', end_date: '' };
-      this.getStudentExperience();
+    this.studentProfileService.storeStudentExperience(this.experience).subscribe({
+      next: () => {
+        this.experience = { job_title: '', company_name: '', start_date: '', end_date: '' };
+        this.getStudentExperience();
+      },
+      error: (err) => {
+        this.error.push(err.error.message);
+      }
     });
   }
 
   openEditForm(exp: StudentExperience) {
-    this.editExperience = { ...exp }; // انسخ الداتا للفورم
+    this.editExperience = { ...exp }; 
     this.showEditFormId = exp.id!;
   }
 

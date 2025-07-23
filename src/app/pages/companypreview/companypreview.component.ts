@@ -6,13 +6,13 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-companypreview',
   imports: [RouterLink],
-  templateUrl: './companypreview.component.html',
+templateUrl: './companypreview.component.html',
   styleUrl: './companypreview.component.css'
 })
 export class CompanypreviewComponent {
   company: any;
   isOwnProfile: boolean = false;
-
+  user: any;
   constructor(
     private route: ActivatedRoute,
     private CompanyProfileService: CompanyProfileService
@@ -20,6 +20,7 @@ export class CompanypreviewComponent {
 
   ngOnInit(): void {
     const urlId = this.route.snapshot.paramMap.get('id');
+    this.user=localStorage.getItem('user');
 
     if (urlId) {
       // Student viewing a company

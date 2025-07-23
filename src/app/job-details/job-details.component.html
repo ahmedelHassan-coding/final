@@ -15,7 +15,7 @@
   <div class="mb-4">
     <h5 class="text-danger">Job Details</h5>
     <p class="mb-1"><strong>Type:</strong> {{ job.employment_type || job.type || 'N/A' }}</p>
-    <p class="mb-1"><strong>Salary:</strong> {{ job.salary_from || job.min_salary || 'N/A' }} - {{ job.salary_to || job.max_salary || 'N/A' }}</p>
+    <p class="mb-1"><strong>Salary:</strong> {{ job.min_salary || 'N/A' }}</p>
     <p class="mb-1"><strong>Description:</strong> {{ job.description || 'No description provided.' }}</p>
   </div>
 
@@ -29,7 +29,7 @@
   <!-- requirements -->
   <div *ngIf="job.requirements" class="mb-4">
     <h5 class="text-danger">Requirements</h5>
-    <p class="text-muted">{{ job.requirement }}</p>
+    <p class="text-muted">{{ job.requirements }}</p>
   </div>
 
   <!-- Company Info -->
