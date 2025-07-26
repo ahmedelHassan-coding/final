@@ -12,61 +12,63 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-company-info',
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, RouterLink],
   templateUrl: './company-info.component.html',
   styleUrl: './company-info.component.css',
 })
 export class CompanyInfoComponent {
   companyForm: FormGroup;
+  errorMessages: string[] = [];
+
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router
   ) {
     this.companyForm = this.fb.group({
-      name: [''],
-      email: [''],
-      address: [''],
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', Validators.required],
       services: [''],
-      password: [''],
-      password_confirmation: [''],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password_confirmation: ['', Validators.required],
     });
   }
-  errorMessages: string[] = [];
-
 
   successregistration() {
     this.errorMessages = [];
+
     if (this.companyForm.invalid) {
-      this.errorMessages.push('Please fill in required fields.');
+      this.errorMessages.push('Please fill in all required fields correctly.');
+      this.companyForm.markAllAsTouched();
       return;
     }
+
     const form = this.companyForm.value;
     if (form.password !== form.password_confirmation) {
       this.errorMessages.push('Passwords do not match.');
       return;
     }
+
     const formData = new FormData();
     formData.append('name', form.name);
     formData.append('address', form.address);
     formData.append('email', form.email);
-    formData.append('services', form.services);
+    formData.append('services', form.services || '');
     formData.append('password', form.password);
     formData.append('password_confirmation', form.password_confirmation);
 
     this.auth.registerCompany(formData).subscribe({
       next: (response) => {
-        // Add null check for response and token
         if (response && response.token) {
-          // Use auth service method for consistent token storage
           this.auth.storeUserSession({
             token: response.token,
             user: 'company'
           });
-          
           this.router.navigate(['/companypreview']);
         } else {
-          this.errorMessages.push('Invalid response from server. Please try again.');
+          this.errorMessages.push('Invalid response from server.');
         }
       },
       error: (err) => {
@@ -74,16 +76,13 @@ export class CompanyInfoComponent {
           const messages = Object.values(err.error.errors).flat();
           this.errorMessages = messages as string[];
         } else {
-          this.errorMessages = [err.error.message || 'Unknown error'];
+          this.errorMessages = [err.error.message || 'Unknown error occurred.'];
         }
       },
     });
-
-
-
-
-
-
   }
 
+  get f() {
+    return this.companyForm.controls;
+  }
 }

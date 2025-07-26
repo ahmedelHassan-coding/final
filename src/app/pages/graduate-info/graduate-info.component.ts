@@ -5,22 +5,22 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service.service';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http'; 
-
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-graduate-info',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
-
   templateUrl: './graduate-info.component.html',
   styleUrls: ['./graduate-info.component.css'],
 })
 export class GraduateInfoComponent {
   graduateForm: FormGroup;
+  errorMessages: string[] = [];
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -30,19 +30,35 @@ export class GraduateInfoComponent {
     this.graduateForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      phone: [''],
-      address: [''],
+      phone: ['', [
+        Validators.required,
+        Validators.pattern(/^(010|011|012|015)[0-9]{8}$/)
+      ]],
+      address: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      age: [''],
-      faculty: [''],
-      university: [''],
-      gender: [''],
-      duration_track: [''],
-      track: [''],
+      age: ['', [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(100)
+      ]],
+      faculty: ['', Validators.required],
+      university: ['', Validators.required],
+      gender: ['', Validators.required],
+      duration_track: ['', Validators.required],
+      track: ['', Validators.required],
       image: [null],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       password_confirmation: ['', Validators.required],
     });
+  }
+onPhoneInput(event: any) {
+  const input = event.target;
+  input.value = input.value.replace(/[^0-9]/g, '');
+  this.graduateForm.get('phone')?.setValue(input.value);
+}
+
+  get f() {
+    return this.graduateForm.controls;
   }
 
   onFileChange(event: any) {
@@ -52,15 +68,11 @@ export class GraduateInfoComponent {
     }
   }
 
-  errorMessages: string[] = [];
-
   successregistration() {
+    this.submitted = true;
     this.errorMessages = [];
 
-    if (this.graduateForm.invalid) {
-      this.errorMessages.push('Please fill in required fields.');
-      return;
-    }
+    
 
     const form = this.graduateForm.value;
 
@@ -88,14 +100,11 @@ export class GraduateInfoComponent {
 
     this.auth.registerStudent(formData).subscribe({
       next: (response) => {
-        // Add null check for response and token
         if (response && response.token) {
-          // Use auth service method for consistent token storage
           this.auth.storeUserSession({
             token: response.token,
-            user: 'student'
+            user: 'student',
           });
-          
           this.router.navigate(['/graduateprofile']);
         } else {
           this.errorMessages.push('Invalid response from server. Please try again.');
@@ -112,4 +121,3 @@ export class GraduateInfoComponent {
     });
   }
 }
-

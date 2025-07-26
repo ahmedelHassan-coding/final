@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router,ActivatedRoute, RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; // added Validators
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { CompanyProfileService } from '../../services/company-profile.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,9 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './companyprofile.component.html',
   styleUrls: ['./companyprofile.component.css'],
 })
-export class CompanyprofileComponent {
+export class CompanyprofileComponent implements OnInit {
   companyForm: FormGroup;
   errorMessages: string[] = [];
+  submitted = false; // added to track form submission
 
   constructor(
     private fb: FormBuilder,
@@ -22,16 +23,16 @@ export class CompanyprofileComponent {
     private router: Router
   ) {
     this.companyForm = this.fb.group({
-      name: [''],
-      specialization: [''],
-      type: [''],
-      team_size: [''],
-      founded: [''],
-      country: [''],
-      address: [''],
-      about: [''],
-      email: [''],
-      phone: [''],
+      name: ['', Validators.required],
+      specialization: ['', Validators.required],
+      type: ['', Validators.required],
+      team_size: ['', Validators.required],
+      founded: ['', Validators.required],
+      country: ['', Validators.required],
+      address: ['', Validators.required],
+      about: ['', [Validators.required, Validators.minLength(20)]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern(/^[\d\+\-\s]{8,}$/)]],
       website: [''],
       facebook: [''],
       linkedin: [''],
@@ -39,6 +40,10 @@ export class CompanyprofileComponent {
       image: [null],
       cover_image: [null],
     });
+  }
+
+  get f() {
+    return this.companyForm.controls;
   }
 
   ngOnInit() {
@@ -64,19 +69,21 @@ export class CompanyprofileComponent {
   }
 
   onSubmit() {
+    this.submitted = true; // track that submit was attempted
     this.errorMessages = [];
 
-    const form = this.companyForm.value;
+    if (this.companyForm.invalid) {
+      return; // prevent submission if invalid
+    }
 
-    // Send as JSON - only send non-empty values
+    const form = this.companyForm.value;
     const jsonData: any = {};
 
     if (form.name) jsonData.name = form.name;
     if (form.specialization) jsonData.specialization = form.specialization;
     if (form.type) jsonData.type = form.type;
     if (form.team_size) jsonData.team_size = form.team_size;
-    if (form.founded)
-      jsonData.founded = form.founded ? String(form.founded) : '';
+    if (form.founded) jsonData.founded = String(form.founded);
     if (form.country) jsonData.country = form.country;
     if (form.address) jsonData.address = form.address;
     if (form.about) jsonData.about = form.about;
