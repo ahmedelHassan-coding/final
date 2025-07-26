@@ -1,157 +1,139 @@
-<header class="header">
-      <div class="container">
-        <div class="logo">
-          <h1>company</h1>
-          <span>Employer Dashboard</span>
-        </div>
-        
-      </div>
-    </header>
+<form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+  <div class="card">
+    <h3>Company Information</h3>
 
-<main class="main">
-      <div class="container">
-        <!-- Company Information Section -->
-  <section class="section" id="profile">
-  <div class="section-header">
-    <h2>Company Profile</h2>
+    <!-- Company Name -->
+    <div class="form-group">
+      <label for="company-name">Company Name</label>
+      <div *ngIf="(f['name'].invalid && (f['name'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['name'].errors?.['required']">Company name is required.</div>
+        <div *ngIf="f['name'].errors?.['minlength']">Minimum 2 characters required.</div>
+      </div>
+      <input type="text" id="company-name" formControlName="name" placeholder="Enter your company name">
+    </div>
+
+    <!-- Industry -->
+    <div class="form-group">
+      <label for="industry">Industry</label>
+      <div *ngIf="(f['specialization'].invalid && (f['specialization'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['specialization'].errors?.['required']">Industry is required.</div>
+      </div>
+      <select id="industry" formControlName="specialization">
+        <option value="">Select Industry</option>
+        <option value="software">Software & Technology</option>
+        <option value="design">Design & Creative</option>
+        <option value="marketing">Marketing & Advertising</option>
+        <option value="finance">Finance & Banking</option>
+        <option value="healthcare">Healthcare</option>
+        <option value="education">Education</option>
+        <option value="retail">Retail & E-commerce</option>
+      </select>
+    </div>
+
+    <!-- Company Type -->
+    <div class="form-group">
+      <label for="company-type">Company Type</label>
+      <div *ngIf="(f['type'].invalid && (f['type'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['type'].errors?.['required']">Company type is required.</div>
+      </div>
+      <select id="company-type" formControlName="type">
+        <option value="">Select Company Type</option>
+        <option value="startup">Startup</option>
+        <option value="sme">SME</option>
+        <option value="enterprise">Enterprise</option>
+      </select>
+    </div>
+
+    <!-- Team Size -->
+    <div class="form-group">
+      <label for="team-size">Team Size</label>
+      <div *ngIf="(f['team_size'].invalid && (f['team_size'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['team_size'].errors?.['required']">Team size is required.</div>
+      </div>
+      <select id="team-size" formControlName="team_size">
+        <option value="">Select Team Size</option>
+        <option value="1-10">1-10 employees</option>
+        <option value="11-50">11-50 employees</option>
+        <option value="51-200">51-200 employees</option>
+        <option value="201-500">201-500 employees</option>
+        <option value="500+">500+ employees</option>
+      </select>
+    </div>
+
+    <!-- Founded Date -->
+    <div class="form-group">
+      <label for="founded">Founded</label>
+      <div *ngIf="(f['founded'].invalid && (f['founded'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['founded'].errors?.['required']">Founded date is required.</div>
+      </div>
+      <input type="date" id="founded" formControlName="founded">
+    </div>
+
+    <!-- Country -->
+    <div class="form-group">
+      <label for="country">Country</label>
+      <div *ngIf="(f['country'].invalid && (f['country'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['country'].errors?.['required']">Country is required.</div>
+      </div>
+      <select id="country" formControlName="country">
+        <option value="">Select Country</option>
+        <option value="egypt">Egypt</option>
+        <option value="uae">UAE</option>
+        <option value="saudi">Saudi Arabia</option>
+        <option value="lebanon">Lebanon</option>
+        <option value="jordan">Jordan</option>
+      </select>
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Address</label>
+      <div *ngIf="(f['address'].invalid && (f['address'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['address'].errors?.['required']">Address is required.</div>
+        <div *ngIf="f['address'].errors?.['minlength']">Minimum 5 characters required.</div>
+      </div>
+      <input type="text" id="address" formControlName="address" placeholder="City, Area, Street Name">
+    </div>
   </div>
 
-  <!-- عرض رسائل الأخطاء -->
-  <div *ngIf="errorMessages.length > 0" class="alert alert-danger">
-    <ul>
-      <li *ngFor="let error of errorMessages">{{ error }}</li>
-    </ul>
+  <!-- About Company -->
+  <div class="card">
+    <h3>About the Company</h3>
+    <div class="form-group">
+      <label for="company-description">Company Description</label>
+      <div *ngIf="(f['about'].invalid && (f['about'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['about'].errors?.['required']">Company description is required.</div>
+        <div *ngIf="f['about'].errors?.['minlength']">Minimum 20 characters required.</div>
+      </div>
+      <textarea id="company-description" rows="6" formControlName="about"></textarea>
+    </div>
   </div>
 
-  <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
-    <div>
-      <!-- Company Information -->
-      <div class="card">
-        <h3>Company Information</h3>
-        <div class="form-group">
-          <label for="company-name">Company Name</label>
-          <input type="text" id="company-name" formControlName="name" placeholder="Enter your company name">
-        </div>
-
-        <div class="form-group">
-          <label for="industry">Industry</label>
-          <select id="industry" formControlName="specialization">
-            <option value="">Select Industry</option>
-            <option value="software">Software & Technology</option>
-            <option value="design">Design & Creative</option>
-            <option value="marketing">Marketing & Advertising</option>
-            <option value="finance">Finance & Banking</option>
-            <option value="healthcare">Healthcare</option>
-            <option value="education">Education</option>
-            <option value="retail">Retail & E-commerce</option>
-          </select>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="company-type">Company Type</label>
-            <select id="company-type" formControlName="type">
-              <option value="startup">Startup</option>
-              <option value="sme">SME</option>
-              <option value="enterprise">Enterprise</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="team-size">Team Size</label>
-            <select id="team-size" formControlName="team_size">
-              <option value="1-10">1-10 employees</option>
-              <option value="11-50">11-50 employees</option>
-              <option value="51-200">51-200 employees</option>
-              <option value="201-500">201-500 employees</option>
-              <option value="500+">500+ employees</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="founded">Founded</label>
-            <input type="date" id="founded" formControlName="founded" placeholder="2020" min="1900" max="2025">
-          </div>
-
-          <div class="form-group">
-            <label for="country">Country</label>
-            <select id="country" formControlName="country">
-              <option value="egypt">Egypt</option>
-              <option value="uae">UAE</option>
-              <option value="saudi">Saudi Arabia</option>
-              <option value="lebanon">Lebanon</option>
-              <option value="jordan">Jordan</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" id="address" formControlName="address" placeholder="City, Area, Street Name">
-        </div>
-      </div>
-
-          </div>
-
-    <!-- About Section -->
-    <div class="card">
-      <h3>About the Company</h3>
+  <!-- Contact Details -->
+  <div class="card">
+    <h3>Contact Details</h3>
+    <div class="form-row">
+      <!-- Email -->
       <div class="form-group">
-        <label for="company-description">Company Description</label>
-        <textarea
-          id="company-description"
-          rows="6"
-          formControlName="about"
-          placeholder="Write a short paragraph describing who you are, what your company offers, your mission, vision, core values, target clients, and team culture."
-        ></textarea>
+        <label for="recruitment-email">Recruitment Email</label>
+        <div *ngIf="(f['email'].invalid && (f['email'].touched || submitted))" class="text-danger small mb-1">
+          <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+          <div *ngIf="f['email'].errors?.['email']">Invalid email format.</div>
+        </div>
+        <input type="email" id="recruitment-email" formControlName="email">
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <div *ngIf="(f['phone'].invalid && (f['phone'].touched || submitted))" class="text-danger small mb-1">
+          <div *ngIf="f['phone'].errors?.['required']">Phone number is required.</div>
+          <div *ngIf="f['phone'].errors?.['pattern']">Invalid Egyptian phone number.</div>
+        </div>
+        <input type="tel" id="phone" formControlName="phone">
       </div>
     </div>
+  </div>
 
-    <!-- Contact Details -->
-    <div class="card">
-      <h3>Contact Details</h3>
-      <div class="form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="recruitment-email">Recruitment Email</label>
-            <input type="email" id="recruitment-email" formControlName="email" placeholder="job@company.com">
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" formControlName="phone" placeholder="0123456789">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="website">Website</label>
-          <input type="url" id="website" formControlName="website" placeholder="https://yourcompany.com">
-        </div>
-
-        <div class="social-media">
-          <h4>Social Media</h4>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="facebook">Facebook</label>
-              <input type="url" id="facebook" formControlName="facebook" placeholder="https://facebook.com/yourcompany">
-            </div>
-
-            <div class="form-group">
-              <label for="linkedin">LinkedIn</label>
-              <input type="url" id="linkedin" formControlName="linkedin" placeholder="https://linkedin.com/company/yourcompany">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="instagram">Instagram (Optional)</label>
-            <input type="url" id="instagram" formControlName="instagram" placeholder="https://instagram.com/yourcompany">
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <button type="submit" class="btn btn-outline-success" style="margin-right: 10px; background-color: #bf272d; color: white;">Save Changes</button>
-  </form>
-</section>
+  <button type="submit" class="btn btn-outline-success">Save Changes</button>
+</form>
