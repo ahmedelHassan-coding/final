@@ -48,32 +48,28 @@
                 <div class="stat-icon jobs">📋</div>
                 <div class="stat-info">
                     <h3>Total Jobs</h3>
-                    <p class="stat-number">1,247</p>
-                    <span class="stat-change positive">+12% from last month</span>
+                    <p class="stat-number">{{totaljobs}}</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon users">👥</div>
                 <div class="stat-info">
-                    <h3>Total Users</h3>
-                    <p class="stat-number">8,563</p>
-                    <span class="stat-change positive">+8% from last month</span>
+                    <h3>Total Students</h3>
+                    <p class="stat-number">{{totalstudents}}</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon companies">🏢</div>
                 <div class="stat-info">
                     <h3>Total Companies</h3>
-                    <p class="stat-number">342</p>
-                    <span class="stat-change positive">+5% from last month</span>
+                    <p class="stat-number">{{totalcompanies}}</p>
                 </div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon applications">📄</div>
                 <div class="stat-info">
                     <h3>Total Applications</h3>
-                    <p class="stat-number">15,892</p>
-                    <span class="stat-change negative">-3% from last month</span>
+                    <p class="stat-number">{{totalapplications}}</p>
                 </div>
             </div>
         </div>
@@ -82,27 +78,13 @@
         <div class="dashboard-sections">
             <div class="dashboard-card">
                 <h3>Recent Job Postings</h3>
-                <div class="recent-items">
+                <div *ngFor="let job of jobs | slice:0:3" class="recent-items">
                     <div class="recent-item">
                         <div class="item-info">
-                            <h4>Senior Frontend Developer</h4>
-                            <p>TechCorp Inc.</p>
+                            <h4>{{job.title}}</h4>
+                            <p>{{job.company.name}}</p>
                         </div>
-                        <span class="item-date">2 hours ago</span>
-                    </div>
-                    <div class="recent-item">
-                        <div class="item-info">
-                            <h4>Data Analyst</h4>
-                            <p>Analytics Solutions</p>
-                        </div>
-                        <span class="item-date">5 hours ago</span>
-                    </div>
-                    <div class="recent-item">
-                        <div class="item-info">
-                            <h4>UX Designer</h4>
-                            <p>Design Studio</p>
-                        </div>
-                        <span class="item-date">1 day ago</span>
+                        <span class="item-date">{{job.created_at | date: 'yy-MM-dd'}}</span>
                     </div>
                 </div>
             </div>
@@ -110,32 +92,19 @@
             <div class="dashboard-card">
                 <h3>Recent Applications</h3>
                 <div class="recent-items">
-                    <div class="recent-item">
+                    <div *ngFor="let application of applications | slice:0:3" class="recent-item">
                         <div class="item-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>Applied for Marketing Manager</p>
+                            <h4>{{application.student.name}}</h4>
+                            <p>Applied for {{application.job_post.title}}</p>
                         </div>
-                        <span class="status pending">Pending</span>
+                        <span class="status {{application.status}}">{{application.status}}</span>
                     </div>
-                    <div class="recent-item">
-                        <div class="item-info">
-                            <h4>Mike Chen</h4>
-                            <p>Applied for Software Engineer</p>
-                        </div>
-                        <span class="status accepted">Accepted</span>
-                    </div>
-                    <div class="recent-item">
-                        <div class="item-info">
-                            <h4>Emily Davis</h4>
-                            <p>Applied for Product Manager</p>
-                        </div>
-                        <span class="status rejected">Rejected</span>
-                    </div>
+                    
                 </div>
             </div>
         </div>
 
-        <!-- Simple Chart Representation -->
+        <!-- Simple Chart Representation
         <div class="chart-section">
             <div class="dashboard-card">
                 <h3>Monthly Overview</h3>
@@ -160,7 +129,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 
     <!-- Users Content -->
@@ -193,91 +162,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let student of students">
                         <td>
                             <div class="user-info">
-                                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="User" class="user-avatar">
-                                <span>Sarah Johnson</span>
+                                <img src="http://localhost:8000/storage/{{student.image}}" alt="User" class="user-avatar">
+                                <span>{{student.name}}</span>
                             </div>
                         </td>
-                        <td>sarah.johnsonemail.com</td>
-                        <td><span class="status active">Active</span></td>
-                        <td>Jan 15, 2024</td>
+                        <td>{{student.email}}</td>
+                        <td><span class="status {{student.status}}">{{student.status | titlecase}}</span></td>
+                        <td>{{student.created_at | date:'MMM dd, yyyy'}}</td>
                         <td>
                             <button class="action-btn edit">Edit</button>
                             <button class="action-btn delete">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="user-info">
-                                <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="User" class="user-avatar">
-                                <span>Mike Chen</span>
-                            </div>
-                        </td>
-                        <td>mike.chenemail.com</td>
-                        <td><span class="status active">Active</span></td>
-                        <td>Feb 08, 2024</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="user-info">
-                                <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="User" class="user-avatar">
-                                <span>Emily Davis</span>
-                            </div>
-                        </td>
-                        <td>emily.davisemail.com</td>
-                        <td><span class="status inactive">Inactive</span></td>
-                        <td>Dec 22, 2023</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="user-info">
-                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="User" class="user-avatar">
-                                <span>David Wilson</span>
-                            </div>
-                        </td>
-                        <td>david.wilsonemail.com</td>
-                        <td><span class="status active">Active</span></td>
-                        <td>Mar 10, 2024</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="user-info">
-                                <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="User" class="user-avatar">
-                                <span>Lisa Brown</span>
-                            </div>
-                        </td>
-                        <td>lisa.brownemail.com</td>
-                        <td><span class="status active">Active</span></td>
-                        <td>Jan 28, 2024</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
 
-        <!-- Pagination -->
+        <!-- Pagination
         <div class="pagination">
             <button class="pagination-btn">Previous</button>
             <span class="pagination-info">Page 1 of 5</span>
             <button class="pagination-btn">Next</button>
-        </div>
+        </div> -->
     </main>
 
     <!-- Jobs Content -->
@@ -311,96 +221,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let job of jobs">
                         <td>
                             <div class="job-info">
-                                <h4>Senior Frontend Developer</h4>
-                                <p>Full-time • Remote</p>
+                                <h4>{{job.title}}</h4>
+                                <p>{{job.type}} • {{job.location}}</p>
                             </div>
                         </td>
-                        <td>TechCorp Inc.</td>
-                        <td>Mar 15, 2024</td>
-                        <td><span class="status open">Open</span></td>
-                        <td>24</td>
+                        <td>{{job.company.name}}</td>
+                        <td>{{job.created_at | date:'MMM dd, yyyy'}}</td>
+                        <td><span class="status {{job.status | lowercase}}">{{job.status | titlecase}}</span></td>
+                        <td>{{job.job_applications_count}}</td>
                         <td>
                             <button class="action-btn edit">Edit</button>
                             <button class="action-btn delete">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="job-info">
-                                <h4>Data Analyst</h4>
-                                <p>Full-time • On-site</p>
-                            </div>
-                        </td>
-                        <td>Analytics Solutions</td>
-                        <td>Mar 12, 2024</td>
-                        <td><span class="status open">Open</span></td>
-                        <td>18</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="job-info">
-                                <h4>UX Designer</h4>
-                                <p>Contract • Hybrid</p>
-                            </div>
-                        </td>
-                        <td>Design Studio</td>
-                        <td>Mar 10, 2024</td>
-                        <td><span class="status closed">Closed</span></td>
-                        <td>32</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="job-info">
-                                <h4>Marketing Manager</h4>
-                                <p>Full-time • Remote</p>
-                            </div>
-                        </td>
-                        <td>Growth Marketing Co.</td>
-                        <td>Mar 08, 2024</td>
-                        <td><span class="status open">Open</span></td>
-                        <td>15</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="job-info">
-                                <h4>Software Engineer</h4>
-                                <p>Full-time • On-site</p>
-                            </div>
-                        </td>
-                        <td>Startup Innovations</td>
-                        <td>Mar 05, 2024</td>
-                        <td><span class="status open">Open</span></td>
-                        <td>42</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
 
         <!-- Pagination -->
-        <div class="pagination">
+        <!-- <div class="pagination">
             <button class="pagination-btn">Previous</button>
             <span class="pagination-info">Page 1 of 8</span>
             <button class="pagination-btn">Next</button>
-        </div>
+        </div> -->
     </main>
 
     <!-- Companies Content -->
@@ -429,116 +276,39 @@
                         <th>Posted Jobs</th>
                         <th>Total Applications</th>
                         <th>Join Date</th>
-                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let company of companies">
                         <td>
                             <div class="company-info">
                                 <div class="company-logo">TC</div>
                                 <div>
-                                    <h4>TechCorp Inc.</h4>
-                                    <p>Technology</p>
+                                    <h4>{{company.name}}</h4>
+                                    <p>{{company.specialization}}</p>
                                 </div>
                             </div>
                         </td>
-                        <td>12</td>
-                        <td>248</td>
-                        <td>Jan 10, 2024</td>
-                        <td><span class="status active">Active</span></td>
+                        <td>{{company.posted_jobs}}</td>
+                        <td>{{company.job_applications_count}}</td>
+                        <td>{{company.created_at | date:'MMM dd, yyyy'}}</td>
                         <td>
                             <button class="action-btn view">View</button>
                             <button class="action-btn delete">Delete</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="company-info">
-                                <div class="company-logo">AS</div>
-                                <div>
-                                    <h4>Analytics Solutions</h4>
-                                    <p>Data & Analytics</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>8</td>
-                        <td>156</td>
-                        <td>Feb 15, 2024</td>
-                        <td><span class="status active">Active</span></td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="company-info">
-                                <div class="company-logo">DS</div>
-                                <div>
-                                    <h4>Design Studio</h4>
-                                    <p>Creative Services</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>5</td>
-                        <td>89</td>
-                        <td>Dec 08, 2023</td>
-                        <td><span class="status active">Active</span></td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="company-info">
-                                <div class="company-logo">GM</div>
-                                <div>
-                                    <h4>Growth Marketing Co.</h4>
-                                    <p>Marketing</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>15</td>
-                        <td>312</td>
-                        <td>Nov 22, 2023</td>
-                        <td><span class="status active">Active</span></td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="company-info">
-                                <div class="company-logo">SI</div>
-                                <div>
-                                    <h4>Startup Innovations</h4>
-                                    <p>Technology</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>7</td>
-                        <td>134</td>
-                        <td>Mar 01, 2024</td>
-                        <td><span class="status active">Active</span></td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
 
         <!-- Pagination -->
-        <div class="pagination">
+        <!-- <div class="pagination">
             <button class="pagination-btn">Previous</button>
             <span class="pagination-info">Page 1 of 3</span>
             <button class="pagination-btn">Next</button>
-        </div>
+        </div> -->
     </main>
 
     <!-- Applications Content -->
@@ -575,115 +345,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let application of applications">
                         <td>
                             <div class="user-info">
-                                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Applicant" class="user-avatar">
+                                <img src="http://localhost:8000/storage/{{application.student.image}}" alt="Applicant" class="user-avatar">
                                 <div>
-                                    <h4>Sarah Johnson</h4>
-                                    <p>sarah.johnsonemail.com</p>
+                                    <h4>{{application.student.name}}</h4>
+                                    <p>{{application.student.email}}</p>
                                 </div>
-                            </div>
+                            </div>  
                         </td>
-                        <td>Marketing Manager</td>
-                        <td>+1 (555) 123-4567</td>
-                        <td><a href="#" class="resume-link">Download Resume</a></td>
-                        <td>Mar 14, 2024</td>
-                        <td><span class="status pending">Pending</span></td>
+                        <td>{{application.job_post.title}}</td>
+                        <td>{{application.student.phone}}</td>
+                        <td><a href="http://localhost:8000/storage/{{application.cv}}" class="resume-link">Download Resume</a></td>
+                        <td>{{application.created_at |date: 'yy/mm/dd'}}</td>
+                        <td><span class="status {{application.status}}">{{application.status}}</span></td>
                         <td>
                             <button class="action-btn accept">Accept</button>
                             <button class="action-btn reject">Reject</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="user-info">
-                                <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Applicant" class="user-avatar">
-                                <div>
-                                    <h4>Mike Chen</h4>
-                                    <p>mike.chenemail.com</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>Software Engineer</td>
-                        <td>+1 (555) 987-6543</td>
-                        <td><a href="#" class="resume-link">Download Resume</a></td>
-                        <td>Mar 13, 2024</td>
-                        <td><span class="status accepted">Accepted</span></td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="user-info">
-                                <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Applicant" class="user-avatar">
-                                <div>
-                                    <h4>Emily Davis</h4>
-                                    <p>emily.davisemail.com</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>UX Designer</td>
-                        <td>+1 (555) 456-7890</td>
-                        <td><a href="#" class="resume-link">Download Resume</a></td>
-                        <td>Mar 12, 2024</td>
-                        <td><span class="status rejected">Rejected</span></td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="user-info">
-                                <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Applicant" class="user-avatar">
-                                <div>
-                                    <h4>David Wilson</h4>
-                                    <p>david.wilsonemail.com</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>Data Analyst</td>
-                        <td>+1 (555) 321-0987</td>
-                        <td><a href="#" class="resume-link">Download Resume</a></td>
-                        <td>Mar 11, 2024</td>
-                        <td><span class="status pending">Pending</span></td>
-                        <td>
-                            <button class="action-btn accept">Accept</button>
-                            <button class="action-btn reject">Reject</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="user-info">
-                                <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=50&h=50&fit=crop" alt="Applicant" class="user-avatar">
-                                <div>
-                                    <h4>Lisa Brown</h4>
-                                    <p>lisa.brownemail.com</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>Frontend Developer</td>
-                        <td>+1 (555) 654-3210</td>
-                        <td><a href="#" class="resume-link">Download Resume</a></td>
-                        <td>Mar 10, 2024</td>
-                        <td><span class="status accepted">Accepted</span></td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
 
-        <!-- Pagination -->
-        <div class="pagination">
-            <button class="pagination-btn">Previous</button>
-            <span class="pagination-info">Page 1 of 12</span>
-            <button class="pagination-btn">Next</button>
-        </div>
     </main>
 </div>
