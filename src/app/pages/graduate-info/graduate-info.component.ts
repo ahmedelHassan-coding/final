@@ -105,7 +105,7 @@ onPhoneInput(event: any) {
             token: response.token,
             user: 'student',
           });
-          this.router.navigate(['/graduateprofile']);
+          window.location.href = '/graduateprofile';
         } else {
           this.errorMessages.push('Invalid response from server. Please try again.');
         }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -45,10 +45,12 @@ export class LoginComponent {
           });
           
           if (res.user_type === 'company') {
-            this.router.navigate(['/companypreview']);
+            window.location.href = '/companypreview';
 
           } else if (res.user_type === 'student') {
-            this.router.navigate(['/graduateprofile']);
+            window.location.href = '/graduateprofile';
+          } else if (res.user_type === 'admin') {
+            window.location.href = '/admindashboard';
           }
         } else {
           this.errorMessages.push('Invalid response from server. Please try again.');

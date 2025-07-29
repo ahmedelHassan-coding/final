@@ -130,6 +130,8 @@ export const routes: Routes = [
   {
     path: 'graduateprofile',
     component: GraduateprofileComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['student'] }
   },
   {
     path: 'editskills',
@@ -159,6 +161,8 @@ export const routes: Routes = [
   {
     path: 'admindashboard',
     component: AdmindashboardComponent,
+    canActivate: [RoleGuard],
+    data: { roles: ['admin'] }
   },
   {
     path: 'job/:id',
