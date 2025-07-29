@@ -1,79 +1,272 @@
-<div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="images/im1.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="images/im2.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="im1.png" class="d-block w-100" alt="...">
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-background">
+    <div class="hero-gradient"></div>
+    <div class="hero-pattern"></div>
+  </div>
+  
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text animate-fadeInUp">
+        <h1 class="hero-title">
+          Welcome to <span class="gradient-text">ITI-GTS</span>
+        </h1>
+        <p class="hero-subtitle">
+          Connecting talented graduates with innovative companies through our comprehensive tracking system
+        </p>
+        <div class="hero-buttons">
+          <a routerLink="/graduate-info" class="btn btn-primary btn-lg">
+            <svg class="btn-icon" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+            </svg>
+            Join as Graduate
+          </a>
+          <a routerLink="/company-info" class="btn btn-secondary btn-lg">
+            <svg class="btn-icon" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"/>
+            </svg>
+            Join as Company
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-visual animate-fadeInRight">
+        <div class="hero-card">
+          <div class="card-header">
+            <div class="card-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="code-line">
+              <span class="code-keyword">const</span>
+              <span class="code-variable">success</span>
+              <span class="code-operator">=</span>
+              <span class="code-function">connectTalent</span>
+              <span class="code-bracket">()</span>
+            </div>
+            <div class="code-line">
+              <span class="code-keyword">if</span>
+              <span class="code-bracket">(</span>
+              <span class="code-variable">graduate</span>
+              <span class="code-operator">&&</span>
+              <span class="code-variable">company</span>
+              <span class="code-bracket">)</span>
+              <span class="code-bracket">{</span>
+            </div>
+            <div class="code-line indent">
+              <span class="code-function">createOpportunity</span>
+              <span class="code-bracket">()</span>
+            </div>
+            <div class="code-line">
+              <span class="code-bracket">}</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button> -->
-
-<div class="container px-4 px-lg-5">
-    <!-- Call to Action-->
-    <div class="card text-white  my-5 py-4 text-center" style="background-color: #bf272d;">
-        <h1 style="text-align: center;">ITI-GTS</h1>
-        <h4 style="text-align: center;">Graduates Traking System</h4>
-        <div class="card-body"><p class="text-white m-0" style="font-size: medium;">ITI- GTS is a comprehensive digital platform 
-            designed to monitor, evaluate, and enhance the career progression of information technology institute graduates 
-            in Egypt. ITI- GTS aims to I help graduate students by connecting them with technology companies and providing 
-            real-time insights into graduates' employment status, skill development, and companies needs.</p></div>
+  
+  <!-- Floating Elements -->
+  <div class="floating-elements">
+    <div class="floating-element" style="top: 20%; left: 10%; animation-delay: 0s;">
+      <svg width="40" height="40" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+      </svg>
     </div>
-    <!-- Heading Row-->
-    <div class="row gx-4 gx-lg-5 align-items-center my-5">
-        <div class="col-lg-7"><iframe width="700" height="315" src="https://www.youtube.com/embed/DIFCMtzg7xg?si=WKm4GC6lntL4FwPa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-        <div class="col-lg-5">
-            <h1 class="font-weight-light">Graduates Review about ITI Training</h1>
-            <p>،، The training was intense and required full commitment, but it was worth it. The curriculum is up-to-date with the market demands, and the capstone project helped me build a strong portfolio. My only concern was the fast-paced schedule, which can be tough without strong time management ,,</p>
+    <div class="floating-element" style="top: 60%; right: 15%; animation-delay: 2s;">
+      <svg width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"/>
+      </svg>
+    </div>
+    <div class="floating-element" style="top: 30%; right: 5%; animation-delay: 4s;">
+      <svg width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card animate-fadeInUp" style="animation-delay: 0.1s;">
+        <div class="stat-icon">
+          <svg width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+          </svg>
         </div>
+        <div class="stat-content">
+          <h3 class="stat-number">100K+</h3>
+          <p class="stat-label">4 Months Graduates</p>
+        </div>
+      </div>
+      
+      <div class="stat-card animate-fadeInUp" style="animation-delay: 0.2s;">
+        <div class="stat-icon">
+          <svg width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-number">100K+</h3>
+          <p class="stat-label">9 Months Graduates</p>
+        </div>
+      </div>
+      
+      <div class="stat-card animate-fadeInUp" style="animation-delay: 0.3s;">
+        <div class="stat-icon">
+          <svg width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-number">500+</h3>
+          <p class="stat-label">Partner Companies</p>
+        </div>
+      </div>
+      
+      <div class="stat-card animate-fadeInUp" style="animation-delay: 0.4s;">
+        <div class="stat-icon">
+          <svg width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <h3 class="stat-number">95%</h3>
+          <p class="stat-label">Success Rate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text animate-slideInLeft">
+        <h2>About ITI-GTS</h2>
+        <p class="lead">
+          ITI-GTS is a comprehensive digital platform designed to monitor, evaluate, and enhance 
+          the career progression of Information Technology Institute graduates in Egypt.
+        </p>
+        <p>
+          Our platform aims to help graduate students by connecting them with technology companies 
+          and providing real-time insights into graduates' employment status, skill development, 
+          and companies' needs.
+        </p>
+        <div class="feature-list">
+          <div class="feature-item">
+            <svg class="feature-icon" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+            </svg>
+            <span>Real-time job matching</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-icon" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+            </svg>
+            <span>Career progression tracking</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-icon" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+            </svg>
+            <span>Industry insights and analytics</span>
+          </div>
+        </div>
+        <a routerLink="/aboutgts" class="btn btn-primary">
+          Learn More
+          <svg class="btn-icon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+          </svg>
+        </a>
+      </div>
+      
+      <div class="about-visual animate-slideInRight">
+        <div class="video-container">
+          <iframe 
+            width="100%" 
+            height="315" 
+            src="https://www.youtube.com/embed/DIFCMtzg7xg?si=WKm4GC6lntL4FwPa" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners Section -->
+<section class="partners-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="animate-fadeInUp">Industry Partners</h2>
+      <p class="animate-fadeInUp" style="animation-delay: 0.1s;">
+        Trusted by leading companies across Egypt
+      </p>
     </div>
     
-    <!-- Content Row-->
-    <div class="row gx-4 gx-lg-5">
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title" style="text-align: center;">4 Months Graduates till 2025</h2>
-                    <p class="card-text" style="text-align: center; font-size: larger;">+ 100 thousands</p>
-                </div>
-            </div>
+    <div class="partners-grid">
+      <div class="partner-card animate-fadeInUp" style="animation-delay: 0.1s;">
+        <img src="images/Etisalat.png" alt="Etisalat" class="partner-logo">
+      </div>
+      <div class="partner-card animate-fadeInUp" style="animation-delay: 0.2s;">
+        <img src="images/vodafone.png" alt="Vodafone" class="partner-logo">
+      </div>
+      <div class="partner-card animate-fadeInUp" style="animation-delay: 0.3s;">
+        <div class="partner-placeholder">
+          <svg width="60" height="60" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"/>
+          </svg>
+          <span>Partner Company</span>
         </div>
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title" style="text-align: center;">9 Months Graduates till 2025 </h2>
-                    <p class="card-text" style="text-align: center; font-size: larger;">+ 100 thousands</p>
-                </div>
-            </div>
+      </div>
+      <div class="partner-card animate-fadeInUp" style="animation-delay: 0.4s;">
+        <div class="partner-placeholder">
+          <svg width="60" height="60" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"/>
+          </svg>
+          <span>Partner Company</span>
         </div>
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title" style="text-align: center;">Short Trainings Graduates</h2>
-                    <p class="card-text" style="text-align: center; font-size: larger;">+ 100 thousands</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card text-white  my-5 py-4 text-center" style="background-color: #bf272d;">
-            <h1 style="text-align: center;">Industry Parteners</h1>
-            <img src="images/im3.jpg">
-        </div>
+      </div>
     </div>
-</div>
+    
+    <div class="text-center">
+      <a routerLink="/parteners" class="btn btn-secondary">
+        View All Partners
+        <svg class="btn-icon" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
 
-
-
-
-
-
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content text-center">
+      <h2 class="animate-fadeInUp">Ready to Start Your Journey?</h2>
+      <p class="animate-fadeInUp" style="animation-delay: 0.1s;">
+        Join thousands of graduates and companies already using ITI-GTS
+      </p>
+      <div class="cta-buttons animate-fadeInUp" style="animation-delay: 0.2s;">
+        <a routerLink="/graduate-info" class="btn btn-primary btn-lg">
+          Get Started as Graduate
+        </a>
+        <a routerLink="/company-info" class="btn btn-secondary btn-lg">
+          Join as Company
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
