@@ -1,5 +1,15 @@
-<app-header></app-header>
+<div class="main-wrapper">
+  <app-header></app-header>
 
-<router-outlet />
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
 
-<app-footer></app-footer>
+  <footer class="footer py-5" style="background-color: #bf272d;">
+    <div class="container px-4 px-lg-5">
+      <p class="m-0 text-center text-white">
+        © 2025 ITI, Intensive Code Camp (PHP), Graduation Project
+      </p>
+    </div>
+  </footer>
+</div>

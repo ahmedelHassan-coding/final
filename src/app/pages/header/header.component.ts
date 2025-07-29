@@ -38,6 +38,6 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('user');
     this.isLoggedIn = false;
     this.userName = null;
-    this.router.navigate(['/login']);
+    window.location.href='/login';
   }
 }

@@ -5,7 +5,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-company-info',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './company-info.component.html',
   styleUrl: './company-info.component.css',
 })
@@ -66,7 +66,7 @@ export class CompanyInfoComponent {
             token: response.token,
             user: 'company'
           });
-          this.router.navigate(['/companypreview']);
+          window.location.href = '/companypreview';
         } else {
           this.errorMessages.push('Invalid response from server.');
         }
