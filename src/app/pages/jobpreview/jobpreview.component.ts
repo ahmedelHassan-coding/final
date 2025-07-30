@@ -3,6 +3,8 @@ import { JobService } from '../../services/job.service';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth-service.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
 @Component({
   standalone: true,
   imports: [FormsModule,CommonModule],
@@ -25,7 +27,7 @@ export class JobpreviewComponent {
     is_remote= false;
     experience= '';
 
-  constructor(private jobService: JobService, private authService: AuthService) {}
+  constructor(private jobService: JobService, private authService: AuthService, private router: Router) {}
 
   onSubmit() {
 
@@ -46,6 +48,7 @@ export class JobpreviewComponent {
 this.jobService.storejobs(job).subscribe({
   next: () => {
     this.successMessage = 'Job posted successfully!';
+    this.router.navigate(['/jobmanagement']);
   },
   error: (error) => {
     console.error('Failed to post job:', error);

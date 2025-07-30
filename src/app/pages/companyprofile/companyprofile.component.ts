@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-company-profile',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
   templateUrl: './companyprofile.component.html',
   styleUrls: ['./companyprofile.component.css'],
 })

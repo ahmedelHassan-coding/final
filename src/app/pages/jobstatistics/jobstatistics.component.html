@@ -21,7 +21,7 @@
                         <tr *ngFor="let application of applications">
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <img src="http://localhost:8000/storage/{{application.student.image}}" alt="profile" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+                                    <img src="{{ application.student.image ? 'http://localhost:8000/storage/' + application.student.image : 'images/Default.jpg' }}" alt="profile" class="rounded-circle me-3" style="width: 40px; height: 40px;">
                                     <div>
                                         <h6 class="mb-0">{{application.student.name}}</h6>
                                         <small class="text-muted">{{application.student.email}}</small>

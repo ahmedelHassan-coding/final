@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { JobService } from '../../services/job.service';
+import { Router } from '@angular/router';
 
 @Component({
+
   selector: 'app-jobcontrol',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
@@ -14,11 +16,14 @@ import { JobService } from '../../services/job.service';
 export class JobcontrolComponent implements OnInit {
   jobForm: FormGroup;
   jobId: string | null = null;
+  error: string[] = [];
+  
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private jobService: JobService
+    private jobService: JobService,
+    private router: Router
   ) {
     this.jobForm = this.fb.group({
       title: [''],
@@ -32,7 +37,6 @@ export class JobcontrolComponent implements OnInit {
       max_salary: [''],
       experience: [''],
       expires_at: [''],
-      is_remote: [false],
       published: [false]
     });
   }
@@ -53,10 +57,11 @@ export class JobcontrolComponent implements OnInit {
   onSubmit(): void {
   if (this.jobId) {
     this.jobService.editjobs(this.jobId, this.jobForm.value).subscribe({
-      next: () => alert('✅ Job updated successfully'),
+      next: () => {
+        this.router.navigate(['/jobmanagement']);
+      },
       error: (err) => {
-        console.error('Error:', err);
-        alert('❌ Failed to update job');
+        this.error.push(err.error.message);
       }
     });
   }
