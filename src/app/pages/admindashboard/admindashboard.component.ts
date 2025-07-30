@@ -37,5 +37,28 @@ export class AdmindashboardComponent {
       this.totalcompanies = data.count;
     });
   }
-
+  deleteStudent(id: number) {
+    this.adminService.deleteStudent(id).subscribe(() => {
+      this.students = this.students.filter(student => student.id !== id);
+      this.totalstudents--;
+    });
+  }
+  deleteCompany(id: number) {
+    this.adminService.deleteCompany(id).subscribe(() => {
+      this.companies = this.companies.filter(company => company.id !== id);
+      this.totalcompanies--;
+    });
+  }
+  deleteJob(id: number) {
+    this.adminService.deleteJob(id).subscribe(() => {
+      this.jobs = this.jobs.filter(job => job.id !== id);
+      this.totaljobs--;
+    });
+  }
+  deleteApplication(id: number) {
+    this.adminService.deleteApplication(id).subscribe(() => {
+      this.applications = this.applications.filter(application => application.id !== id);
+      this.totalapplications--;
+    });
+  }
 }

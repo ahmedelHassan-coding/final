@@ -51,6 +51,10 @@
           <a class="nav-link" style="font-weight: bold;" routerLink="/companyprofile">profile</a>
         </li>
       </ul>
+      <ul *ngIf="userRole === 'admin'" class="navbar-nav me-auto mb-2 mb-lg-0">
+
+      </ul>
+
 
       <ng-container *ngIf="isLoggedIn">
         <button (click)="logout()"

@@ -1,374 +1,284 @@
+<input type="checkbox" id="theme-toggle" class="theme-toggle" />
 
-<input type="checkbox" id="theme-toggle" class="theme-toggle">
-
-<input type="radio" id="nav-dashboard" name="navigation" checked>
-<input type="radio" id="nav-users" name="navigation">
-<input type="radio" id="nav-jobs" name="navigation">
-<input type="radio" id="nav-companies" name="navigation">
-<input type="radio" id="nav-applications" name="navigation">
+<input type="radio" id="nav-dashboard" name="navigation" checked />
+<input type="radio" id="nav-users" name="navigation" />
+<input type="radio" id="nav-jobs" name="navigation" />
+<input type="radio" id="nav-companies" name="navigation" />
+<input type="radio" id="nav-applications" name="navigation" />
 
 <!-- Sidebar -->
 <nav class="sidebar">
-    <div class="sidebar-header">
-        <h2>Admin Panel</h2>
-    </div>
-    <ul class="sidebar-menu">
-        <li><label for="nav-dashboard" class="nav-link">Dashboard</label></li>
-        <li><label for="nav-users" class="nav-link">Users Management</label></li>
-        <li><label for="nav-jobs" class="nav-link">Jobs Management</label></li>
-        <li><label for="nav-companies" class="nav-link">Companies Overview</label></li>
-        <li><label for="nav-applications" class="nav-link">Job Applications</label></li>
-    </ul>
+  <div class="sidebar-header">
+    <h2>Admin Panel</h2>
+  </div>
+  <ul class="sidebar-menu">
+    <li><label for="nav-dashboard" class="nav-link">Dashboard</label></li>
+    <li><label for="nav-users" class="nav-link">Users Management</label></li>
+    <li><label for="nav-jobs" class="nav-link">Jobs Management</label></li>
+    <li>
+      <label for="nav-companies" class="nav-link">Companies Overview</label>
+    </li>
+    <li>
+      <label for="nav-applications" class="nav-link">Job Applications</label>
+    </li>
+  </ul>
 </nav>
 
 <!-- Main Content -->
 <div class="main-content">
-    <!-- Topbar -->
-    <header class="topbar">
-        <div class="topbar-content">
-            <h1 class="page-title">Dashboard</h1>
-            <div class="topbar-right">
-                <label for="theme-toggle" class="theme-switch">
-                    <span class="theme-icon">🌙</span>
-                </label>
-                <div class="admin-profile">
-                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="Admin" class="profile-pic">
-                    <span class="admin-name">John Admin</span>
+
+
+  <!-- Dashboard Content -->
+  <main class="content dashboard-content">
+    <!-- Statistics Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon jobs">📋</div>
+        <div class="stat-info">
+          <h3>Total Jobs</h3>
+          <p class="stat-number">{{ totaljobs }}</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon users">👥</div>
+        <div class="stat-info">
+          <h3>Total Students</h3>
+          <p class="stat-number">{{ totalstudents }}</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon companies">🏢</div>
+        <div class="stat-info">
+          <h3>Total Companies</h3>
+          <p class="stat-number">{{ totalcompanies }}</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon applications">📄</div>
+        <div class="stat-info">
+          <h3>Total Applications</h3>
+          <p class="stat-number">{{ totalapplications }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="dashboard-sections">
+      <div class="dashboard-card">
+        <h3>Recent Job Postings</h3>
+        <div *ngFor="let job of jobs | slice : 0 : 3" class="recent-items">
+          <div class="recent-item">
+            <div class="item-info">
+              <h4>{{ job.title }}</h4>
+              <p>{{ job.company.name }}</p>
+            </div>
+            <span class="item-date">{{
+              job.created_at | date : "yy-MM-dd"
+            }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-card">
+        <h3>Recent Applications</h3>
+        <div class="recent-items">
+          <div
+            *ngFor="let application of applications | slice : 0 : 3"
+            class="recent-item"
+          >
+            <div class="item-info">
+              <h4>{{ application.student.name }}</h4>
+              <p>Applied for {{ application.job_post.title }}</p>
+            </div>
+            <span class="status {{ application.status }}">{{
+              application.status
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Users Content -->
+  <main class="content users-content">
+  
+
+    <!-- Users Table -->
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Join Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>
+              <div class="user-info">
+                <img
+                  src="{{
+                    student.image
+                      ? 'http://localhost:8000/storage/' + student.image
+                      : 'images/Default.jpg'
+                  }}"
+                  alt=""
+                  class="profile-image rounded-circle"
+                  style="width: 50px; height: 50px"
+                />
+                <div>
+                  <h4>{{ student.name }}</h4>
+                  <p>{{ student.phone }}</p>
                 </div>
-                <button class="logout-btn">Logout</button>
-            </div>
-        </div>
-    </header>
+              </div>
+            </td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.created_at | date : "MMM dd, yyyy" }}</td>
+            <td>
+              <button (click)="deleteStudent(student.id)" class="action-btn delete">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <!-- Dashboard Content -->
-    <main class="content dashboard-content">
-        <!-- Statistics Cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon jobs">📋</div>
-                <div class="stat-info">
-                    <h3>Total Jobs</h3>
-                    <p class="stat-number">{{totaljobs}}</p>
+      
+  </main>
+
+  <!-- Jobs Content -->
+  <main class="content jobs-content">
+
+
+    <!-- Jobs Table -->
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Posted Date</th>
+            <th>Status</th>
+            <th>Applications</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let job of jobs">
+            <td>
+              <div class="job-info">
+                <h4>{{ job.title }}</h4>
+                <p>{{ job.type }} • {{ job.location }}</p>
+              </div>
+            </td>
+            <td>{{ job.company.name }}</td>
+            <td>{{ job.created_at | date : "MMM dd, yyyy" }}</td>
+            <td>
+              <span class="status {{ job.status | lowercase }}">{{
+                job.status | titlecase
+              }}</span>
+            </td>
+            <td>{{ job.job_applications_count }}</td>
+            <td>
+              <button (click)="deleteJob(job.id)" class="action-btn delete">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+   
+  </main>
+
+  <!-- Companies Content -->
+  <main class="content companies-content">
+ 
+    <!-- Companies Table -->
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Company Name</th>
+            <th>Posted Jobs</th>
+            <th>Total Applications</th>
+            <th>Join Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies">
+            <td>
+              <div class="company-info">
+                <div class="company-logo">TC</div>
+                <div>
+                  <h4>{{ company.name }}</h4>
+                  <p>{{ company.specialization }}</p>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon users">👥</div>
-                <div class="stat-info">
-                    <h3>Total Students</h3>
-                    <p class="stat-number">{{totalstudents}}</p>
+              </div>
+            </td>
+            <td>{{ company.posted_jobs }}</td>
+            <td>{{ company.job_applications_count }}</td>
+            <td>{{ company.created_at | date : "MMM dd, yyyy" }}</td>
+            <td>
+              <button (click)="deleteCompany(company.id)" class="action-btn delete">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Applications Content -->
+  <main class="content applications-content">
+   
+    <!-- Applications Table -->
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Applicant</th>
+            <th>Job Title</th>
+            <th>Phone Number</th>
+            <th>Resume</th>
+            <th>Applied Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let application of applications">
+            <td>
+              <div class="user-info">
+                <img src="{{ application.student.image ? 'http://localhost:8000/storage/' + application.student.image : 'images/Default.jpg' }}" alt="profile" class="rounded-circle me-3" style="width: 40px; height: 40px;">
+
+                <div>
+                  <h4>{{ application.student.name }}</h4>
+                  <p>{{ application.student.email }}</p>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon companies">🏢</div>
-                <div class="stat-info">
-                    <h3>Total Companies</h3>
-                    <p class="stat-number">{{totalcompanies}}</p>
-                </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon applications">📄</div>
-                <div class="stat-info">
-                    <h3>Total Applications</h3>
-                    <p class="stat-number">{{totalapplications}}</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="dashboard-sections">
-            <div class="dashboard-card">
-                <h3>Recent Job Postings</h3>
-                <div *ngFor="let job of jobs | slice:0:3" class="recent-items">
-                    <div class="recent-item">
-                        <div class="item-info">
-                            <h4>{{job.title}}</h4>
-                            <p>{{job.company.name}}</p>
-                        </div>
-                        <span class="item-date">{{job.created_at | date: 'yy-MM-dd'}}</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dashboard-card">
-                <h3>Recent Applications</h3>
-                <div class="recent-items">
-                    <div *ngFor="let application of applications | slice:0:3" class="recent-item">
-                        <div class="item-info">
-                            <h4>{{application.student.name}}</h4>
-                            <p>Applied for {{application.job_post.title}}</p>
-                        </div>
-                        <span class="status {{application.status}}">{{application.status}}</span>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-
-        <!-- Simple Chart Representation
-        <div class="chart-section">
-            <div class="dashboard-card">
-                <h3>Monthly Overview</h3>
-                <div class="simple-chart">
-                    <div class="chart-bar" style="--height: 80%;">
-                        <span class="bar-label">Jan</span>
-                    </div>
-                    <div class="chart-bar" style="--height: 65%;">
-                        <span class="bar-label">Feb</span>
-                    </div>
-                    <div class="chart-bar" style="--height: 90%;">
-                        <span class="bar-label">Mar</span>
-                    </div>
-                    <div class="chart-bar" style="--height: 75%;">
-                        <span class="bar-label">Apr</span>
-                    </div>
-                    <div class="chart-bar" style="--height: 85%;">
-                        <span class="bar-label">May</span>
-                    </div>
-                    <div class="chart-bar" style="--height: 95%;">
-                        <span class="bar-label">Jun</span>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </main>
-
-    <!-- Users Content -->
-    <main class="content users-content">
-        <!-- Filters -->
-        <div class="filters-section">
-            <div class="filter-tabs">
-                <input type="radio" id="all-users" name="user-filter" checked>
-                <label for="all-users" class="filter-tab">All Users</label>
-                
-                <input type="radio" id="active-users" name="user-filter">
-                <label for="active-users" class="filter-tab">Active</label>
-                
-                <input type="radio" id="inactive-users" name="user-filter">
-                <label for="inactive-users" class="filter-tab">Inactive</label>
-            </div>
-            <button class="add-btn">+ Add New User</button>
-        </div>
-
-        <!-- Users Table -->
-        <div class="table-container">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                        <th>Join Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let student of students">
-                        <td>
-                            <div class="user-info">
-                                <img src="http://localhost:8000/storage/{{student.image}}" alt="User" class="user-avatar">
-                                <span>{{student.name}}</span>
-                            </div>
-                        </td>
-                        <td>{{student.email}}</td>
-                        <td><span class="status {{student.status}}">{{student.status | titlecase}}</span></td>
-                        <td>{{student.created_at | date:'MMM dd, yyyy'}}</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Pagination
-        <div class="pagination">
-            <button class="pagination-btn">Previous</button>
-            <span class="pagination-info">Page 1 of 5</span>
-            <button class="pagination-btn">Next</button>
-        </div> -->
-    </main>
-
-    <!-- Jobs Content -->
-    <main class="content jobs-content">
-        <!-- Filters -->
-        <div class="filters-section">
-            <div class="filter-tabs">
-                <input type="radio" id="all-jobs" name="job-filter" checked>
-                <label for="all-jobs" class="filter-tab">All Jobs</label>
-                
-                <input type="radio" id="open-jobs" name="job-filter">
-                <label for="open-jobs" class="filter-tab">Open</label>
-                
-                <input type="radio" id="closed-jobs" name="job-filter">
-                <label for="closed-jobs" class="filter-tab">Closed</label>
-            </div>
-            <button class="add-btn">+ Add New Job</button>
-        </div>
-
-        <!-- Jobs Table -->
-        <div class="table-container">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Job Title</th>
-                        <th>Company</th>
-                        <th>Posted Date</th>
-                        <th>Status</th>
-                        <th>Applications</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let job of jobs">
-                        <td>
-                            <div class="job-info">
-                                <h4>{{job.title}}</h4>
-                                <p>{{job.type}} • {{job.location}}</p>
-                            </div>
-                        </td>
-                        <td>{{job.company.name}}</td>
-                        <td>{{job.created_at | date:'MMM dd, yyyy'}}</td>
-                        <td><span class="status {{job.status | lowercase}}">{{job.status | titlecase}}</span></td>
-                        <td>{{job.job_applications_count}}</td>
-                        <td>
-                            <button class="action-btn edit">Edit</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Pagination -->
-        <!-- <div class="pagination">
-            <button class="pagination-btn">Previous</button>
-            <span class="pagination-info">Page 1 of 8</span>
-            <button class="pagination-btn">Next</button>
-        </div> -->
-    </main>
-
-    <!-- Companies Content -->
-    <main class="content companies-content">
-        <!-- Filters -->
-        <div class="filters-section">
-            <div class="filter-tabs">
-                <input type="radio" id="all-companies" name="company-filter" checked>
-                <label for="all-companies" class="filter-tab">All Companies</label>
-                
-                <input type="radio" id="active-companies" name="company-filter">
-                <label for="active-companies" class="filter-tab">Active</label>
-                
-                <input type="radio" id="new-companies" name="company-filter">
-                <label for="new-companies" class="filter-tab">New This Month</label>
-            </div>
-            <button class="add-btn">+ Add Company</button>
-        </div>
-
-        <!-- Companies Table -->
-        <div class="table-container">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Company Name</th>
-                        <th>Posted Jobs</th>
-                        <th>Total Applications</th>
-                        <th>Join Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let company of companies">
-                        <td>
-                            <div class="company-info">
-                                <div class="company-logo">TC</div>
-                                <div>
-                                    <h4>{{company.name}}</h4>
-                                    <p>{{company.specialization}}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>{{company.posted_jobs}}</td>
-                        <td>{{company.job_applications_count}}</td>
-                        <td>{{company.created_at | date:'MMM dd, yyyy'}}</td>
-                        <td>
-                            <button class="action-btn view">View</button>
-                            <button class="action-btn delete">Delete</button>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Pagination -->
-        <!-- <div class="pagination">
-            <button class="pagination-btn">Previous</button>
-            <span class="pagination-info">Page 1 of 3</span>
-            <button class="pagination-btn">Next</button>
-        </div> -->
-    </main>
-
-    <!-- Applications Content -->
-    <main class="content applications-content">
-        <!-- Filters -->
-        <div class="filters-section">
-            <div class="filter-tabs">
-                <input type="radio" id="all-applications" name="application-filter" checked>
-                <label for="all-applications" class="filter-tab">All Applications</label>
-                
-                <input type="radio" id="pending-applications" name="application-filter">
-                <label for="pending-applications" class="filter-tab">Pending</label>
-                
-                <input type="radio" id="accepted-applications" name="application-filter">
-                <label for="accepted-applications" class="filter-tab">Accepted</label>
-                
-                <input type="radio" id="rejected-applications" name="application-filter">
-                <label for="rejected-applications" class="filter-tab">Rejected</label>
-            </div>
-        </div>
-
-        <!-- Applications Table -->
-        <div class="table-container">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Applicant</th>
-                        <th>Job Title</th>
-                        <th>Phone Number</th>
-                        <th>Resume</th>
-                        <th>Applied Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let application of applications">
-                        <td>
-                            <div class="user-info">
-                                <img src="http://localhost:8000/storage/{{application.student.image}}" alt="Applicant" class="user-avatar">
-                                <div>
-                                    <h4>{{application.student.name}}</h4>
-                                    <p>{{application.student.email}}</p>
-                                </div>
-                            </div>  
-                        </td>
-                        <td>{{application.job_post.title}}</td>
-                        <td>{{application.student.phone}}</td>
-                        <td><a href="http://localhost:8000/storage/{{application.cv}}" class="resume-link">Download Resume</a></td>
-                        <td>{{application.created_at |date: 'yy/mm/dd'}}</td>
-                        <td><span class="status {{application.status}}">{{application.status}}</span></td>
-                        <td>
-                            <button class="action-btn accept">Accept</button>
-                            <button class="action-btn reject">Reject</button>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-
-    </main>
+              </div>
+            </td>
+            <td>{{ application.job_post.title }}</td>
+            <td>{{ application.student.phone }}</td>
+            <td>
+              <a
+                href="http://localhost:8000/storage/{{ application.cv }}"
+                class="resume-link"
+                >Download Resume</a
+              >
+            </td>
+            <td>{{ application.created_at | date : "yy/mm/dd" }}</td>
+            <td>
+              <span class="status {{ application.status }}">{{
+                application.status
+              }}</span>
+            </td>
+            <td>
+              <button (click)="deleteApplication(application.id)" class="action-btn delete">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
 </div>
