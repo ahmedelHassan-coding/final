@@ -15,27 +15,23 @@
 
                   <div class="row">
                     <div class="col-md-6 mb-4">
-                      <div *ngIf="submitted && f['firstName'].errors" class="text-danger small mb-1">
-                        First name is required.
-                      </div>
                       <label class="form-label">First name</label>
                       <input type="text" class="form-control form-control-lg" formControlName="firstName" />
+                     <div *ngIf="submitted && f['firstName'].errors" class="text-danger small mb-1">
+                        First name is required.
+                      </div>
                     </div>
                     <div class="col-md-6 mb-4">
+                      <label class="form-label">Last name</label>
+                      <input type="text" class="form-control form-control-lg" formControlName="lastName" />
                       <div *ngIf="submitted && f['lastName'].errors" class="text-danger small mb-1">
                         Last name is required.
                       </div>
-                      <label class="form-label">Last name</label>
-                      <input type="text" class="form-control form-control-lg" formControlName="lastName" />
                     </div>
                   </div>
 
               <div class="row">
  <div class="col-md-6 mb-4">
-  <div *ngIf="submitted && f['phone'].errors" class="text-danger small mb-1">
-    <div *ngIf="f['phone'].errors['required']">Phone number is required.</div>
-    <div *ngIf="f['phone'].errors['pattern']">Phone must start with 010, 011, 012, or 015 and be 11 digits.</div>
-  </div>
   <label class="form-label">Phone Number</label>
   <input
     type="text"
@@ -44,60 +40,67 @@
     formControlName="phone"
     (input)="onPhoneInput($event)"
   />
+   <div *ngIf="submitted && f['phone'].errors" class="text-danger small mb-1">
+    <div *ngIf="f['phone'].errors['required']">Phone number is required.</div>
+    <div *ngIf="f['phone'].errors['pattern']">Phone must start with 010, 011, 012, or 015 and be 11 digits.</div>
+  </div>
 </div>
 
 </div>
 
 
                     <div class="col-md-6 mb-4">
-                      <div *ngIf="submitted && f['address'].errors" class="text-danger small mb-1">
-                        Address is required.
-                      </div>
+                     
                       <label class="form-label">Address</label>
                       <input type="text" class="form-control form-control-lg" formControlName="address" />
+                     <div *ngIf="submitted && f['address'].errors" class="text-danger small mb-1">
+                        Address is required.
+                      </div>
                     </div>
 
                     <div class="col-md-6 mb-4">
-                      <div *ngIf="submitted && f['email'].errors" class="text-danger small mb-1">
+                     
+                      <label class="form-label">Email</label>
+                      <input type="email" class="form-control form-control-lg" formControlName="email" />
+                     <div *ngIf="submitted && f['email'].errors" class="text-danger small mb-1">
                         <div *ngIf="f['email'].errors['required']">Email is required.</div>
                         <div *ngIf="f['email'].errors['email']">Email must be valid.</div>
                       </div>
-                      <label class="form-label">Email</label>
-                      <input type="email" class="form-control form-control-lg" formControlName="email" />
                     </div>
 
                     <div class="col-md-6 mb-4">
-                      <div *ngIf="submitted && f['age'].errors" class="text-danger small mb-1">
+                     
+                      <label class="form-label">Age</label>
+                      <input type="number" class="form-control form-control-lg" formControlName="age" />
+                     <div *ngIf="submitted && f['age'].errors" class="text-danger small mb-1">
                         <div *ngIf="f['age'].errors['required']">Age is required.</div>
                         <div *ngIf="f['age'].errors['min']">Age must be positive.</div>
                         <div *ngIf="f['age'].errors['max']">Age is too high.</div>
                       </div>
-                      <label class="form-label">Age</label>
-                      <input type="number" class="form-control form-control-lg" formControlName="age" />
                     </div>
 
                     <div class="col-md-6 mb-4">
-                      <div *ngIf="submitted && f['faculty'].errors" class="text-danger small mb-1">
-                        Faculty is required.
-                      </div>
+                     
                       <label class="form-label">Faculty</label>
                       <input type="text" class="form-control form-control-lg" formControlName="faculty" />
+                     <div *ngIf="submitted && f['faculty'].errors" class="text-danger small mb-1">
+                        Faculty is required.
+                      </div>
                     </div>
 
                     <div class="col-md-6 mb-4">
-                      <div *ngIf="submitted && f['university'].errors" class="text-danger small mb-1">
-                        University is required.
-                      </div>
+                      
                       <label class="form-label">University</label>
                       <input type="text" class="form-control form-control-lg" formControlName="university" />
+                    <div *ngIf="submitted && f['university'].errors" class="text-danger small mb-1">
+                        University is required.
+                      </div>
                     </div>
                   </div>
 
                   <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
                     <h6 class="mb-0 me-4">Gender: </h6>
-                    <div *ngIf="submitted && f['gender'].errors" class="text-danger small mb-1">
-                      Gender is required.
-                    </div>
+                    
                     <div class="form-check form-check-inline mb-0 me-4">
                       <input class="form-check-input" type="radio" value="female" formControlName="gender" />
                       <label class="form-check-label">Female</label>
@@ -106,26 +109,31 @@
                       <input class="form-check-input" type="radio" value="male" formControlName="gender" />
                       <label class="form-check-label">Male</label>
                     </div>
+                    <div *ngIf="submitted && f['gender'].errors" class="text-danger small mb-1">
+                      Gender is required.
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="col-md-6 mb-4">
-                      <div *ngIf="submitted && f['duration_track'].errors" class="text-danger small mb-1">
-                        Program is required.
-                      </div>
+                      
                       <label class="form-label">Program</label>
                       <select class="form-control form-control-lg" formControlName="duration_track">
                         <option disabled selected value="">Program</option>
                         <option value="Intensive Training Program">Intensive Training Program</option>
                         <option value="Professional training program">Professional training program</option>
                       </select>
+                      <div *ngIf="submitted && f['duration_track'].errors" class="text-danger small mb-1">
+                        Program is required.
+                      </div>
                     </div>
                     <div class="col-md-6 mb-4">
+                      
+                      <label class="form-label">Track</label>
+                      <input type="text" class="form-control form-control-lg" formControlName="track" />
                       <div *ngIf="submitted && f['track'].errors" class="text-danger small mb-1">
                         Track is required.
                       </div>
-                      <label class="form-label">Track</label>
-                      <input type="text" class="form-control form-control-lg" formControlName="track" />
                     </div>
                   </div>
 
@@ -135,20 +143,22 @@
                   </div>
 
                   <div class="mb-4">
-                    <div *ngIf="submitted && f['password'].errors" class="text-danger small mb-1">
-                      <div *ngIf="f['password'].errors['required']">Password is required.</div>
-                      <div *ngIf="f['password'].errors['minlength']">Minimum 6 characters.</div>
-                    </div>
+                  
                     <label class="form-label">Password</label>
                     <input type="password" class="form-control form-control-lg" formControlName="password" />
+                    <div *ngIf="submitted && f['password'].errors" class="text-danger small mb-1">
+                      <div *ngIf="f['password'].errors['required']">Password is required.</div>
+                      <div *ngIf="f['password'].errors['minlength']">Minimum 8 characters.</div>
+                    </div>
                   </div>
 
                   <div class="mb-4">
-                    <div *ngIf="submitted && f['password_confirmation'].errors" class="text-danger small mb-1">
-                      Confirm Password is required.
-                    </div>
+                    
                     <label class="form-label">Confirm Password</label>
                     <input type="password" class="form-control form-control-lg" formControlName="password_confirmation" />
+                  <div *ngIf="submitted && f['password_confirmation'].errors" class="text-danger small mb-1">
+                      Confirm Password is required.
+                    </div>
                   </div>
 
                   <div *ngIf="errorMessages.length > 0" class="alert alert-danger">

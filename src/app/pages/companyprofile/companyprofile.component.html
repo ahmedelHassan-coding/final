@@ -5,19 +5,16 @@
     <!-- Company Name -->
     <div class="form-group">
       <label for="company-name">Company Name</label>
+      <input type="text" id="company-name" formControlName="name" placeholder="Enter your company name">
       <div *ngIf="(f['name'].invalid && (f['name'].touched || submitted))" class="text-danger small mb-1">
         <div *ngIf="f['name'].errors?.['required']">Company name is required.</div>
         <div *ngIf="f['name'].errors?.['minlength']">Minimum 2 characters required.</div>
       </div>
-      <input type="text" id="company-name" formControlName="name" placeholder="Enter your company name">
     </div>
 
     <!-- Industry -->
     <div class="form-group">
       <label for="industry">Industry</label>
-      <div *ngIf="(f['specialization'].invalid && (f['specialization'].touched || submitted))" class="text-danger small mb-1">
-        <div *ngIf="f['specialization'].errors?.['required']">Industry is required.</div>
-      </div>
       <select id="industry" formControlName="specialization">
         <option value="">Select Industry</option>
         <option value="software">Software & Technology</option>
@@ -28,28 +25,28 @@
         <option value="education">Education</option>
         <option value="retail">Retail & E-commerce</option>
       </select>
+       <div *ngIf="(f['specialization'].invalid && (f['specialization'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['specialization'].errors?.['required']">Industry is required.</div>
+      </div>
     </div>
 
     <!-- Company Type -->
     <div class="form-group">
       <label for="company-type">Company Type</label>
-      <div *ngIf="(f['type'].invalid && (f['type'].touched || submitted))" class="text-danger small mb-1">
-        <div *ngIf="f['type'].errors?.['required']">Company type is required.</div>
-      </div>
       <select id="company-type" formControlName="type">
         <option value="">Select Company Type</option>
         <option value="startup">Startup</option>
         <option value="sme">SME</option>
         <option value="enterprise">Enterprise</option>
       </select>
+       <div *ngIf="(f['type'].invalid && (f['type'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['type'].errors?.['required']">Company type is required.</div>
+      </div>
     </div>
 
     <!-- Team Size -->
     <div class="form-group">
       <label for="team-size">Team Size</label>
-      <div *ngIf="(f['team_size'].invalid && (f['team_size'].touched || submitted))" class="text-danger small mb-1">
-        <div *ngIf="f['team_size'].errors?.['required']">Team size is required.</div>
-      </div>
       <select id="team-size" formControlName="team_size">
         <option value="">Select Team Size</option>
         <option value="1-10">1-10 employees</option>
@@ -58,23 +55,23 @@
         <option value="201-500">201-500 employees</option>
         <option value="500+">500+ employees</option>
       </select>
+       <div *ngIf="(f['team_size'].invalid && (f['team_size'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['team_size'].errors?.['required']">Team size is required.</div>
+      </div>
     </div>
 
     <!-- Founded Date -->
     <div class="form-group">
       <label for="founded">Founded</label>
-      <div *ngIf="(f['founded'].invalid && (f['founded'].touched || submitted))" class="text-danger small mb-1">
+      <input type="date" id="founded" formControlName="founded">
+       <div *ngIf="(f['founded'].invalid && (f['founded'].touched || submitted))" class="text-danger small mb-1">
         <div *ngIf="f['founded'].errors?.['required']">Founded date is required.</div>
       </div>
-      <input type="date" id="founded" formControlName="founded">
     </div>
 
     <!-- Country -->
     <div class="form-group">
       <label for="country">Country</label>
-      <div *ngIf="(f['country'].invalid && (f['country'].touched || submitted))" class="text-danger small mb-1">
-        <div *ngIf="f['country'].errors?.['required']">Country is required.</div>
-      </div>
       <select id="country" formControlName="country">
         <option value="">Select Country</option>
         <option value="egypt">Egypt</option>
@@ -83,16 +80,19 @@
         <option value="lebanon">Lebanon</option>
         <option value="jordan">Jordan</option>
       </select>
+      <div *ngIf="(f['country'].invalid && (f['country'].touched || submitted))" class="text-danger small mb-1">
+        <div *ngIf="f['country'].errors?.['required']">Country is required.</div>
+      </div>
     </div>
 
     <!-- Address -->
     <div class="form-group">
       <label for="address">Address</label>
-      <div *ngIf="(f['address'].invalid && (f['address'].touched || submitted))" class="text-danger small mb-1">
+      <input type="text" id="address" formControlName="address" placeholder="City, Area, Street Name">
+<div *ngIf="(f['address'].invalid && (f['address'].touched || submitted))" class="text-danger small mb-1">
         <div *ngIf="f['address'].errors?.['required']">Address is required.</div>
         <div *ngIf="f['address'].errors?.['minlength']">Minimum 5 characters required.</div>
       </div>
-      <input type="text" id="address" formControlName="address" placeholder="City, Area, Street Name">
     </div>
   </div>
 
@@ -101,11 +101,11 @@
     <h3>About the Company</h3>
     <div class="form-group">
       <label for="company-description">Company Description</label>
-      <div *ngIf="(f['about'].invalid && (f['about'].touched || submitted))" class="text-danger small mb-1">
+      <textarea id="company-description" rows="6" formControlName="about"></textarea>
+            <div *ngIf="(f['about'].invalid && (f['about'].touched || submitted))" class="text-danger small mb-1">
         <div *ngIf="f['about'].errors?.['required']">Company description is required.</div>
         <div *ngIf="f['about'].errors?.['minlength']">Minimum 20 characters required.</div>
       </div>
-      <textarea id="company-description" rows="6" formControlName="about"></textarea>
     </div>
   </div>
 
@@ -126,13 +126,13 @@
       <!-- Phone -->
       <div class="form-group">
         <label for="phone">Phone Number</label>
-        <div *ngIf="(f['phone'].invalid && (f['phone'].touched || submitted))" class="text-danger small mb-1">
+        <input type="tel" id="phone" formControlName="phone">
+                <div *ngIf="(f['phone'].invalid && (f['phone'].touched || submitted))" class="text-danger small mb-1">
           <div *ngIf="f['phone'].errors?.['required']">Phone number is required.</div>
           <div *ngIf="f['phone'].errors?.['pattern']">Invalid Egyptian phone number.</div>
           <div *ngIf="f['phone'].errors?.['maxlength']">phone number must be 11 characters.</div>
           <div *ngIf="f['phone'].errors?.['minlength']">phone number must be 11 characters.</div>
         </div>
-        <input type="tel" id="phone" formControlName="phone">
       </div>
     </div>
   </div>
@@ -142,29 +142,28 @@
       <!-- Facebook -->
       <div class="form-group">
         <label for="facebook">Facebook</label>
-        <div *ngIf="(f['facebook'].invalid && (f['facebook'].touched || submitted))" class="text-danger small mb-1">
+        <input type="url" id="facebook" formControlName="facebook" placeholder="https://www.facebook.com/yourcompany">
+       <div *ngIf="(f['facebook'].invalid && (f['facebook'].touched || submitted))" class="text-danger small mb-1">
           <div *ngIf="f['facebook'].errors?.['pattern']">Invalid Facebook URL.</div>
         </div>
-        <input type="url" id="facebook" formControlName="facebook" placeholder="https://www.facebook.com/yourcompany">
       </div>
 
       <!-- LinkedIn -->
       <div class="form-group">
         <label for="linkedin">LinkedIn</label>
-        <div *ngIf="(f['linkedin'].invalid && (f['linkedin'].touched || submitted))" class="text-danger small mb-1">
+        <input type="url" id="linkedin" formControlName="linkedin" placeholder="https://www.linkedin.com/company/yourcompany">
+              <div *ngIf="(f['linkedin'].invalid && (f['linkedin'].touched || submitted))" class="text-danger small mb-1">
           <div *ngIf="f['linkedin'].errors?.['pattern']">Invalid LinkedIn URL.</div>
         </div>
-        <input type="url" id="linkedin" formControlName="linkedin" placeholder="https://www.linkedin.com/company/yourcompany">
       </div>
 
       <!-- Instagram -->
       <div class="form-group">
         <label for="instagram">Instagram</label>
+        <input type="url" id="instagram" formControlName="instagram" placeholder="https://www.instagram.com/yourcompany">
         <div *ngIf="(f['instagram'].invalid && (f['instagram'].touched || submitted))" class="text-danger small mb-1">
           <div *ngIf="f['instagram'].errors?.['pattern']">Invalid Instagram URL.</div>
         </div>
-        <input type="url" id="instagram" formControlName="instagram" placeholder="https://www.instagram.com/yourcompany">
-      
       </div>
     </div>
     </div> 
