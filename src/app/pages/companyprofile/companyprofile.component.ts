@@ -32,11 +32,11 @@ export class CompanyprofileComponent implements OnInit {
       address: ['', Validators.required],
       about: ['', [Validators.required, Validators.minLength(20)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^[\d\+\-\s]{8,}$/)]],
-      website: [''],
-      facebook: [''],
-      linkedin: [''],
-      instagram: [''],
+      phone: ['', [Validators.required, Validators.pattern(/^[\d\+\-\s]{8,}$/), Validators.minLength(11), Validators.maxLength(11)]],
+      // website: ['', [Validators.required, Validators.pattern(/^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/)]],
+      facebook: ['', [this.websiteValidator]],
+      linkedin: ['', [this.websiteValidator]],
+      instagram: ['', [this.websiteValidator]],
       image: [null],
       cover_image: [null],
     });
@@ -66,6 +66,13 @@ export class CompanyprofileComponent implements OnInit {
     if (file) {
       this.companyForm.patchValue({ [field]: file });
     }
+  }
+
+  // Custom website URL validator
+  websiteValidator(control: import('@angular/forms').AbstractControl) {
+    if (!control.value) return null;
+    const pattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w\-._~:/?#[\]@!$&'()*+,;=]*)?$/i;
+    return pattern.test(control.value) ? null : { website: true };
   }
 
   onSubmit() {

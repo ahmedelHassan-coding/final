@@ -822,3 +822,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-secondary);
 }
+
+.stat-card{
+  border: 1px solid black;
+}
+/* .recent-items {
+
+} */

@@ -36,7 +36,6 @@
   <div class="mb-4">
     <h5 class="text-danger">Company Information</h5>
     <p class="mb-1"><strong>Company Name:</strong> {{ job.company.name || 'Unknown' }}</p>
-    <p class="mb-1"><strong>Category:</strong> {{ job.company.industry || 'N/A' }}</p>
     <p class="mb-1"><strong>Contact:</strong> {{ job.contact || job.company?.email || 'Not provided' }}</p>
   </div>
 

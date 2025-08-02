@@ -1,55 +1,90 @@
 <div class="dashboard-container">
-  
-  <h2> Job Dashboard</h2>
+  <h2>Job Dashboard</h2>
 
-  <!-- Edit Job Form -->
   <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="job-form">
+    <h3>Edit Job Details</h3>
 
-<h3>Edit Job Details</h3>
+    <!-- Error Alert -->
+    <div *ngIf="error.length" class="alert error-box">
+      <ul>
+        <li *ngFor="let e of error">{{ e }}</li>
+      </ul>
+    </div>
 
-<label for="title">Title</label>
-<input id="title" type="text" formControlName="title" required />
+    <!-- Title -->
+    <label for="title">Title</label>
+    <input id="title" type="text" formControlName="title" required />
+    <div *ngIf="jobForm.get('title')?.invalid && jobForm.get('title')?.touched" class="error-text">
+      Title is required.
+    </div>
 
-<label for="location">Location</label>
-<input id="location" type="text" formControlName="location" required />
+    <!-- Location -->
+    <label for="location">Location</label>
+    <input id="location" type="text" formControlName="location" required />
+    <div *ngIf="jobForm.get('location')?.invalid && jobForm.get('location')?.touched" class="error-text">
+      Location is required.
+    </div>
 
-<label for="type">Type</label>
-<select id="type" formControlName="type" required>
-  <option value="Full Time">Full Time</option>
-  <option value="Part Time">Part Time</option>
-  <option value="Internship">Internship</option>
-  <option value="Remote">Remote</option>
-</select>
+    <!-- Type -->
+    <label for="type">Type</label>
+    <select id="type" formControlName="type" required>
+      <option value="">-- Select --</option>
+      <option value="Full Time">Full Time</option>
+      <option value="Part Time">Part Time</option>
+      <option value="Internship">Internship</option>
+      <option value="Remote">Remote</option>
+    </select>
+    <div *ngIf="jobForm.get('type')?.invalid && jobForm.get('type')?.touched" class="error-text">
+      Type is required.
+    </div>
 
+    <!-- Description -->
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description" required></textarea>
+    <div *ngIf="jobForm.get('description')?.invalid && jobForm.get('description')?.touched" class="error-text">
+      <span *ngIf="jobForm.get('description')?.errors?.['required']">Description is required.</span>
+      <span *ngIf="jobForm.get('description')?.errors?.['minlength']">Must be at least 20 characters.</span>
+    </div>
 
+    <!-- Requirements -->
+    <label for="requirements">Requirements</label>
+    <textarea id="requirements" formControlName="requirements" required></textarea>
+    <div *ngIf="jobForm.get('requirements')?.invalid && jobForm.get('requirements')?.touched" class="error-text">
+      Requirements are required.
+    </div>
 
-<label for="skills">Skills</label>
-<textarea id="skills" formControlName="skills" required></textarea>
+    <!-- Responsibilities -->
+    <label for="responsibilities">Responsibilities</label>
+    <textarea id="responsibilities" formControlName="responsibilities" required></textarea>
+    <div *ngIf="jobForm.get('responsibilities')?.invalid && jobForm.get('responsibilities')?.touched" class="error-text">
+      Responsibilities are required.
+    </div>
 
-<label for="description">Description</label>
-<textarea id="description" formControlName="description" required></textarea>
+    <!-- Min Salary -->
+    <label for="min_salary"> Salary</label>
+    <input id="min_salary" type="number" formControlName="min_salary" placeholder="e.g. 5000" />
+    <div *ngIf="jobForm.get('min_salary')?.invalid && jobForm.get('min_salary')?.touched" class="error-text">
+      <span *ngIf="jobForm.get('min_salary')?.errors?.['required']">salary is required.</span>
+      <span *ngIf="jobForm.get('min_salary')?.errors?.['min']">Must be a positive number.</span>
+    </div>
 
-<label for="requirements">Requirements</label>
-<textarea id="requirements" formControlName="requirements" required></textarea>
+    <!-- Experience -->
+    <label for="experience">Experience</label>
+    <input id="experience" type="text" formControlName="experience" required />
+    <div *ngIf="jobForm.get('experience')?.invalid && jobForm.get('experience')?.touched" class="error-text">
+      Experience is required.
+    </div>
 
-<label for="responsibilities">Responsibilities</label>
-<textarea id="responsibilities" formControlName="responsibilities" required></textarea>
+    <br /><br />
 
-<label for="min_salary">Minimum Salary</label>
-<input id="min_salary" type="text" formControlName="min_salary" placeholder="e.g. 5000" />
+    <!-- Submit -->
+    <button type="submit" class="btn btn-outline-success" style="margin-right: 10px; background-color: #bf272d; color: white;">
+      Save Changes
+    </button>
 
-<label for="experience">Experience</label>
-<input id="experience" type="text" formControlName="experience" placeholder="e.g. 3 years" />
-
-
-<br><br>
-
-<button type="submit" class="btn btn-outline-success" style="margin-right: 10px; background-color: #bf272d; color: white;">
-  Save Changes
-</button>
-<button type="button" class="btn btn-outline-success" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobpreview">
-  Post New Job
-</button>
-</form>
-
+    <!-- Go to Post New Job -->
+    <button type="button" class="btn btn-outline-success" style="margin-right: 10px; background-color: #bf272d; color: white;" routerLink="/jobpreview">
+      Post New Job
+    </button>
+  </form>
 </div>

@@ -66,8 +66,8 @@
     <div class="dashboard-sections">
       <div class="dashboard-card">
         <h3>Recent Job Postings</h3>
-        <div *ngFor="let job of jobs | slice : 0 : 3" class="recent-items">
-          <div class="recent-item">
+        <div class="recent-items">
+          <div *ngFor="let job of jobs | slice : 0 : 3" class="recent-item">
             <div class="item-info">
               <h4>{{ job.title }}</h4>
               <p>{{ job.company.name }}</p>
@@ -105,7 +105,7 @@
 
     <!-- Users Table -->
     <div class="table-container">
-      <table class="data-table">
+      <table class="data-table table table-striped table-bordered">
         <thead>
           <tr>
             <th>Name</th>
@@ -153,7 +153,7 @@
 
     <!-- Jobs Table -->
     <div class="table-container">
-      <table class="data-table">
+      <table class="data-table table table-striped table-bordered">
         <thead>
           <tr>
             <th>Job Title</th>
@@ -196,7 +196,7 @@
  
     <!-- Companies Table -->
     <div class="table-container">
-      <table class="data-table">
+      <table class="data-table table table-striped table-bordered">
         <thead>
           <tr>
             <th>Company Name</th>
@@ -234,7 +234,7 @@
    
     <!-- Applications Table -->
     <div class="table-container">
-      <table class="data-table">
+      <table class="data-table table table-striped table-bordered">
         <thead>
           <tr>
             <th>Applicant</th>

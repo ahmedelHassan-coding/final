@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from '../../services/job.service';
-import { Router } from '@angular/router';
 
 @Component({
-
   selector: 'app-jobcontrol',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './jobcontrol.component.html',
-  styleUrls: ['./jobcontrol.component.css']
+  styleUrls: ['./jobcontrol.component.css'],
 })
 export class JobcontrolComponent implements OnInit {
   jobForm: FormGroup;
   jobId: string | null = null;
   error: string[] = [];
-  
 
   constructor(
     private fb: FormBuilder,
@@ -26,18 +28,18 @@ export class JobcontrolComponent implements OnInit {
     private router: Router
   ) {
     this.jobForm = this.fb.group({
-      title: [''],
-      location: [''],
-      type: [''],
+      title: ['', Validators.required],
+      location: ['', Validators.required],
+      type: ['', Validators.required],
       skills: [''],
-      description: [''],
-      requirements: [''],
-      responsibilities: [''],
-      min_salary: [''],
-      max_salary: [''],
-      experience: [''],
+      description: ['', [Validators.required, Validators.minLength(20)]],
+      requirements: ['', Validators.required],
+      responsibilities: ['', Validators.required],
+      min_salary: [null, [Validators.required, Validators.min(0)]],
+      max_salary: [null, [Validators.min(0)]],
+      experience: ['', Validators.required],
       expires_at: [''],
-      published: [false]
+      published: [false],
     });
   }
 
@@ -46,24 +48,31 @@ export class JobcontrolComponent implements OnInit {
     if (this.jobId) {
       this.jobService.getJobById(this.jobId).subscribe({
         next: (res) => this.jobForm.patchValue(res.data),
-        error: (err) => console.error('Error loading job:', err)
+        error: (err) => console.error('Error loading job:', err),
       });
-    }else{
-      console.log('no job id');
+    } else {
+      console.log('No job ID provided');
     }
-
   }
 
   onSubmit(): void {
-  if (this.jobId) {
-    this.jobService.editjobs(this.jobId, this.jobForm.value).subscribe({
-      next: () => {
-        this.router.navigate(['/jobmanagement']);
-      },
-      error: (err) => {
-        this.error.push(err.error.message);
-      }
-    });
-  }
-}
+    this.error = [];
+
+    if (this.jobForm.invalid) {
+      this.jobForm.markAllAsTouched();
+      this.error.push('Please correct the errors in the form.');
+      return;
+    }
+
+    if (this.jobId) {
+      this.jobService.editjobs(this.jobId, this.jobForm.value).subscribe({
+        next: () => this.router.navigate(['/jobmanagement']),
+        error: (err) => {
+          const errorMsg =
+            err?.error?.message || 'An unexpected error occurred.';
+          this.error.push(errorMsg);
+        },
+      });
+    }
+  }
 }

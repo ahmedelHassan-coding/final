@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -23,7 +23,7 @@ export class PaymentComponent implements OnInit {
   errorMessage = '';
   application: any;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     this.applicationId = this.route.snapshot.params['id'];
     this.http.get(`http://localhost:8000/api/company/jobs/applications/${this.applicationId}`).subscribe((res: any) => {
       this.application = res; 
@@ -55,7 +55,6 @@ export class PaymentComponent implements OnInit {
       return;
     }
 
-    // إرسال إلى Laravel
     this.http
       .post(`${environment.apiUrl}/pay`, {
         amount: this.amount,
@@ -66,6 +65,7 @@ export class PaymentComponent implements OnInit {
         next: (res: any) => {
           this.successMessage = 'payment success';
           this.loading = false;
+          return this.router.navigate(['/jobmanagement']);
         },
         error: (err) => {
           this.errorMessage = err.error?.error || 'payment failed';

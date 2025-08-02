@@ -30,17 +30,16 @@ export class GraduateInfoComponent {
     this.graduateForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      phone: ['', [
-        Validators.required,
-        Validators.pattern(/^(010|011|012|015)[0-9]{8}$/)
-      ]],
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^(010|011|012|015)[0-9]{8}$/),
+        ],
+      ],
       address: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      age: ['', [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(100)
-      ]],
+      age: ['', [Validators.required, Validators.min(1), Validators.max(100)]],
       faculty: ['', Validators.required],
       university: ['', Validators.required],
       gender: ['', Validators.required],
@@ -51,11 +50,12 @@ export class GraduateInfoComponent {
       password_confirmation: ['', Validators.required],
     });
   }
-onPhoneInput(event: any) {
-  const input = event.target;
-  input.value = input.value.replace(/[^0-9]/g, '');
-  this.graduateForm.get('phone')?.setValue(input.value);
-}
+
+  onPhoneInput(event: any) {
+    const input = event.target;
+    const cleanedValue = input.value.replace(/[^0-9]/g, '').slice(0, 11);
+    this.graduateForm.patchValue({ phone: cleanedValue }, { emitEvent: false });
+  }
 
   get f() {
     return this.graduateForm.controls;
@@ -72,12 +72,14 @@ onPhoneInput(event: any) {
     this.submitted = true;
     this.errorMessages = [];
 
-    
-
     const form = this.graduateForm.value;
 
     if (form.password !== form.password_confirmation) {
       this.errorMessages.push('Passwords do not match.');
+      return;
+    }
+
+    if (this.graduateForm.invalid) {
       return;
     }
 
@@ -107,7 +109,9 @@ onPhoneInput(event: any) {
           });
           window.location.href = '/graduateprofile';
         } else {
-          this.errorMessages.push('Invalid response from server. Please try again.');
+          this.errorMessages.push(
+            'Invalid response from server. Please try again.'
+          );
         }
       },
       error: (err) => {

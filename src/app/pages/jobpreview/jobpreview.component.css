@@ -187,3 +187,46 @@ button:hover {
     background-color: #a91f24;
   }
 
+
+
+
+
+
+
+  .error-text {
+  color: #bf272d;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.alert {
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.success-box {
+  background-color: #e6ffed;
+  color: #0f5132;
+  border: 1px solid #b5e6c9;
+}
+
+.error-box {
+  background-color: #fcebea;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+.submit-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #bf272d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #a61f23;
+}

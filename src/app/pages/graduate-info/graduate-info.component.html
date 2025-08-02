@@ -31,20 +31,21 @@
                   </div>
 
               <div class="row">
-  <div class="col-md-6 mb-4">
-    <div *ngIf="submitted && f['phone'].errors" class="text-danger small mb-1">
-      <div *ngIf="f['phone'].errors['required']">Phone number is required.</div>
-      <div *ngIf="f['phone'].errors['pattern']">Phone must be 11 digits (e.g. 010xxxxxxxx).</div>
-    </div>
-    <label class="form-label">Phone Number</label>
-    <input
-      type="text"
-      maxlength="11"
-      class="form-control form-control-lg"
-      formControlName="phone"
-      (input)="onPhoneInput($event)"
-    />
+ <div class="col-md-6 mb-4">
+  <div *ngIf="submitted && f['phone'].errors" class="text-danger small mb-1">
+    <div *ngIf="f['phone'].errors['required']">Phone number is required.</div>
+    <div *ngIf="f['phone'].errors['pattern']">Phone must start with 010, 011, 012, or 015 and be 11 digits.</div>
   </div>
+  <label class="form-label">Phone Number</label>
+  <input
+    type="text"
+    maxlength="11"
+    class="form-control form-control-lg"
+    formControlName="phone"
+    (input)="onPhoneInput($event)"
+  />
+</div>
+
 </div>
 
 

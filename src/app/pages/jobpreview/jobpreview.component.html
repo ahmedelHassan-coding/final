@@ -1,100 +1,100 @@
 <div class="container">
   <h2>Post a Job</h2>
 
+  <!-- Success Message -->
   <div *ngIf="successMessage" class="alert success-box">
     <strong>Success:</strong> {{ successMessage }}
   </div>
 
   <form (ngSubmit)="onSubmit()" #jobForm="ngForm" class="job-form" novalidate>
+
     <!-- Job Title -->
     <div>
-      <div *ngIf="jobForm.submitted && titleInput.invalid" class="text-danger mb-1 small">
+      <label for="title">Job Title *</label>
+      <input type="text" id="title" name="title" required [(ngModel)]="title" #titleInput="ngModel">
+      <div *ngIf="(titleInput.invalid && titleInput.touched) || (jobForm.submitted && titleInput.invalid)" class="error-text">
         Job Title is required.
       </div>
-      <label for="title">Job Title *</label>
-      <input type="text" id="title" [(ngModel)]="title" name="title" #titleInput="ngModel" required>
     </div>
 
     <!-- Location -->
     <div>
-      <div *ngIf="jobForm.submitted && locationInput.invalid" class="text-danger mb-1 small">
+      <label for="location">Location *</label>
+      <input type="text" id="location" name="location" required [(ngModel)]="location" #locationInput="ngModel">
+      <div *ngIf="(locationInput.invalid && locationInput.touched) || (jobForm.submitted && locationInput.invalid)" class="error-text">
         Location is required.
       </div>
-      <label for="location">Location *</label>
-      <input type="text" id="location" [(ngModel)]="location" name="location" #locationInput="ngModel" required>
     </div>
 
     <!-- Job Type -->
     <div>
-      <div *ngIf="jobForm.submitted && typeInput.invalid" class="text-danger mb-1 small">
-        Job Type is required.
-      </div>
       <label for="type">Job Type *</label>
-      <select id="type" [(ngModel)]="type" name="type" #typeInput="ngModel" required>
+      <select id="type" name="type" required [(ngModel)]="type" #typeInput="ngModel">
         <option value="">-- Select --</option>
         <option value="Full Time">Full Time</option>
         <option value="Part Time">Part Time</option>
         <option value="Internship">Internship</option>
         <option value="Remote">Remote</option>
       </select>
+      <div *ngIf="(typeInput.invalid && typeInput.touched) || (jobForm.submitted && typeInput.invalid)" class="error-text">
+        Job Type is required.
+      </div>
     </div>
-
-    <!-- Remote -->
-  
 
     <!-- Description -->
     <div>
-      <div *ngIf="jobForm.submitted && descInput.invalid" class="text-danger mb-1 small">
-        Job Description is required.
-      </div>
       <label for="description">Job Description *</label>
-      <textarea id="description" [(ngModel)]="description" name="description" #descInput="ngModel" required></textarea>
+      <textarea id="description" name="description" required [(ngModel)]="description" #descInput="ngModel"></textarea>
+      <div *ngIf="(descInput.invalid && descInput.touched) || (jobForm.submitted && descInput.invalid)" class="error-text">
+        Description is required.
+      </div>
     </div>
 
     <!-- Requirements -->
     <div>
-      <div *ngIf="jobForm.submitted && reqInput.invalid" class="text-danger mb-1 small">
+      <label for="requirements">Requirements *</label>
+      <textarea id="requirements" name="requirements" required [(ngModel)]="requirements" #reqInput="ngModel"></textarea>
+      <div *ngIf="(reqInput.invalid && reqInput.touched) || (jobForm.submitted && reqInput.invalid)" class="error-text">
         Requirements are required.
       </div>
-      <label for="requirements">Requirements *</label>
-      <textarea id="requirements" [(ngModel)]="requirements" name="requirements" #reqInput="ngModel" required></textarea>
     </div>
 
     <!-- Responsibilities -->
     <div>
-      <div *ngIf="jobForm.submitted && respInput.invalid" class="text-danger mb-1 small">
+      <label for="responsibilities">Responsibilities *</label>
+      <textarea id="responsibilities" name="responsibilities" required [(ngModel)]="responsibilities" #respInput="ngModel"></textarea>
+      <div *ngIf="(respInput.invalid && respInput.touched) || (jobForm.submitted && respInput.invalid)" class="error-text">
         Responsibilities are required.
       </div>
-      <label for="responsibilities">Responsibilities *</label>
-      <textarea id="responsibilities" [(ngModel)]="responsibilities" name="responsibilities" #respInput="ngModel" required></textarea>
     </div>
 
     <!-- Experience -->
     <div>
-      <div *ngIf="jobForm.submitted && expInput.invalid" class="text-danger mb-1 small">
+      <label for="experience">Experience *</label>
+      <textarea id="experience" name="experience" required [(ngModel)]="experience" #expInput="ngModel"></textarea>
+      <div *ngIf="(expInput.invalid && expInput.touched) || (jobForm.submitted && expInput.invalid)" class="error-text">
         Experience is required.
       </div>
-      <label for="experience">Experience *</label>
-      <textarea id="experience" [(ngModel)]="experience" name="experience" #expInput="ngModel" required></textarea>
     </div>
 
     <!-- Salary -->
     <div>
-      <div *ngIf="jobForm.submitted && salaryInput.invalid" class="text-danger mb-1 small">
-        Salary is required.
+      <label for="min_salary"> Salary *</label>
+      <input type="number" id="min_salary" name="min_salary" required min="0" [(ngModel)]="min_salary" #salaryInput="ngModel">
+      <div *ngIf="(salaryInput.invalid && salaryInput.touched) || (jobForm.submitted && salaryInput.invalid)" class="error-text">
+        Salary must be a positive number.
       </div>
-      <label for="min_salary">Salary *</label>
-      <input type="number" id="min_salary" [(ngModel)]="min_salary" name="min_salary" #salaryInput="ngModel" required>
     </div>
 
-    <!-- Error messages -->
+    <!-- Error messages from backend
     <div *ngIf="err.length > 0" class="alert error-box">
       <strong>Error(s):</strong>
       <ul>
         <li *ngFor="let e of err">{{ e }}</li>
       </ul>
-    </div>
+    </div> -->
 
-    <button type="submit" style="background-color: #bf272d; color: white;">Submit Job</button>
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Submit Job</button>
   </form>
 </div>

@@ -46,6 +46,7 @@ input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="date"],
+input[type="url"],
 select,
 textarea {
   width: 100%;
@@ -75,7 +76,7 @@ textarea:focus {
 /* Buttons */
 button[type="submit"] {
   display: inline-block;
-  background-color: #030404;
+  background-color: #ac0a0a;
   border: none;
   padding: 0.75rem 1.5rem;
   font-size: 16px;
@@ -88,7 +89,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #11988b;
+  background-color: #570e0e;
 }
 
 /* Responsive Form Row */
