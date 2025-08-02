@@ -2,7 +2,7 @@
   <h3>Pay the Student</h3>
 
   <label>Amount:</label>
-  <input type="number" [(ngModel)]="amount" />
+  <div [(ngModel)]="amount" class="amount-display">{{ amount }}</div>
 
   <div id="card-element" class="card-element"></div>
 

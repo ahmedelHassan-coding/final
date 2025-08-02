@@ -26,8 +26,8 @@ export class PaymentComponent implements OnInit {
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.applicationId = this.route.snapshot.params['id'];
     this.http.get(`http://localhost:8000/api/company/jobs/applications/${this.applicationId}`).subscribe((res: any) => {
-      this.application = res.data;
-      this.amount = this.application.min_price;
+      this.application = res; 
+      this.amount = this.application.job_post.min_salary;
     });
   }
 
